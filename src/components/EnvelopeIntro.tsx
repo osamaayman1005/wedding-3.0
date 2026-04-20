@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { Button } from './Button'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
 import { useI18n } from '../context/I18nContext'
 import { t } from '../i18n/content'
@@ -11,7 +10,8 @@ export function EnvelopeIntro({ onOpen }: { onOpen: () => void }) {
 
   useEffect(() => {
     if (!opening) return
-    const delay = reducedMotion ? 120 : 1050
+
+    const delay = reducedMotion ? 160 : 1300
     const timer = window.setTimeout(onOpen, delay)
     return () => window.clearTimeout(timer)
   }, [opening, onOpen, reducedMotion])
@@ -21,67 +21,56 @@ export function EnvelopeIntro({ onOpen }: { onOpen: () => void }) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.99),rgba(250,249,243,0.98)_40%,rgba(243,247,241,0.98)_100%)] px-4">
+    <div className="fixed inset-0 z-50 overflow-hidden bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.99),rgba(250,249,243,0.98)_42%,rgba(243,247,241,0.98)_100%)] px-4">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-[8%] top-[14%] h-24 w-24 rounded-full bg-white/45 blur-3xl motion-safe:animate-shimmer" />
+        <div className="absolute left-[7%] top-[13%] h-24 w-24 rounded-full bg-white/45 blur-3xl motion-safe:animate-shimmer" />
         <div className="absolute right-[12%] top-[24%] h-28 w-28 rounded-full bg-champagne/18 blur-3xl motion-safe:animate-shimmer" />
-        <div className="absolute bottom-[12%] left-[18%] h-32 w-32 rounded-full bg-sage-100/12 blur-3xl motion-safe:animate-shimmer" />
+        <div className="absolute bottom-[13%] left-[16%] h-32 w-32 rounded-full bg-sage-100/12 blur-3xl motion-safe:animate-shimmer" />
         <div className="absolute right-[22%] bottom-[18%] h-20 w-20 rounded-full bg-rose-100/20 blur-3xl motion-safe:animate-shimmer" />
       </div>
 
       <div className="relative mx-auto flex min-h-svh max-w-7xl items-center justify-center py-8">
-        <div className="grid w-full items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
-          <div className="order-2 text-center lg:order-1 lg:text-start">
-            <div className="inline-flex rounded-full bg-white/80 px-4 py-2 text-[11px] tracking-[0.28em] text-sage-800 ring-1 ring-ink-200/70 shadow-glow">
-              {t(lang, 'envelopeStep')}
-            </div>
-            <h1 className="mt-5 text-4xl font-[500] italic tracking-[0.01em] text-ink-800 md:text-6xl">
-              {t(lang, 'envelopeTitle')}
-            </h1>
-            <p className="mt-4 max-w-[34ch] text-sm leading-relaxed text-ink-600 md:text-base">
-              {t(lang, 'envelopeSubtitle')}
-            </p>
-            <p className="mt-4 max-w-[40ch] text-xs leading-relaxed text-ink-500 md:text-sm">
-              {t(lang, 'envelopePrompt')}
-            </p>
+        <button
+          type="button"
+          onClick={startOpen}
+          disabled={opening}
+          aria-label={t(lang, 'openInvitation')}
+          className={`group relative w-full overflow-hidden bg-white/88 ring-1 ring-ink-200/70 shadow-soft noise-overlay transition-all duration-1000 ease-out ${
+            opening
+              ? 'fixed inset-0 z-50 rounded-none bg-transparent p-0 ring-0 shadow-none'
+              : 'max-w-[540px] rounded-[38px] p-4 motion-safe:animate-floaty'
+          }`}
+        >
+          <div
+            className={`relative h-full overflow-hidden bg-gradient-to-br from-[#fffdfd] via-[#fbf5f0] to-[#f4ede4] transition-[border-radius,transform,opacity] duration-1000 ease-out ${
+              opening ? 'min-h-svh rounded-none' : 'rounded-[30px]'
+            }`}
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.78),transparent_56%)]" />
+            <div className="absolute inset-x-6 top-6 h-px bg-gradient-to-r from-transparent via-sage-700/10 to-transparent" />
+            <div className="absolute bottom-6 left-1/2 h-10 w-[76%] -translate-x-1/2 rounded-full bg-rose-100/12 blur-xl" />
 
-            <div className="mt-7">
-              <Button onClick={startOpen} disabled={opening}>
-                {t(lang, 'openInvitation')}
-              </Button>
-            </div>
-          </div>
-
-          <div className="order-1 flex justify-center lg:order-2">
-            <button
-              type="button"
-              onClick={startOpen}
-              disabled={opening}
-              className="group relative w-full max-w-[460px] rounded-[34px] bg-white/88 p-4 ring-1 ring-ink-200/70 shadow-soft noise-overlay motion-safe:animate-floaty"
-              aria-label={t(lang, 'openInvitation')}
+            <div
+              className={`absolute inset-0 flex items-center justify-center px-5 transition-all duration-1000 ease-out ${
+                opening ? 'opacity-0 scale-[1.04]' : 'opacity-100'
+              }`}
             >
-              <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[#fffdfd] via-[#faf5f0] to-[#f3ebe3] p-5">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.72),transparent_58%)]" />
-                <div className="absolute inset-x-6 top-6 h-px bg-gradient-to-r from-transparent via-sage-700/10 to-transparent" />
-                <div className="absolute bottom-6 left-1/2 h-10 w-[74%] -translate-x-1/2 rounded-full bg-rose-100/12 blur-xl" />
-
-                <div className="absolute left-6 top-5 text-[10px] tracking-[0.28em] text-ink-500/70">
-                  05.06.2026
-                </div>
-                <div className="absolute right-6 top-5 text-[10px] tracking-[0.28em] text-ink-500/70">
-                  {lang === 'en' ? 'With love' : 'بِحُب'}
+              <div className="w-full max-w-[420px]">
+                <div className="mb-4 flex items-center justify-between text-[10px] tracking-[0.28em] text-ink-500/70">
+                  <span>05.06.2026</span>
+                  <span>{lang === 'en' ? 'With love' : 'بِحُب'}</span>
                 </div>
 
-                <div className="relative mx-auto aspect-[1.54] w-full max-w-[360px] [perspective:1600px]">
+                <div className="relative mx-auto aspect-[1.56] w-full max-w-[380px] [perspective:1700px]">
                   <div
-                    className={`absolute inset-x-0 bottom-0 top-[12%] rounded-[24px] bg-[#f6ede5] shadow-[0_22px_45px_-30px_rgba(43,42,38,0.24)] transition-all duration-700 ${
-                      opening ? 'translate-y-2 scale-[0.985]' : ''
+                    className={`absolute inset-x-0 bottom-0 top-[12%] rounded-[28px] bg-[#f7eee6] shadow-[0_26px_55px_-34px_rgba(43,42,38,0.28)] transition-all duration-1000 ease-out ${
+                      opening ? 'translate-y-6 scale-[1.03]' : ''
                     }`}
                   />
 
                   <div
-                    className={`absolute left-1/2 top-[18%] w-[77%] -translate-x-1/2 rounded-[18px] bg-white/94 shadow-soft ring-1 ring-white/70 transition-all duration-1000 ${
-                      opening ? '-translate-y-[28%] rotate-[-1.2deg]' : 'translate-y-[10%]'
+                    className={`absolute left-1/2 top-[18%] w-[79%] -translate-x-1/2 rounded-[20px] bg-white/96 shadow-soft ring-1 ring-white/70 transition-all duration-1000 ease-out ${
+                      opening ? '-translate-y-[24%] rotate-[-1deg] opacity-0' : 'translate-y-[10%] opacity-100'
                     }`}
                     style={{ transformOrigin: 'center bottom' }}
                   >
@@ -102,34 +91,34 @@ export function EnvelopeIntro({ onOpen }: { onOpen: () => void }) {
                   </div>
 
                   <div
-                    className="absolute inset-x-[4%] bottom-[10%] top-[31%] rounded-[24px] bg-gradient-to-br from-[#f2e9e1] via-[#eee6de] to-[#f7f1eb] transition-transform duration-1000"
+                    className="absolute inset-x-[4%] bottom-[10%] top-[31%] rounded-[28px] bg-gradient-to-br from-[#f4ebe3] via-[#eee6de] to-[#f8f2ec] transition-transform duration-1000 ease-out"
                     style={{
                       clipPath: 'polygon(0% 0%, 50% 58%, 100% 0%, 100% 100%, 0% 100%)',
-                      transform: opening ? 'translateY(4%)' : 'translateY(0)',
+                      transform: opening ? 'translateY(6%) scaleX(1.01)' : 'translateY(0)',
                     }}
                   />
 
                   <div
-                    className="absolute inset-x-[4%] bottom-[10%] top-[31%] rounded-[24px] bg-[#f2ebe4] transition-transform duration-1000"
+                    className="absolute inset-x-[4%] bottom-[10%] top-[31%] rounded-[28px] bg-[#f3ece4] transition-transform duration-1000 ease-out"
                     style={{
                       clipPath: 'polygon(0% 100%, 50% 42%, 100% 100%)',
-                      transform: opening ? 'translateY(3%)' : 'translateY(0)',
+                      transform: opening ? 'translateY(5%)' : 'translateY(0)',
                     }}
                   />
 
                   <div
-                    className="absolute inset-x-[4%] top-[10%] h-[58%] rounded-[24px] bg-[#f2e9e2] shadow-[0_2px_20px_rgba(0,0,0,0.05)] transition-all duration-1000"
+                    className="absolute inset-x-[4%] top-[10%] h-[58%] rounded-[28px] bg-[#f3ebe4] shadow-[0_2px_20px_rgba(0,0,0,0.05)] transition-all duration-1000 ease-out"
                     style={{
                       clipPath: 'polygon(0% 0%, 100% 0%, 50% 100%)',
                       transformOrigin: 'bottom center',
                       transformStyle: 'preserve-3d',
-                      transform: opening ? 'rotateX(175deg) translateY(-12%)' : 'rotateX(0deg)',
+                      transform: opening ? 'rotateX(172deg) translateY(-18%)' : 'rotateX(0deg)',
                     }}
                   />
 
                   <div
-                    className={`absolute left-[50%] top-[32%] h-[44%] w-[72%] -translate-x-1/2 rounded-[18px] bg-[linear-gradient(180deg,#fffefc,rgba(255,255,255,0.96))] shadow-[0_10px_30px_-18px_rgba(43,42,38,0.25)] ring-1 ring-ink-200/50 transition-all duration-1000 ${
-                      opening ? '-translate-y-[40%] scale-[1.01]' : 'translate-y-[5%]'
+                    className={`absolute left-[50%] top-[34%] h-[42%] w-[72%] -translate-x-1/2 rounded-[18px] bg-[linear-gradient(180deg,#fffefc,rgba(255,255,255,0.97))] shadow-[0_10px_30px_-18px_rgba(43,42,38,0.25)] ring-1 ring-ink-200/50 transition-all duration-1000 ease-out ${
+                      opening ? 'translate-y-[0%] scale-[1.01] opacity-100' : 'translate-y-[5%] opacity-100'
                     }`}
                   >
                     <div className="px-6 py-5 text-left">
@@ -141,7 +130,7 @@ export function EnvelopeIntro({ onOpen }: { onOpen: () => void }) {
                   </div>
 
                   <div
-                    className={`absolute right-[9%] bottom-[18%] h-20 w-20 rounded-full bg-white/96 shadow-soft ring-1 ring-ink-200/70 transition-all duration-700 ${
+                    className={`absolute right-[9%] bottom-[18%] h-20 w-20 rounded-full bg-white/96 shadow-soft ring-1 ring-ink-200/70 transition-all duration-700 ease-out ${
                       opening ? 'scale-110 rotate-6' : 'scale-100'
                     }`}
                   >
@@ -188,30 +177,51 @@ export function EnvelopeIntro({ onOpen }: { onOpen: () => void }) {
                   />
                 </div>
               </div>
+            </div>
 
-              <div className="mt-3 text-center">
-                <div className="text-[11px] uppercase tracking-[0.28em] text-ink-500">
-                  {lang === 'en' ? 'Tap to open' : 'اضغط لفتح'}
+            <div
+              className={`absolute inset-0 flex items-center justify-center px-6 text-center transition-all duration-1000 ease-out ${
+                opening ? 'opacity-100 delay-150' : 'pointer-events-none opacity-0'
+              }`}
+            >
+              <div className="mx-auto flex w-full max-w-2xl flex-col items-center justify-center rounded-[34px] border border-white/55 bg-white/55 px-6 py-10 shadow-[0_24px_70px_-45px_rgba(53,60,45,0.35)] backdrop-blur-md md:px-10 md:py-12">
+                <div className="text-[10px] uppercase tracking-[0.32em] text-sage-800/70">
+                  {lang === 'en' ? 'You are invited' : 'أنت مدعو'}
                 </div>
-                <div className="mt-2 text-sm text-ink-600">
+                <h1 className="mt-4 text-4xl font-[500] italic tracking-[0.01em] text-ink-800 md:text-6xl">
+                  Osama & Farah
+                </h1>
+                <div className="mt-4 h-px w-24 bg-gradient-to-r from-transparent via-sage-700/25 to-transparent" />
+                <p className="mt-5 max-w-[34ch] text-sm leading-relaxed text-ink-600 md:text-base">
                   {lang === 'en'
-                    ? 'A tiny pause before the invitation reveals itself.'
-                    : 'لحظة صغيرة قبل أن تنكشف الدعوة.'}
+                    ? 'Save the date, bring your smile, and step into a day made with love.'
+                    : 'احفظ/ي الموعد، واحمل/ي ابتسامتك، وادخل/ي في يوم صُنع بالحب.'}
+                </p>
+                <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs tracking-[0.28em] text-ink-500">
+                  <span className="rounded-full bg-white/70 px-4 py-2 ring-1 ring-ink-200/70">05.06.2026</span>
+                  <span className="rounded-full bg-white/70 px-4 py-2 ring-1 ring-ink-200/70">
+                    {lang === 'en' ? 'Evening celebration' : 'احتفال مسائي'}
+                  </span>
                 </div>
               </div>
-            </button>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div
-        className={`absolute inset-0 pointer-events-none transition-opacity duration-700 ${
-          opening ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
-        <div className="absolute left-[12%] top-[18%] text-2xl text-white/85 motion-safe:animate-floaty">✦</div>
-        <div className="absolute right-[14%] top-[30%] text-xl text-white/80 motion-safe:animate-floaty">✧</div>
-        <div className="absolute left-[25%] bottom-[18%] text-lg text-white/70 motion-safe:animate-floaty">✦</div>
+          <div
+            className={`absolute inset-x-0 bottom-6 text-center transition-opacity duration-700 ${
+              opening ? 'opacity-0' : 'opacity-100'
+            }`}
+          >
+            <div className="text-[11px] uppercase tracking-[0.28em] text-ink-500">
+              {lang === 'en' ? 'Tap to open' : 'اضغط لفتح'}
+            </div>
+            <div className="mt-2 text-sm text-ink-600">
+              {lang === 'en'
+                ? 'A soft little envelope before the invitation unfolds.'
+                : 'مظروف صغير ناعم قبل أن تنكشف الدعوة.'}
+            </div>
+          </div>
+        </button>
       </div>
     </div>
   )
