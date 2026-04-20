@@ -11,7 +11,7 @@ export function EnvelopeIntro({ onOpen }: { onOpen: () => void }) {
   useEffect(() => {
     if (!opening) return
 
-    const delay = reducedMotion ? 160 : 1300
+    const delay = reducedMotion ? 160 : 1200
     const timer = window.setTimeout(onOpen, delay)
     return () => window.clearTimeout(timer)
   }, [opening, onOpen, reducedMotion])
@@ -35,50 +35,44 @@ export function EnvelopeIntro({ onOpen }: { onOpen: () => void }) {
           onClick={startOpen}
           disabled={opening}
           aria-label={t(lang, 'openInvitation')}
-          className={`group relative w-full overflow-hidden bg-white/88 ring-1 ring-ink-200/70 shadow-soft noise-overlay transition-all duration-1000 ease-out ${
+          className={`relative w-full overflow-hidden bg-white/90 ring-1 ring-ink-200/70 shadow-soft noise-overlay transition-all duration-1000 ease-out ${
             opening
               ? 'fixed inset-0 z-50 rounded-none bg-transparent p-0 ring-0 shadow-none'
-              : 'max-w-[620px] rounded-[40px] p-5 motion-safe:animate-floaty'
+              : 'max-w-[720px] rounded-[42px] p-5 motion-safe:animate-floaty'
           }`}
         >
           <div
-            className={`relative h-full overflow-hidden bg-gradient-to-br from-[#fffdfd] via-[#fbf0e7] to-[#efdccf] transition-[border-radius,transform,opacity] duration-1000 ease-out ${
-              opening ? 'min-h-svh rounded-none' : 'rounded-[30px]'
+            className={`relative h-full overflow-hidden bg-gradient-to-br from-[#fffdfd] via-[#fbf1e8] to-[#efdccf] transition-[border-radius,transform,opacity] duration-1000 ease-out ${
+              opening ? 'min-h-svh rounded-none' : 'rounded-[34px]'
             }`}
           >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.78),transparent_56%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.74),transparent_56%)]" />
             <div className="absolute inset-x-6 top-6 h-px bg-gradient-to-r from-transparent via-sage-700/10 to-transparent" />
-            <div className="absolute bottom-6 left-1/2 h-10 w-[76%] -translate-x-1/2 rounded-full bg-rose-100/12 blur-xl" />
-            <div className="absolute inset-[7%] rounded-[34px] border border-white/50 bg-white/6 opacity-80" />
+            <div className="absolute inset-[7%] rounded-[34px] border border-white/50 bg-white/5 opacity-80" />
 
             <div
-              className={`absolute inset-0 flex items-center justify-center px-5 transition-all duration-1000 ease-out ${
-                opening ? 'opacity-0 scale-[1.04]' : 'opacity-100'
+              className={`absolute inset-0 flex items-center justify-center p-5 transition-all duration-1000 ease-out ${
+                opening ? 'opacity-0 scale-[1.02]' : 'opacity-100'
               }`}
             >
-              <div className="w-full max-w-[420px]">
+              <div className="w-full max-w-[520px]">
                 <div className="mb-4 flex items-center justify-between text-[10px] tracking-[0.28em] text-ink-500/70">
                   <span>05.06.2026</span>
                   <span>{lang === 'en' ? 'With love' : 'بِحُب'}</span>
                 </div>
 
-                <div className="relative mx-auto aspect-[1.56] w-full max-w-[420px] [perspective:1700px]">
+                <div className="relative mx-auto aspect-[1.62] w-full max-w-[460px]">
+                  <div className="absolute inset-x-[5%] bottom-[11%] top-[18%] rounded-[30px] bg-[#f5e8dd] shadow-[0_32px_70px_-40px_rgba(43,42,38,0.34)] ring-1 ring-ink-300/20" />
                   <div
-                    className={`absolute inset-x-0 bottom-0 top-[12%] rounded-[30px] bg-[#f5e8dd] shadow-[0_32px_70px_-40px_rgba(43,42,38,0.34)] ring-1 ring-ink-300/20 transition-all duration-1000 ease-out ${
-                      opening ? 'translate-y-7 scale-[1.03]' : ''
-                    }`}
-                  />
-
-                  <div
-                    className="absolute inset-x-[10%] bottom-[11%] top-[18%] rounded-[22px] border border-ink-300/20 bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.02))]"
+                    className="absolute inset-x-[5%] bottom-[11%] top-[18%] rounded-[30px] border border-ink-300/18 bg-[linear-gradient(180deg,rgba(255,255,255,0.25),rgba(255,255,255,0.02))]"
                     style={{
                       clipPath: 'polygon(0% 0%, 50% 54%, 100% 0%, 100% 100%, 0% 100%)',
                     }}
                   />
 
                   <div
-                    className={`absolute left-1/2 top-[18%] w-[79%] -translate-x-1/2 rounded-[20px] bg-white/96 shadow-soft ring-1 ring-white/70 transition-all duration-1000 ease-out ${
-                      opening ? '-translate-y-[24%] rotate-[-1deg] opacity-0' : 'translate-y-[10%] opacity-100'
+                    className={`absolute left-1/2 top-[20%] w-[82%] -translate-x-1/2 rounded-[22px] bg-white/96 shadow-soft ring-1 ring-white/70 transition-all duration-1000 ease-out ${
+                      opening ? '-translate-y-[22%] opacity-0' : 'translate-y-[12%] opacity-100'
                     }`}
                     style={{ transformOrigin: 'center bottom' }}
                   >
@@ -99,23 +93,23 @@ export function EnvelopeIntro({ onOpen }: { onOpen: () => void }) {
                   </div>
 
                   <div
-                    className="absolute inset-x-[4%] bottom-[10%] top-[31%] rounded-[28px] bg-gradient-to-br from-[#f2e2d6] via-[#e8d7c7] to-[#f8f2ec] transition-transform duration-1000 ease-out"
+                    className="absolute inset-x-[7%] bottom-[11%] top-[31%] rounded-[28px] bg-gradient-to-br from-[#f2e2d6] via-[#e8d7c7] to-[#f8f2ec] transition-transform duration-1000 ease-out"
                     style={{
                       clipPath: 'polygon(0% 0%, 50% 58%, 100% 0%, 100% 100%, 0% 100%)',
-                      transform: opening ? 'translateY(6%) scaleX(1.01)' : 'translateY(0)',
+                      transform: opening ? 'translateY(7%) scaleX(1.01)' : 'translateY(0)',
                     }}
                   />
 
                   <div
-                    className="absolute inset-x-[4%] bottom-[10%] top-[31%] rounded-[28px] bg-[#f0e3d9] transition-transform duration-1000 ease-out"
+                    className="absolute inset-x-[7%] bottom-[11%] top-[31%] rounded-[28px] bg-[#f0e3d9] transition-transform duration-1000 ease-out"
                     style={{
                       clipPath: 'polygon(0% 100%, 50% 42%, 100% 100%)',
-                      transform: opening ? 'translateY(5%)' : 'translateY(0)',
+                      transform: opening ? 'translateY(6%)' : 'translateY(0)',
                     }}
                   />
 
                   <div
-                    className="absolute inset-x-[4%] top-[10%] h-[58%] rounded-[28px] bg-[#f4ece5] shadow-[0_2px_20px_rgba(0,0,0,0.05)] transition-all duration-1000 ease-out"
+                    className="absolute inset-x-[7%] top-[11%] h-[58%] rounded-[28px] bg-[#f4ece5] shadow-[0_2px_20px_rgba(0,0,0,0.05)] transition-all duration-1000 ease-out"
                     style={{
                       clipPath: 'polygon(0% 0%, 100% 0%, 50% 100%)',
                       transformOrigin: 'bottom center',
@@ -125,8 +119,8 @@ export function EnvelopeIntro({ onOpen }: { onOpen: () => void }) {
                   />
 
                   <div
-                    className={`absolute left-[50%] top-[34%] h-[42%] w-[72%] -translate-x-1/2 rounded-[18px] bg-[linear-gradient(180deg,#fffefc,rgba(255,255,255,0.97))] shadow-[0_10px_30px_-18px_rgba(43,42,38,0.25)] ring-1 ring-ink-200/50 transition-all duration-1000 ease-out ${
-                      opening ? 'translate-y-[0%] scale-[1.01] opacity-100' : 'translate-y-[5%] opacity-100'
+                    className={`absolute left-[50%] top-[34%] h-[42%] w-[74%] -translate-x-1/2 rounded-[18px] bg-[linear-gradient(180deg,#fffefc,rgba(255,255,255,0.97))] shadow-[0_10px_30px_-18px_rgba(43,42,38,0.25)] ring-1 ring-ink-200/50 transition-all duration-1000 ease-out ${
+                      opening ? 'translate-y-[1%] scale-[1.01] opacity-100' : 'translate-y-[4%] opacity-100'
                     }`}
                   >
                     <div className="px-6 py-5 text-left">
@@ -138,7 +132,7 @@ export function EnvelopeIntro({ onOpen }: { onOpen: () => void }) {
                   </div>
 
                   <div
-                    className={`absolute right-[9%] bottom-[18%] h-20 w-20 rounded-full bg-white/96 shadow-soft ring-1 ring-ink-200/70 transition-all duration-700 ease-out ${
+                    className={`absolute right-[11%] bottom-[19%] h-20 w-20 rounded-full bg-white/96 shadow-soft ring-1 ring-ink-200/70 transition-all duration-700 ease-out ${
                       opening ? 'scale-110 rotate-6' : 'scale-100'
                     }`}
                   >
