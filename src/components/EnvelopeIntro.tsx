@@ -37,7 +37,7 @@ export function EnvelopeIntro({ onOpen }: Props) {
   useEffect(() => {
     if (!opening) return
 
-    const timeout = window.setTimeout(onOpen, reducedMotion ? 220 : 1200)
+    const timeout = window.setTimeout(onOpen, reducedMotion ? 90 : 180)
     return () => window.clearTimeout(timeout)
   }, [opening, onOpen, reducedMotion])
 
@@ -52,7 +52,10 @@ export function EnvelopeIntro({ onOpen }: Props) {
   return (
     <div className="fixed inset-0 z-50 overflow-hidden bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.92),rgba(246,240,232,0.94)_48%,rgba(233,222,208,0.98)_100%)] text-[#4f4336]">
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.05))]" />
-      <div className="absolute inset-0 opacity-[0.05] mix-blend-multiply bg-[radial-gradient(circle_at_20%_20%,rgba(191,160,110,0.18),transparent_35%),radial-gradient(circle_at_80%_30%,rgba(191,160,110,0.1),transparent_28%)]" />
+      <div className="absolute inset-0 opacity-[0.06] mix-blend-multiply bg-[radial-gradient(circle_at_20%_20%,rgba(191,160,110,0.16),transparent_35%),radial-gradient(circle_at_80%_30%,rgba(191,160,110,0.1),transparent_28%),radial-gradient(circle_at_50%_80%,rgba(195,165,125,0.12),transparent_34%)]" />
+      <div className="absolute left-[10%] top-[18%] h-40 w-40 rounded-full bg-[#d7b98a]/22 blur-3xl animate-[envelope-drift_18s_ease-in-out_infinite]" />
+      <div className="absolute right-[10%] top-[24%] h-56 w-56 rounded-full bg-[#f0dcbc]/22 blur-3xl animate-[envelope-drift_22s_ease-in-out_infinite_reverse]" />
+      <div className="absolute bottom-[10%] left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-[#d9c1a2]/18 blur-3xl animate-[envelope-breathe_14s_ease-in-out_infinite]" />
 
       <div className="relative flex min-h-svh items-center justify-center px-4 py-8 sm:px-8">
         <button
@@ -60,20 +63,21 @@ export function EnvelopeIntro({ onOpen }: Props) {
           onClick={openEnvelope}
           disabled={opening}
           aria-label="Open the wedding invitation"
-          className="group relative w-full max-w-[920px] outline-none"
+          className="group relative w-full max-w-[980px] outline-none"
         >
           <div
             className={`relative mx-auto w-full transition-[transform,opacity,filter] ${motion} ${
-              opening ? 'scale-[1.04] opacity-0 blur-[1px]' : 'scale-100 opacity-100'
+              opening ? 'scale-[1.03] opacity-0 blur-[1px]' : 'scale-100 opacity-100'
             }`}
           >
-            <div className="absolute inset-x-[9%] bottom-[10%] h-8 rounded-full bg-[#7f684c]/14 blur-2xl" />
+            <div className="absolute left-1/2 top-[72%] h-28 w-[72%] -translate-x-1/2 rounded-full bg-[#6b5437]/28 blur-[28px]" />
+            <div className="absolute left-1/2 top-[74%] h-16 w-[52%] -translate-x-1/2 rounded-full bg-[#6b5437]/18 blur-[16px]" />
 
-            <div className="relative overflow-hidden rounded-[34px] border border-white/50 bg-white/38 p-4 shadow-[0_26px_90px_-34px_rgba(70,52,30,0.28)] backdrop-blur-[2px] sm:rounded-[40px] sm:p-5">
+            <div className="relative overflow-hidden rounded-[34px] border border-white/50 bg-white/42 p-4 shadow-[0_26px_90px_-34px_rgba(70,52,30,0.28)] backdrop-blur-[2px] sm:rounded-[40px] sm:p-5">
               <img
                 src={envelopeImage}
                 alt=""
-                className="block h-auto w-full rounded-[26px] object-cover shadow-[0_20px_60px_-36px_rgba(72,52,28,0.35)]"
+                className="block h-auto w-full rounded-[26px] object-cover shadow-[0_30px_78px_-34px_rgba(72,52,28,0.42)] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.01]"
               />
 
               <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.14),transparent_40%)]" />
@@ -93,58 +97,17 @@ export function EnvelopeIntro({ onOpen }: Props) {
             </div>
           </div>
         </button>
-
-        <div
-          className={`pointer-events-none fixed inset-0 z-50 transition-all ${motion} ${
-            opening ? 'opacity-100' : 'opacity-0'
-          }`}
-          aria-hidden="true"
-        >
-          <div className="absolute inset-0 bg-[#f4ebe0]/90 backdrop-blur-[8px]" />
-          <div
-            className={`absolute left-1/2 top-1/2 w-[min(92vw,860px)] -translate-x-1/2 -translate-y-1/2 transition-all ${motion} ${
-              opening ? 'scale-100 opacity-100' : 'scale-[0.85] opacity-0'
-            }`}
-          >
-            <div className="relative overflow-hidden rounded-[34px] border border-[#d9c3a6] bg-[linear-gradient(180deg,#fffdf8_0%,#f8f1e6_100%)] px-6 py-10 text-center shadow-[0_40px_100px_-44px_rgba(61,43,25,0.55)] sm:px-12 sm:py-14">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(196,160,107,0.12),transparent_58%)]" />
-              <div className="absolute left-1/2 top-6 h-1.5 w-24 -translate-x-1/2 rounded-full bg-[#c39b6f]/35" />
-              <div className="relative">
-                <div className="text-[11px] uppercase tracking-[0.5em] text-[#9c7a54]">
-                  Wedding Invitation
-                </div>
-                <h1 className="mt-4 font-['Cormorant_Garamond',_serif] text-5xl leading-none text-[#594630] sm:text-7xl">
-                  A lovely celebration
-                </h1>
-                <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-[#7b6752] sm:text-lg">
-                  The seal opens, the paper unfolds, and the invitation softens
-                  into a warm, romantic reveal before the rest of the site appears.
-                </p>
-
-                <div className="mx-auto mt-10 grid max-w-2xl gap-4 sm:grid-cols-3">
-                  {[
-                    ['Ceremony', 'Sunset vows'],
-                    ['Reception', 'Dinner and dancing'],
-                    ['Dress code', 'Soft, elegant, and comfy'],
-                  ].map(([label, value]) => (
-                    <div
-                      key={label}
-                      className="rounded-[24px] border border-[#ead9c1] bg-white/70 px-4 py-5 shadow-[0_14px_30px_-24px_rgba(67,48,29,0.35)]"
-                    >
-                      <div className="text-[10px] uppercase tracking-[0.4em] text-[#a17d57]">
-                        {label}
-                      </div>
-                      <div className="mt-2 font-['Cormorant_Garamond',_serif] text-2xl text-[#5f4a34]">
-                        {value}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
+      <style>{`
+        @keyframes envelope-drift {
+          0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+          50% { transform: translate3d(0, -10px, 0) scale(1.03); }
+        }
+        @keyframes envelope-breathe {
+          0%, 100% { transform: translate3d(-50%, 0, 0) scale(1); opacity: .55; }
+          50% { transform: translate3d(-50%, -8px, 0) scale(1.05); opacity: .82; }
+        }
+      `}</style>
     </div>
   )
 }
