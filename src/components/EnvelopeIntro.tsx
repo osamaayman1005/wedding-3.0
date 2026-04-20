@@ -26,16 +26,10 @@ export function EnvelopeIntro({ onOpen }: Props) {
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow
-    const previousBodyBackground = document.body.style.background
-    const previousHtmlBackground = document.documentElement.style.background
     document.body.style.overflow = 'hidden'
-    document.body.style.background = '#f0dfc2'
-    document.documentElement.style.background = '#f0dfc2'
 
     return () => {
       document.body.style.overflow = previousOverflow
-      document.body.style.background = previousBodyBackground
-      document.documentElement.style.background = previousHtmlBackground
     }
   }, [])
 
@@ -63,19 +57,27 @@ export function EnvelopeIntro({ onOpen }: Props) {
     : 'duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]'
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-[#efe8dc] text-[#4f4336]">
+    <div className="fixed inset-0 z-50 overflow-hidden bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.9),rgba(245,237,226,0.92)_48%,rgba(232,220,203,0.96)_100%)] text-[#4f4336]">
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.34),rgba(255,255,255,0.04))]" />
+      <div
+        className="absolute inset-0 opacity-[0.08] mix-blend-multiply"
+        style={{
+          backgroundImage:
+            'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'180\' height=\'180\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'.8\' numOctaves=\'2\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'180\' height=\'180\' filter=\'url(%23n)\' opacity=\'.45\'/%3E%3C/svg%3E")',
+        }}
+      />
       <button
         type="button"
         onClick={openEnvelope}
         disabled={opening}
-        className="absolute inset-0 block h-full w-full outline-none"
+        className="relative flex h-full w-full items-center justify-center px-4 py-8 outline-none sm:px-8"
         aria-label="Open the wedding invitation"
       >
         <svg
           viewBox="0 0 1600 1000"
-          className="h-full w-full"
+          className="h-full w-full max-w-[1180px]"
           aria-hidden="true"
-          preserveAspectRatio="none"
+          preserveAspectRatio="xMidYMid meet"
         >
           <defs>
             <linearGradient id="env-base" x1="0%" x2="100%" y1="0%" y2="100%">
