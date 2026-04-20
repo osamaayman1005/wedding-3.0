@@ -3,6 +3,7 @@ import envelopeImage from '../assets/envelope.png'
 
 type Props = {
   onOpen: () => void
+  onDismiss: () => void
 }
 
 function useReducedMotion() {
@@ -21,7 +22,7 @@ function useReducedMotion() {
   return reducedMotion
 }
 
-export function EnvelopeIntro({ onOpen }: Props) {
+export function EnvelopeIntro({ onOpen, onDismiss }: Props) {
   const [opening, setOpening] = useState(false)
   const reducedMotion = useReducedMotion()
 
@@ -37,20 +38,30 @@ export function EnvelopeIntro({ onOpen }: Props) {
   useEffect(() => {
     if (!opening) return
 
-    const timeout = window.setTimeout(onOpen, reducedMotion ? 60 : 120)
+    const timeout = window.setTimeout(onDismiss, reducedMotion ? 70 : 190)
     return () => window.clearTimeout(timeout)
-  }, [opening, onOpen, reducedMotion])
+  }, [opening, onDismiss, reducedMotion])
 
   const openEnvelope = () => {
-    if (!opening) setOpening(true)
+    if (!opening) {
+      setOpening(true)
+      onOpen()
+    }
   }
 
   const motion = reducedMotion
     ? 'duration-200 ease-out'
     : 'duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]'
+  const fadeMotion = reducedMotion
+    ? 'duration-150 ease-out'
+    : 'duration-200 ease-out'
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.92),rgba(246,240,232,0.94)_48%,rgba(233,222,208,0.98)_100%)] text-[#4f4336]">
+    <div
+      className={`fixed inset-0 z-50 overflow-hidden bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.92),rgba(246,240,232,0.94)_48%,rgba(233,222,208,0.98)_100%)] text-[#4f4336] transition-opacity ${fadeMotion} ${
+        opening ? 'pointer-events-none opacity-0' : 'opacity-100'
+      }`}
+    >
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.05))]" />
       <div className="absolute inset-0 opacity-[0.06] mix-blend-multiply bg-[radial-gradient(circle_at_20%_20%,rgba(191,160,110,0.16),transparent_35%),radial-gradient(circle_at_80%_30%,rgba(191,160,110,0.1),transparent_28%),radial-gradient(circle_at_50%_80%,rgba(195,165,125,0.12),transparent_34%)]" />
       <div className="absolute left-[10%] top-[18%] h-40 w-40 rounded-full bg-[#d7b98a]/22 blur-3xl animate-[envelope-drift_18s_ease-in-out_infinite]" />
@@ -67,18 +78,21 @@ export function EnvelopeIntro({ onOpen }: Props) {
         >
           <div
             className={`relative mx-auto w-full transition-[transform,opacity,filter] ${motion} ${
-              opening ? 'scale-[1.12] opacity-0 blur-[2px]' : 'scale-100 opacity-100'
+              opening ? 'scale-[1.18] opacity-[0.12] blur-[2px]' : 'scale-100 opacity-100'
             }`}
           >
-            <div className="absolute left-1/2 top-[73%] h-36 w-[74%] -translate-x-1/2 rounded-full bg-[#5b452d]/42 blur-[36px]" />
-            <div className="absolute left-1/2 top-[76%] h-20 w-[58%] -translate-x-1/2 rounded-full bg-[#5b452d]/24 blur-[20px]" />
-            <div className="absolute left-1/2 top-[79%] h-10 w-[42%] -translate-x-1/2 rounded-full bg-[#3c2b1d]/14 blur-[14px]" />
+            <div className="absolute left-1/2 top-[80%] h-44 w-[78%] -translate-x-1/2 rounded-full bg-[#3f2d1c]/46 blur-[52px] mix-blend-multiply" />
+            <div className="absolute left-1/2 top-[84%] h-24 w-[62%] -translate-x-1/2 rounded-full bg-[#3f2d1c]/30 blur-[28px] mix-blend-multiply" />
+            <div className="absolute left-1/2 top-[87%] h-12 w-[44%] -translate-x-1/2 rounded-full bg-[#24180f]/18 blur-[14px]" />
 
-            <div className="relative overflow-hidden rounded-[34px] border border-white/50 bg-white/42 p-4 shadow-[0_34px_120px_-28px_rgba(70,52,30,0.34)] backdrop-blur-[2px] sm:rounded-[40px] sm:p-5">
+            <div
+              className="relative overflow-hidden rounded-[34px] border border-white/50 bg-white/42 p-4 shadow-[0_34px_120px_-28px_rgba(70,52,30,0.34)] backdrop-blur-[2px] sm:rounded-[40px] sm:p-5"
+              style={{ filter: 'drop-shadow(0 36px 28px rgba(66, 46, 28, 0.26))' }}
+            >
               <img
                 src={envelopeImage}
                 alt=""
-                className="block h-auto w-full rounded-[26px] object-cover shadow-[0_42px_110px_-24px_rgba(72,52,28,0.5)] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.01]"
+                className="block h-auto w-full rounded-[26px] object-cover shadow-[0_52px_130px_-20px_rgba(72,52,28,0.56)] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.01]"
               />
 
               <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.14),transparent_40%)]" />

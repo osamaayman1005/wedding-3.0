@@ -1,4 +1,4 @@
-import { Suspense, lazy } from 'react'
+import { Suspense, lazy, useState } from 'react'
 import { useI18n } from './context/I18nContext'
 import { useLocalStorage } from './hooks/useLocalStorage'
 import { ParticlesCanvas } from './components/ParticlesCanvas'
@@ -31,9 +31,11 @@ function LoadingBlock() {
 export default function App() {
   const { lang } = useI18n()
   const [opened, setOpened] = useLocalStorage<boolean>('invite_opened', false)
+  const [introVisible, setIntroVisible] = useState<boolean>(!opened)
 
   const returnToEnvelope = () => {
     setOpened(false)
+    setIntroVisible(true)
     window.requestAnimationFrame(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     })
@@ -43,7 +45,9 @@ export default function App() {
     <div className={`${lang === 'ar' ? 'font-ar' : 'font-en'} relative min-h-svh`}>
       <GlowOrbs />
       <ParticlesCanvas />
-      {!opened ? <EnvelopeIntro onOpen={() => setOpened(true)} /> : null}
+      {introVisible ? (
+        <EnvelopeIntro onOpen={() => setOpened(true)} onDismiss={() => setIntroVisible(false)} />
+      ) : null}
 
       <div className="relative z-10">
         <div className={opened ? 'opacity-100 transition duration-700' : 'pointer-events-none opacity-0'}>
