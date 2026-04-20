@@ -102,9 +102,6 @@ export function EnvelopeIntro({ onOpen, onDismiss }: Props) {
         >
           <div
             className={`relative mx-auto origin-center w-full transform-gpu transition-[transform,opacity,filter] ${
-              opening ? 'scale-[1.55] blur-0' : 'scale-100 opacity-100'
-            }`}
-            className={`relative mx-auto origin-center w-full transform-gpu transition-[transform,opacity,filter] ${
               opening ? 'scale-[1.55] blur-0' : 'scale-100'
             } ${fading ? 'opacity-0' : 'opacity-100'}`}
             style={motionStyle}
