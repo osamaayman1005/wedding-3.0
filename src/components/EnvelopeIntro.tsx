@@ -37,7 +37,7 @@ export function EnvelopeIntro({ onOpen }: Props) {
   useEffect(() => {
     if (!opening) return
 
-    const timeout = window.setTimeout(onOpen, reducedMotion ? 90 : 180)
+    const timeout = window.setTimeout(onOpen, reducedMotion ? 60 : 120)
     return () => window.clearTimeout(timeout)
   }, [opening, onOpen, reducedMotion])
 
@@ -67,17 +67,18 @@ export function EnvelopeIntro({ onOpen }: Props) {
         >
           <div
             className={`relative mx-auto w-full transition-[transform,opacity,filter] ${motion} ${
-              opening ? 'scale-[1.03] opacity-0 blur-[1px]' : 'scale-100 opacity-100'
+              opening ? 'scale-[1.12] opacity-0 blur-[2px]' : 'scale-100 opacity-100'
             }`}
           >
-            <div className="absolute left-1/2 top-[72%] h-28 w-[72%] -translate-x-1/2 rounded-full bg-[#6b5437]/28 blur-[28px]" />
-            <div className="absolute left-1/2 top-[74%] h-16 w-[52%] -translate-x-1/2 rounded-full bg-[#6b5437]/18 blur-[16px]" />
+            <div className="absolute left-1/2 top-[73%] h-36 w-[74%] -translate-x-1/2 rounded-full bg-[#5b452d]/42 blur-[36px]" />
+            <div className="absolute left-1/2 top-[76%] h-20 w-[58%] -translate-x-1/2 rounded-full bg-[#5b452d]/24 blur-[20px]" />
+            <div className="absolute left-1/2 top-[79%] h-10 w-[42%] -translate-x-1/2 rounded-full bg-[#3c2b1d]/14 blur-[14px]" />
 
-            <div className="relative overflow-hidden rounded-[34px] border border-white/50 bg-white/42 p-4 shadow-[0_26px_90px_-34px_rgba(70,52,30,0.28)] backdrop-blur-[2px] sm:rounded-[40px] sm:p-5">
+            <div className="relative overflow-hidden rounded-[34px] border border-white/50 bg-white/42 p-4 shadow-[0_34px_120px_-28px_rgba(70,52,30,0.34)] backdrop-blur-[2px] sm:rounded-[40px] sm:p-5">
               <img
                 src={envelopeImage}
                 alt=""
-                className="block h-auto w-full rounded-[26px] object-cover shadow-[0_30px_78px_-34px_rgba(72,52,28,0.42)] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.01]"
+                className="block h-auto w-full rounded-[26px] object-cover shadow-[0_42px_110px_-24px_rgba(72,52,28,0.5)] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.01]"
               />
 
               <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.14),transparent_40%)]" />
