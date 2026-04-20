@@ -8,9 +8,9 @@ export const WEDDING = {
       en: 'Al Aly Al Azeem Mosque, Almaza',
       ar: 'مسجد العلي العظيم، ألماظة',
     },
-    // Used for the map and directions. You can replace this with a more precise address or Plus Code.
-    mapQuery: 'Al Aly Al Azeem Mosque, Almaza, Cairo',
-    mapUrl: 'https://maps.app.goo.gl/nCZMfe9SKei71zaw8',
+    // Used for the map and directions. Coordinates keep the embed centered on the actual pin.
+    mapQuery: '30.0890703,31.348924',
+    mapUrl: 'https://maps.app.goo.gl/1kB6a5ZrJMKsCsE66',
     shortNote: {
       en: 'A contemporary mosque with ceremonial halls and calm, community-focused architecture.',
       ar: 'مسجد حديث بطابع احتفالي وقاعات مناسبة وأجواء هادئة ومجتمعية.',

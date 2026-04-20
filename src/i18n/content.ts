@@ -67,6 +67,8 @@ export const content: Record<Lang, Dict> = {
     mapTitle: 'Location',
     mapSubtitle: 'Find your way with ease',
     mapDirections: 'Open Venue Map',
+    mapGalleryTitle: 'Wedding portraits',
+    mapGallerySubtitle: 'A few bride-and-groom photos from the mosque photoshoot',
 
     countdownTitle: 'Countdown',
     countdownSubtitle: 'Counting down to our day',
@@ -170,6 +172,8 @@ export const content: Record<Lang, Dict> = {
     mapTitle: 'الموقع',
     mapSubtitle: 'توجيهات سهلة للوصول',
     mapDirections: 'فتح خريطة المكان',
+    mapGalleryTitle: 'صور زفاف',
+    mapGallerySubtitle: 'بعض صور العروسين من جلسة التصوير في المسجد',
 
     countdownTitle: 'العدّ التنازلي',
     countdownSubtitle: 'نقترب من يومنا',

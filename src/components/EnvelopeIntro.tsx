@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import envelopeImage from '../assets/envelope.png'
+import { GlowOrbs } from './GlowOrbs'
+import { ParticlesCanvas } from './ParticlesCanvas'
 
 type Props = {
   onOpen: () => void
@@ -81,18 +83,18 @@ export function EnvelopeIntro({ onOpen, onDismiss }: Props) {
 
   return (
     <div
-      className={`fixed inset-0 z-50 overflow-hidden bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.92),rgba(246,240,232,0.94)_48%,rgba(233,222,208,0.98)_100%)] text-[#4f4336] transition-opacity ${
+      className={`fixed inset-0 z-50 overflow-hidden bg-transparent text-[#4f4336] transition-opacity ${
         fading ? 'pointer-events-none opacity-0' : 'opacity-100'
       }`}
       style={fadeStyle}
     >
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.05))]" />
-      <div className="absolute inset-0 opacity-[0.06] mix-blend-multiply bg-[radial-gradient(circle_at_20%_20%,rgba(191,160,110,0.16),transparent_35%),radial-gradient(circle_at_80%_30%,rgba(191,160,110,0.1),transparent_28%),radial-gradient(circle_at_50%_80%,rgba(195,165,125,0.12),transparent_34%)]" />
-      <div className="absolute left-[10%] top-[18%] h-40 w-40 rounded-full bg-[#d7b98a]/22 blur-3xl animate-[envelope-drift_18s_ease-in-out_infinite]" />
-      <div className="absolute right-[10%] top-[24%] h-56 w-56 rounded-full bg-[#f0dcbc]/22 blur-3xl animate-[envelope-drift_22s_ease-in-out_infinite_reverse]" />
-      <div className="absolute bottom-[10%] left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-[#d9c1a2]/18 blur-3xl animate-[envelope-breathe_14s_ease-in-out_infinite]" />
+      <div className="absolute inset-0 paper-bg" />
+      <div className="absolute inset-0 section-wash opacity-80" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.26),rgba(255,255,255,0.05))]" />
+      <GlowOrbs />
+      <ParticlesCanvas />
 
-      <div className="relative flex min-h-svh items-center justify-center px-4 py-8 sm:px-8">
+      <div className="relative z-10 flex min-h-svh items-center justify-center px-4 py-8 sm:px-8">
         <button
           type="button"
           onClick={openEnvelope}
@@ -136,16 +138,6 @@ export function EnvelopeIntro({ onOpen, onDismiss }: Props) {
           </div>
         </button>
       </div>
-      <style>{`
-        @keyframes envelope-drift {
-          0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-          50% { transform: translate3d(0, -10px, 0) scale(1.03); }
-        }
-        @keyframes envelope-breathe {
-          0%, 100% { transform: translate3d(-50%, 0, 0) scale(1); opacity: .55; }
-          50% { transform: translate3d(-50%, -8px, 0) scale(1.05); opacity: .82; }
-        }
-      `}</style>
     </div>
   )
 }
