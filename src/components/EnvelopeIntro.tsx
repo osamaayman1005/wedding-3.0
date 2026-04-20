@@ -1,0 +1,215 @@
+import { useEffect, useState } from 'react'
+import { Button } from './Button'
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
+import { useI18n } from '../context/I18nContext'
+import { t } from '../i18n/content'
+
+export function EnvelopeIntro({ onOpen }: { onOpen: () => void }) {
+  const { lang } = useI18n()
+  const reducedMotion = usePrefersReducedMotion()
+  const [opening, setOpening] = useState(false)
+
+  useEffect(() => {
+    if (!opening) return
+    const delay = reducedMotion ? 120 : 1050
+    const timer = window.setTimeout(onOpen, delay)
+    return () => window.clearTimeout(timer)
+  }, [opening, onOpen, reducedMotion])
+
+  const startOpen = () => {
+    if (!opening) setOpening(true)
+  }
+
+  return (
+    <div className="fixed inset-0 z-50 overflow-hidden bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.99),rgba(250,249,243,0.98)_40%,rgba(243,247,241,0.98)_100%)] px-4">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute left-[8%] top-[14%] h-24 w-24 rounded-full bg-white/45 blur-3xl motion-safe:animate-shimmer" />
+        <div className="absolute right-[12%] top-[24%] h-28 w-28 rounded-full bg-champagne/18 blur-3xl motion-safe:animate-shimmer" />
+        <div className="absolute bottom-[12%] left-[18%] h-32 w-32 rounded-full bg-sage-100/12 blur-3xl motion-safe:animate-shimmer" />
+      </div>
+
+      <div className="relative mx-auto flex min-h-svh max-w-7xl items-center justify-center py-8">
+        <div className="grid w-full items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
+          <div className="order-2 text-center lg:order-1 lg:text-start">
+            <div className="inline-flex rounded-full bg-white/80 px-4 py-2 text-[11px] tracking-[0.45em] text-sage-800 ring-1 ring-ink-200/70 shadow-glow">
+              {t(lang, 'envelopeStep')}
+            </div>
+            <h1 className="mt-5 text-4xl font-[500] italic tracking-[0.02em] text-ink-800 md:text-6xl">
+              {t(lang, 'envelopeTitle')}
+            </h1>
+            <p className="mt-4 max-w-[34ch] text-sm leading-relaxed text-ink-600 md:text-base">
+              {t(lang, 'envelopeSubtitle')}
+            </p>
+            <p className="mt-4 max-w-[40ch] text-xs leading-relaxed text-ink-500 md:text-sm">
+              {t(lang, 'envelopePrompt')}
+            </p>
+
+            <div className="mt-7">
+              <Button onClick={startOpen} disabled={opening}>
+                {t(lang, 'openInvitation')}
+              </Button>
+            </div>
+          </div>
+
+          <div className="order-1 flex justify-center lg:order-2">
+            <button
+              type="button"
+              onClick={startOpen}
+              disabled={opening}
+              className="group relative w-full max-w-[460px] rounded-[34px] bg-white/90 p-4 ring-1 ring-ink-200/70 shadow-soft noise-overlay motion-safe:animate-floaty"
+              aria-label={t(lang, 'openInvitation')}
+            >
+              <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[#fffdfb] via-[#f8f4ef] to-[#f1ece6] p-5">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.58),transparent_60%)]" />
+
+                <div className="absolute left-6 top-5 text-[10px] tracking-[0.45em] text-ink-500/70">
+                  05.06.2026
+                </div>
+                <div className="absolute right-6 top-5 text-[10px] tracking-[0.45em] text-ink-500/70">
+                  {lang === 'en' ? 'With love' : 'بحب'}
+                </div>
+
+                <div className="relative mx-auto aspect-[1.54] w-full max-w-[360px] [perspective:1600px]">
+                  <div
+                    className={`absolute inset-x-0 bottom-0 top-[12%] rounded-[24px] bg-[#f5eee7] shadow-[0_22px_45px_-30px_rgba(43,42,38,0.28)] transition-all duration-700 ${
+                      opening ? 'translate-y-2 scale-[0.985]' : ''
+                    }`}
+                  />
+
+                  <div
+                    className={`absolute left-1/2 top-[18%] w-[77%] -translate-x-1/2 rounded-[18px] bg-white/94 shadow-soft ring-1 ring-white/70 transition-all duration-1000 ${
+                      opening ? '-translate-y-[28%] rotate-[-1.2deg]' : 'translate-y-[10%]'
+                    }`}
+                    style={{ transformOrigin: 'center bottom' }}
+                  >
+                    <div className="px-5 py-6 text-center">
+                      <div className="text-[10px] uppercase tracking-[0.4em] text-sage-800/70">
+                        {t(lang, 'journeyTitle')}
+                      </div>
+                      <div className="mt-2 text-lg font-[500] tracking-[0.02em] text-ink-800">
+                        Osama & Farah
+                      </div>
+                      <div className="mx-auto mt-4 h-px w-20 bg-gradient-to-r from-transparent via-sage-700/25 to-transparent" />
+                      <div className="mt-3 text-xs leading-relaxed text-ink-500">
+                        {lang === 'en'
+                          ? 'A quiet invitation is waiting beneath the fold.'
+                          : 'دعوة هادئة تنتظر تحت الطيّة.'}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    className="absolute inset-x-[4%] bottom-[10%] top-[31%] rounded-[24px] bg-gradient-to-br from-[#f3ece5] via-[#eee8e0] to-[#f6f0ea] transition-transform duration-1000"
+                    style={{
+                      clipPath: 'polygon(0% 0%, 50% 58%, 100% 0%, 100% 100%, 0% 100%)',
+                      transform: opening ? 'translateY(4%)' : 'translateY(0)',
+                    }}
+                  />
+
+                  <div
+                    className="absolute inset-x-[4%] bottom-[10%] top-[31%] rounded-[24px] bg-[#f1ece5] transition-transform duration-1000"
+                    style={{
+                      clipPath: 'polygon(0% 100%, 50% 42%, 100% 100%)',
+                      transform: opening ? 'translateY(3%)' : 'translateY(0)',
+                    }}
+                  />
+
+                  <div
+                    className="absolute inset-x-[4%] top-[10%] h-[58%] rounded-[24px] bg-[#f1eae3] shadow-[0_2px_20px_rgba(0,0,0,0.05)] transition-all duration-1000"
+                    style={{
+                      clipPath: 'polygon(0% 0%, 100% 0%, 50% 100%)',
+                      transformOrigin: 'bottom center',
+                      transformStyle: 'preserve-3d',
+                      transform: opening ? 'rotateX(175deg) translateY(-12%)' : 'rotateX(0deg)',
+                    }}
+                  />
+
+                  <div
+                    className={`absolute left-[50%] top-[32%] h-[44%] w-[72%] -translate-x-1/2 rounded-[18px] bg-[linear-gradient(180deg,#fffefc,rgba(255,255,255,0.96))] shadow-[0_10px_30px_-18px_rgba(43,42,38,0.25)] ring-1 ring-ink-200/50 transition-all duration-1000 ${
+                      opening ? '-translate-y-[40%] scale-[1.01]' : 'translate-y-[5%]'
+                    }`}
+                  >
+                    <div className="px-6 py-5 text-left">
+                      <div className="h-1.5 w-20 rounded-full bg-sage-100/80" />
+                      <div className="mt-3 h-1.5 w-28 rounded-full bg-ink-100" />
+                      <div className="mt-2 h-1.5 w-24 rounded-full bg-ink-100" />
+                      <div className="mt-2 h-1.5 w-16 rounded-full bg-ink-100" />
+                    </div>
+                  </div>
+
+                  <div
+                    className={`absolute right-[9%] bottom-[18%] h-20 w-20 rounded-full bg-white/96 shadow-soft ring-1 ring-ink-200/70 transition-all duration-700 ${
+                      opening ? 'scale-110 rotate-6' : 'scale-100'
+                    }`}
+                  >
+                    <svg viewBox="0 0 80 80" aria-hidden="true" className="h-full w-full p-2">
+                      <defs>
+                        <linearGradient id="sealLeaf" x1="0%" x2="100%" y1="0%" y2="100%">
+                          <stop offset="0%" stopColor="#D7DED4" />
+                          <stop offset="100%" stopColor="#8A9385" />
+                        </linearGradient>
+                        <linearGradient id="sealPetal" x1="0%" x2="100%" y1="0%" y2="100%">
+                          <stop offset="0%" stopColor="#FFFFFF" />
+                          <stop offset="100%" stopColor="#F3EEE8" />
+                        </linearGradient>
+                      </defs>
+                      <g fill="none" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M16 56c12-10 21-18 24-33" stroke="url(#sealLeaf)" strokeWidth="2.6" />
+                        <path d="M26 49c4-5 9-8 14-9" stroke="url(#sealLeaf)" strokeWidth="2.2" />
+                        <path d="M31 39c3-4 7-6 12-8" stroke="url(#sealLeaf)" strokeWidth="2.2" />
+                        <ellipse cx="28" cy="47" rx="6" ry="3.4" fill="url(#sealLeaf)" transform="rotate(-28 28 47)" />
+                        <ellipse cx="40" cy="36" rx="7" ry="4" fill="url(#sealLeaf)" transform="rotate(26 40 36)" />
+                        <g fill="url(#sealPetal)">
+                          <path d="M46 44c4-7 10-8 14-4-4 3-6 8-6 12-5 0-9-3-8-8Z" />
+                          <path d="M53 43c6-2 10 2 11 7-4 0-7 3-9 6-3-4-4-9-2-13Z" />
+                        </g>
+                        <circle cx="49" cy="46" r="2.1" fill="#E2DAD2" />
+                      </g>
+                    </svg>
+                  </div>
+
+                  <div
+                    className={`absolute left-[10%] top-[14%] h-3 w-3 rounded-full bg-white/80 shadow-[0_0_18px_rgba(255,255,255,0.9)] transition-all duration-700 ${
+                      opening ? '-translate-y-3 opacity-100' : 'opacity-70'
+                    }`}
+                  />
+                  <div
+                    className={`absolute right-[18%] top-[22%] h-2.5 w-2.5 rounded-full bg-white/75 shadow-[0_0_18px_rgba(255,255,255,0.8)] transition-all duration-700 ${
+                      opening ? '-translate-y-4 opacity-100' : 'opacity-65'
+                    }`}
+                  />
+                  <div
+                    className={`absolute left-[18%] bottom-[22%] h-2 w-2 rounded-full bg-sage-100/70 shadow-[0_0_14px_rgba(255,255,255,0.8)] transition-all duration-700 ${
+                      opening ? '-translate-y-5 opacity-100' : 'opacity-60'
+                    }`}
+                  />
+                </div>
+              </div>
+
+              <div className="mt-3 text-center">
+                <div className="text-[11px] uppercase tracking-[0.45em] text-ink-500">
+                  {lang === 'en' ? 'Tap to unlock' : 'اضغط للفتح'}
+                </div>
+                <div className="mt-2 text-sm text-ink-600">
+                  {lang === 'en'
+                    ? 'A little ritual before the invitation reveals itself.'
+                    : 'طقس صغير قبل أن تنكشف الدعوة.'}
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className={`absolute inset-0 pointer-events-none transition-opacity duration-700 ${
+          opening ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        <div className="absolute left-[12%] top-[18%] text-2xl text-white/85 motion-safe:animate-floaty">✦</div>
+        <div className="absolute right-[14%] top-[30%] text-xl text-white/80 motion-safe:animate-floaty">✧</div>
+        <div className="absolute left-[25%] bottom-[18%] text-lg text-white/70 motion-safe:animate-floaty">✦</div>
+      </div>
+    </div>
+  )
+}
