@@ -867,7 +867,7 @@ export function ContentPage({
 
         <footer className="px-4 pt-6">
           <div className="mx-auto max-w-[1120px]">
-            <div className="rounded-[36px] border px-5 py-8 text-center">
+            <div className="rounded-[36px] px-5 py-8 text-center">
               <SectionDivider />
               <p className="mt-5 text-lg font-[400] text-ink-800">
                 {page.footerLove}
