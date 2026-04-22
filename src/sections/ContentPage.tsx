@@ -361,13 +361,13 @@ function SectionFrame({
       aria-label={title}
     >
       <div className="mx-auto max-w-[1120px]">
-        <div className="noise-overlay relative overflow-hidden rounded-[36px] border border-[#ddd2c4]/75 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(249,245,238,0.88))] shadow-soft">
+        <div className=" relative overflow-hidden">
           <CornerFlower className="-left-6 -top-6 h-32 w-32 opacity-35 md:-left-8 md:-top-8 md:h-40 md:w-40" />
           <CornerFlower
             mirrored
             className="-right-6 -bottom-6 h-32 w-32 opacity-28 md:-right-8 md:-bottom-8 md:h-40 md:w-40"
           />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.95),rgba(249,244,236,0.1)_46%,transparent_72%)]" />
+          <div className="absolute inset-0 " />
 
           <div className="relative px-5 py-10 md:px-10 md:py-12">
             <Reveal>
@@ -375,14 +375,14 @@ function SectionFrame({
                 <p className="text-[10px] uppercase tracking-[0.55em] text-[#8d7d67]">
                   {eyebrow}
                 </p>
-                <h2 className="mt-4 text-3xl font-[500] tracking-[0.01em] text-ink-800 md:text-4xl">
+                <h2 className="mt-4 text-5xl font-[400] tracking-[0.01em] text-ink-800 md:text-4xl font-script">
                   {title}
                 </h2>
                 <div className="mt-5">
                   <SectionDivider />
                 </div>
                 {subtitle ? (
-                  <p className="mx-auto mt-5 max-w-[58ch] text-sm leading-relaxed text-ink-600 md:text-base">
+                  <p className="mx-auto mt-5 max-w-[58ch] text-md leading-relaxed text-ink-600 md:text-base italic">
                     {subtitle}
                   </p>
                 ) : null}
@@ -397,26 +397,24 @@ function SectionFrame({
   );
 }
 
+
 function StatCard({ value, label }: { value: string; label: string }) {
   return (
-    <div className="rounded-[28px] border border-[#ddd2c4]/80 bg-white/90 px-4 py-5 text-center shadow-[0_18px_40px_-26px_rgba(92,74,55,0.35)] transition duration-500 hover:-translate-y-0.5 hover:bg-white">
-      <div className="text-4xl font-[500] leading-none tracking-[0.02em] text-ink-800 md:text-5xl">
-        {value}
+    <div className="group flex aspect-square w-full max-w-[180px] items-center justify-center 
+                    rounded-full border border-[#ddd2c4]/0 bg-white/40 p-1.5 
+                    transition duration-500 hover:-translate-y-0.5">
+            <div className="flex h-full w-full flex-col items-center justify-center 
+                      rounded-full border border-[#ddd2c4]/40
+                      transition-colors duration-500">
+        
+        <div className="text-5xl font-[400] leading-none tracking-[0.02em] text-ink-800 md:text-5xl">
+          {value}
+        </div>
+        
+        <div className="mt-2 text-[7px] uppercase tracking-[0.2em] text-[#8d7d67] md:text-[9px] md:tracking-[0.3em]">
+          {label}
+        </div>
       </div>
-      <div className="mt-2 text-[10px] uppercase tracking-[0.35em] text-[#8d7d67]">
-        {label}
-      </div>
-    </div>
-  );
-}
-
-function DetailRow({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex items-start justify-between gap-4 rounded-[22px] border border-[#ddd2c4]/70 bg-white/88 px-4 py-4">
-      <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
-        {label}
-      </div>
-      <div className="text-sm font-[500] text-ink-800">{value}</div>
     </div>
   );
 }
@@ -544,28 +542,6 @@ export function ContentPage({
     }
   }, [page.saved, storedRsvp]);
 
-  const details = useMemo(
-    () => [
-      {
-        label: lang === "en" ? "Date" : "التاريخ",
-        value: WEDDING.dateLabel[lang],
-      },
-      {
-        label: lang === "en" ? "Time" : "الوقت",
-        value: WEDDING.timeLabel[lang],
-      },
-      {
-        label: lang === "en" ? "Venue" : "المكان",
-        value: WEDDING.venue.name[lang],
-      },
-      {
-        label: lang === "en" ? "Dress Code" : "الزي",
-        value: WEDDING.dressCode[lang],
-      },
-    ],
-    [lang],
-  );
-
   const galleryFrames = galleryFramesByLang[lang as Lang];
   const schedule = scheduleByLang[lang as Lang];
 
@@ -587,8 +563,12 @@ export function ContentPage({
       dir={dir}
       className="relative isolate overflow-x-hidden text-ink-800"
       style={{
-        backgroundImage: `linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,247,241,0.92) 40%, rgba(243,238,230,0.96) 100%), url(${paperTexture})`,
-        backgroundSize: "cover",
+    backgroundImage: `
+      radial-gradient(at 20% 10%, color-mix(in oklab, var(--sage, #e2e8e4) 8%, transparent) 0, transparent 50%),
+      radial-gradient(at 80% 90%, color-mix(in oklab, var(--champagne, #f3ede2) 15%, transparent) 0, transparent 50%),
+      url(${paperTexture})
+    `,   
+         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
@@ -598,7 +578,7 @@ export function ContentPage({
       <main className="relative z-10 pb-20">
         <section className="px-4 pb-6 pt-20 md:pb-10 md:pt-24">
           <div className="mx-auto max-w-[1120px]">
-            <div className="noise-overlay relative overflow-hidden rounded-[44px] border border-[#ddd2c4]/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(248,242,234,0.92))] shadow-soft">
+            <div className="">
               <CornerFlower className="-left-8 -top-8 h-36 w-36 opacity-45 md:-left-10 md:-top-10 md:h-44 md:w-44" />
               <CornerFlower
                 mirrored
@@ -618,15 +598,15 @@ export function ContentPage({
                     <p className="text-[10px] uppercase tracking-[0.55em] text-[#8d7d67]">
                       {heroMessage}
                     </p>
-                    <div className="mt-6 flex justify-center">
-                      <div className="rounded-full border border-[#d8cdbf]/80 bg-white/76 px-4 py-4 shadow-[0_24px_60px_-30px_rgba(92,74,55,0.42)]">
-                        <img
-                          src={weddingLogo}
-                          alt=""
-                          className="w-52 select-none md:w-64"
-                        />
+                      <div className="mt-6 flex justify-center">
+                        <div className="rounded-full border border-[#d8cdbf]/80 bg-white/76 p-4 shadow-[0_24px_60px_-30px_rgba(92,74,55,0.42)] overflow-hidden">
+                          <img
+                            src={weddingLogo}
+                            alt="Wedding Logo"
+                            className="w-52 md:w-64 aspect-square object-cover rounded-full select-none"
+                          />
+                        </div>
                       </div>
-                    </div>
 
                     <p className="mt-6 text-xs uppercase tracking-[0.45em] text-[#8d7d67]">
                       {page.celebration}
@@ -682,7 +662,7 @@ export function ContentPage({
           {countdown.isPast ? (
             <Reveal>
               <div className="mx-auto max-w-xl rounded-[28px] border border-[#ddd2c4]/80 bg-white/92 px-6 py-8 text-center">
-                <div className="text-2xl font-[500] tracking-[0.03em] text-ink-800">
+                <div className="text-2xl font-[400] tracking-[0.03em] text-ink-800">
                   {lang === "en" ? "It's time" : "حان الموعد"}
                 </div>
               </div>
@@ -720,7 +700,7 @@ export function ContentPage({
                 <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
                   {lang === "en" ? "Venue" : "المكان"}
                 </div>
-                <div className="mt-2 text-sm font-[500] text-ink-800">
+                <div className="mt-2 text-sm font-[400] text-ink-800">
                   {WEDDING.venue.name[lang]}
                 </div>
               </div>
@@ -728,7 +708,7 @@ export function ContentPage({
                 <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
                   {lang === "en" ? "Time" : "الوقت"}
                 </div>
-                <div className="mt-2 text-sm font-[500] text-ink-800">
+                <div className="mt-2 text-sm font-[400] text-ink-800">
                   {WEDDING.timeLabel[lang]}
                 </div>
               </div>
@@ -736,7 +716,7 @@ export function ContentPage({
                 <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
                   {lang === "en" ? "Dress" : "الزي"}
                 </div>
-                <div className="mt-2 text-sm font-[500] text-ink-800">
+                <div className="mt-2 text-sm font-[400] text-ink-800">
                   {WEDDING.dressCode[lang]}
                 </div>
               </div>
@@ -744,7 +724,7 @@ export function ContentPage({
                 <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
                   {lang === "en" ? "Date" : "التاريخ"}
                 </div>
-                <div className="mt-2 text-sm font-[500] text-ink-800">
+                <div className="mt-2 text-sm font-[400] text-ink-800">
                   {WEDDING.dateLabel[lang]}
                 </div>
               </div>
@@ -771,11 +751,11 @@ export function ContentPage({
                 />
               </div>
 
-              <div className="rounded-[30px] border border-[#ddd2c4]/80 bg-white/90 p-6 shadow-soft">
+              <div className="rounded-[30px] border border-[#ddd2c4]/80 p-6 shadow-soft ">
                 <div className="text-[10px] uppercase tracking-[0.45em] text-[#8d7d67]">
                   {page.locationTitle}
                 </div>
-                <div className="mt-3 text-3xl font-[500] tracking-[0.01em] text-ink-800">
+                <div className="mt-3 text-3xl font-[400] tracking-[0.01em] text-ink-800">
                   {WEDDING.venue.name[lang]}
                 </div>
                 <p className="mt-4 text-sm leading-relaxed text-ink-600 md:text-base">
@@ -787,7 +767,7 @@ export function ContentPage({
                     <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
                       {lang === "en" ? "Access" : "الوصول"}
                     </div>
-                    <div className="mt-2 text-sm font-[500] text-ink-800">
+                    <div className="mt-2 text-sm font-[400] text-ink-800">
                       {lang === "en"
                         ? "Easy arrival via Almaza"
                         : "وصول سهل عبر ألماظة"}
@@ -797,7 +777,7 @@ export function ContentPage({
                     <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
                       {lang === "en" ? "Parking" : "المواقف"}
                     </div>
-                    <div className="mt-2 text-sm font-[500] text-ink-800">
+                    <div className="mt-2 text-sm font-[400] text-ink-800">
                       {lang === "en" ? "Available on site" : "متوفرة بالمكان"}
                     </div>
                   </div>
@@ -814,49 +794,6 @@ export function ContentPage({
                   </a>
                 </div>
               </div>
-            </div>
-
-            <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-              <PhotoFrame
-                src={weddingPortraitStairs}
-                alt={
-                  lang === "en"
-                    ? "Bride and groom portrait on the mosque stairs"
-                    : "صورة للعروسين على الدرج"
-                }
-                caption={lang === "en" ? "Stair portrait" : "على الدرج"}
-                objectPosition="center 35%"
-              />
-              <PhotoFrame
-                src={weddingPortraitCourtyard}
-                alt={
-                  lang === "en"
-                    ? "Bride and groom portrait in the mosque courtyard"
-                    : "صورة للعروسين في الساحة"
-                }
-                caption={lang === "en" ? "Courtyard light" : "ضوء الساحة"}
-                objectPosition="center 28%"
-              />
-              <PhotoFrame
-                src={weddingPortraitInterior}
-                alt={
-                  lang === "en"
-                    ? "Bride and groom portrait inside the mosque"
-                    : "صورة للعروسين داخل المسجد"
-                }
-                caption={lang === "en" ? "Interior glow" : "توهج داخلي"}
-                objectPosition="center 30%"
-              />
-              <PhotoFrame
-                src={weddingPortraitArch}
-                alt={
-                  lang === "en"
-                    ? "Bride and groom portrait under the mosque arch"
-                    : "صورة للعروسين تحت القوس"
-                }
-                caption={lang === "en" ? "Arch portrait" : "تحت القوس"}
-                objectPosition="center 36%"
-              />
             </div>
           </Reveal>
         </SectionFrame>
@@ -882,43 +819,6 @@ export function ContentPage({
                   objectPosition={frame.objectPosition}
                 />
               ))}
-            </div>
-          </Reveal>
-        </SectionFrame>
-
-        <FullWidthDivider />
-
-        <SectionFrame
-          eyebrow={page.scheduleEyebrow}
-          title={page.scheduleTitle}
-          subtitle={page.scheduleLead}
-        >
-          <Reveal>
-            <div className="mx-auto max-w-3xl">
-              <div className="relative space-y-3">
-                <div className="absolute left-6 top-4 bottom-4 hidden w-px bg-gradient-to-b from-transparent via-[#d0c2b1] to-transparent md:block" />
-                {schedule.map((item, index) => (
-                  <div
-                    key={`${item.time}-${index}`}
-                    className="relative overflow-hidden rounded-[26px] border border-[#ddd2c4]/80 bg-white/90 p-5 shadow-soft md:grid md:grid-cols-[120px_1fr] md:items-center md:gap-6 md:px-6"
-                  >
-                    <div className="flex items-center gap-3 md:block">
-                      <div className="hidden h-4 w-4 rounded-full bg-[#9b8d78] ring-4 ring-[#efe9df] md:block" />
-                      <div className="text-sm uppercase tracking-[0.35em] text-[#8d7d67]">
-                        {item.time}
-                      </div>
-                    </div>
-                    <div className="mt-3 md:mt-0">
-                      <div className="text-xl font-[500] tracking-[0.01em] text-ink-800">
-                        {item.title}
-                      </div>
-                      <p className="mt-1 text-sm leading-relaxed text-ink-600">
-                        {item.note}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
           </Reveal>
         </SectionFrame>
@@ -980,29 +880,6 @@ export function ContentPage({
                   </div>
                 </div>
 
-                {attending === "yes" ? (
-                  <div className="grid gap-2 text-start">
-                    <label className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
-                      {page.numberGuests}
-                    </label>
-                    <select
-                      value={guests}
-                      onChange={(event) =>
-                        setGuests(Number(event.target.value))
-                      }
-                      className="w-full rounded-[18px] border border-[#ddd2c4]/80 bg-[#faf7f1] px-4 py-3 text-sm text-ink-800 outline-none transition focus:border-[#b9ab98] focus:ring-2 focus:ring-[#b9ab98]/20"
-                    >
-                      {Array.from({ length: 6 }, (_, index) => index + 1).map(
-                        (count) => (
-                          <option key={count} value={count}>
-                            {count}
-                          </option>
-                        ),
-                      )}
-                    </select>
-                  </div>
-                ) : null}
-
                 <div className="pt-2">
                   <CopyButton type="submit">{page.sendResponse}</CopyButton>
                 </div>
@@ -1030,7 +907,7 @@ export function ContentPage({
           <div className="mx-auto max-w-[1120px]">
             <div className="rounded-[36px] border border-[#ddd2c4]/75 bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(249,244,236,0.9))] px-5 py-8 text-center shadow-soft">
               <SectionDivider />
-              <p className="mt-5 text-lg font-[500] text-ink-800">
+              <p className="mt-5 text-lg font-[400] text-ink-800">
                 {page.footerLove}
               </p>
               <p className="mt-2 text-[11px] uppercase tracking-[0.45em] text-[#8d7d67]">
