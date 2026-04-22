@@ -1,6 +1,5 @@
 import {
   useEffect,
-  useMemo,
   useState,
   type FormEvent,
   type ReactNode,
@@ -166,40 +165,6 @@ const copy = {
     frameSix: "لحظة رقيقة",
   },
 } as const;
-
-const scheduleByLang: Record<
-  Lang,
-  Array<{ time: string; title: string; note: string }>
-> = {
-  en: [
-    { time: "7:00 PM", title: copy.en.arrival, note: copy.en.arrivalNote },
-    { time: "7:30 PM", title: copy.en.ceremony, note: copy.en.ceremonyNote },
-    {
-      time: "8:15 PM",
-      title: copy.en.congratulations,
-      note: copy.en.congratulationsNote,
-    },
-    {
-      time: "9:00 PM",
-      title: copy.en.refreshments,
-      note: copy.en.refreshmentsNote,
-    },
-  ],
-  ar: [
-    { time: "7:00 مساءً", title: copy.ar.arrival, note: copy.ar.arrivalNote },
-    { time: "7:30 مساءً", title: copy.ar.ceremony, note: copy.ar.ceremonyNote },
-    {
-      time: "8:15 مساءً",
-      title: copy.ar.congratulations,
-      note: copy.ar.congratulationsNote,
-    },
-    {
-      time: "9:00 مساءً",
-      title: copy.ar.refreshments,
-      note: copy.ar.refreshmentsNote,
-    },
-  ],
-};
 
 const galleryFramesByLang: Record<
   Lang,
@@ -530,7 +495,6 @@ export function ContentPage({
   const [attending, setAttending] = useState<"yes" | "no">(
     storedRsvp?.attending || "yes",
   );
-  const [guests, setGuests] = useState<number>(storedRsvp?.guests || 1);
   const [savedMessage, setSavedMessage] = useState<string | null>(
     storedRsvp ? page.saved : null,
   );
@@ -543,14 +507,13 @@ export function ContentPage({
   }, [page.saved, storedRsvp]);
 
   const galleryFrames = galleryFramesByLang[lang as Lang];
-  const schedule = scheduleByLang[lang as Lang];
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const payload: RSVPState = {
       name: name.trim(),
       attending,
-      guests: attending === "yes" ? guests : 0,
+      guests: 1,
       savedAtISO: new Date().toISOString(),
     };
     setStoredRsvp(payload);
