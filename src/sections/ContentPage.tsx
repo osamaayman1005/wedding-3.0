@@ -9,11 +9,9 @@ import { useGuestName } from "../hooks/useGuestName";
 import { useI18n } from "../context/I18nContext";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { Reveal } from "../components/Reveal";
-import { Lightbox } from "../components/Lightbox";
 import { WEDDING } from "../config/event";
 import floralCorner from "../assets/content/floral-corner.png";
 import floralDivider from "../assets/content/floral-divider.png";
-import paperTexture from "../assets/content/paper-texture.jpg";
 import weddingLogo from "../assets/content/wedding-logo.jpeg";
 import weddingPortraitArch from "../assets/mosque/wedding-portrait-arch.jpg";
 import weddingPortraitCourtyard from "../assets/mosque/wedding-portrait-courtyard.jpg";
@@ -553,7 +551,6 @@ export function ContentPage({
                 className="-right-8 -bottom-8 h-36 w-36 opacity-28 md:-right-10 md:-bottom-10 md:h-44 md:w-44"
               />
 
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.92),rgba(250,244,236,0.72)_42%,transparent_78%)]" />
 
               <div className="relative px-5 py-10 md:px-10 md:py-14">
                 <Reveal>
@@ -868,7 +865,7 @@ export function ContentPage({
 
         <footer className="px-4 pt-6">
           <div className="mx-auto max-w-[1120px]">
-            <div className="rounded-[36px] border border-[#ddd2c4]/75 bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(249,244,236,0.9))] px-5 py-8 text-center shadow-soft">
+            <div className="rounded-[36px] border px-5 py-8 text-center shadow-soft">
               <SectionDivider />
               <p className="mt-5 text-lg font-[400] text-ink-800">
                 {page.footerLove}
@@ -886,13 +883,6 @@ export function ContentPage({
         </footer>
       </main>
 
-      <Lightbox
-        open={!!openFrame}
-        src={openFrame?.src}
-        alt={openFrame?.caption || ""}
-        onClose={() => setOpenFrame(null)}
-        closeLabel={lang === "en" ? "Close" : "إغلاق"}
-      />
     </div>
   );
 }
