@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import { useInView } from '../hooks/useInView'
-import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
+import { useInView } from '../../hooks/useInView'
+import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 
 export function Reveal({
   children,

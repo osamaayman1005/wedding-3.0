@@ -105,3 +105,13 @@ body.paper-bg,
     #f2f3ee 100% /* Slightly deeper sage at the bottom */
   ) !important;
 }
+
+.btn-primary-color {
+  background-color: #043011 !important;
+  color: #f5f5f5 !important;
+}
+
+.btn-secondary-color {
+  background-color: #d7cabd !important;
+  color: #043011 !important;
+}

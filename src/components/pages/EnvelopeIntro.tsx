@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import envelopeImage from '../assets/envelope.png'
-import { GlowOrbs } from './GlowOrbs'
-import { ParticlesCanvas } from './ParticlesCanvas'
+import envelopeImage from '../../assets/envelope.png'
+import { GlowOrbs } from '../shared/GlowOrbs'
+import { ParticlesCanvas } from '../shared/ParticlesCanvas'
 
 type Props = {
   onOpen: () => void

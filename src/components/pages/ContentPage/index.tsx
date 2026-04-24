@@ -2,23 +2,30 @@ import {
   useEffect,
   useState,
   type FormEvent,
-  type ReactNode,
 } from "react";
-import { useCountdown } from "../hooks/useCountdown";
-import { useGuestName } from "../hooks/useGuestName";
-import { useI18n } from "../context/I18nContext";
-import { useLocalStorage } from "../hooks/useLocalStorage";
-import { Reveal } from "../components/Reveal";
-import { Lightbox } from "../components/Lightbox";
-import { WEDDING } from "../config/event";
-import floralCorner from "../assets/content/floral-corner.png";
-import floralDivider from "../assets/content/floral-divider.png";
-import paperTexture from "../assets/content/paper-texture.jpg";
-import weddingLogo from "../assets/content/wedding-logo.jpeg";
-import weddingPortraitArch from "../assets/mosque/wedding-portrait-arch.jpg";
-import weddingPortraitCourtyard from "../assets/mosque/wedding-portrait-courtyard.jpg";
-import weddingPortraitInterior from "../assets/mosque/wedding-portrait-interior.jpg";
-import weddingPortraitStairs from "../assets/mosque/wedding-portrait-stairs.jpg";
+import { useCountdown } from "../../../hooks/useCountdown";
+import { useGuestName } from "../../../hooks/useGuestName";
+import { useI18n } from "../../../context/I18nContext";
+import { useLocalStorage } from "../../../hooks/useLocalStorage";
+import { Reveal } from "../../shared/Reveal";
+import { Lightbox } from "../../shared/Lightbox";
+import { WEDDING } from "../../../config/event";
+// assets used by extracted components (imported in their own files)
+import weddingLogo from "../../../assets/content/wedding-logo.jpeg";
+import weddingPortraitArch from "../../../assets/mosque/wedding-portrait-arch.jpg";
+import weddingPortraitCourtyard from "../../../assets/mosque/wedding-portrait-courtyard.jpg";
+import weddingPortraitInterior from "../../../assets/mosque/wedding-portrait-interior.jpg";
+import weddingPortraitStairs from "../../../assets/mosque/wedding-portrait-stairs.jpg";
+import {
+  CornerFlower,
+  SectionDivider,
+  FullWidthDivider,
+  SectionFrame,
+  StatCard,
+  PhotoFrame,
+  InvitationButton,
+  CopyButton,
+} from "./components";
 
 type RSVPState = {
   name: string;
@@ -258,221 +265,6 @@ function formatCounter(value: number) {
   return String(value).padStart(2, "0");
 }
 
-function CornerFlower({
-  className = "",
-  mirrored = false,
-}: {
-  className?: string;
-  mirrored?: boolean;
-}) {
-  return (
-    <img
-      src={floralCorner}
-      alt=""
-      aria-hidden="true"
-      className={`pointer-events-none absolute select-none object-contain ${className} ${
-        mirrored ? "scale-x-[-1]" : ""
-      }`}
-    />
-  );
-}
-
-function SectionDivider() {
-  return (
-    <div aria-hidden="true" className="flex items-center justify-center gap-4">
-      <span className="h-px w-12 bg-gradient-to-r from-transparent via-[#cdbfae] to-transparent md:w-20" />
-      <img
-        src={floralDivider}
-        alt=""
-        aria-hidden="true"
-        className="h-6 w-auto opacity-85 md:h-7"
-      />
-      <span className="h-px w-12 bg-gradient-to-r from-transparent via-[#cdbfae] to-transparent md:w-20" />
-    </div>
-  );
-}
-
-function FullWidthDivider() {
-  return (
-    <div className="px-4 py-6 md:py-8">
-      <div className="mx-auto max-w-[1120px] flex items-center justify-center">
-        <img
-          src={floralDivider}
-          alt=""
-          aria-hidden="true"
-          className="w-full max-w-md opacity-80 select-none pointer-events-none"
-        />
-      </div>
-    </div>
-  );
-}
-
-function SectionFrame({
-  eyebrow,
-  title,
-  subtitle,
-  children,
-  className = "",
-}: {
-  eyebrow: string;
-  title: string;
-  subtitle?: string;
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <section
-      className={`scroll-mt-28 px-4 py-6 md:py-8 ${className}`}
-      aria-label={title}
-    >
-      <div className="mx-auto max-w-[1120px]">
-        <div className=" relative overflow-hidden">
-          <CornerFlower className="-left-6 -top-6 h-32 w-32 opacity-35 md:-left-8 md:-top-8 md:h-40 md:w-40" />
-          <CornerFlower
-            mirrored
-            className="-right-6 -bottom-6 h-32 w-32 opacity-28 md:-right-8 md:-bottom-8 md:h-40 md:w-40"
-          />
-          <div className="absolute inset-0 " />
-
-          <div className="relative px-5 py-10 md:px-10 md:py-12">
-            <Reveal>
-              <header className="mx-auto max-w-2xl text-center">
-                <p className="text-[10px] uppercase tracking-[0.55em] text-[#8d7d67]">
-                  {eyebrow}
-                </p>
-                <h2 className="mt-4 text-5xl font-[400] tracking-[0.01em] text-ink-800 md:text-4xl font-script">
-                  {title}
-                </h2>
-                <div className="mt-5">
-                  <SectionDivider />
-                </div>
-                {subtitle ? (
-                  <p className="mx-auto mt-5 max-w-[58ch] text-md leading-relaxed text-ink-600 md:text-base italic">
-                    {subtitle}
-                  </p>
-                ) : null}
-              </header>
-            </Reveal>
-
-            <div className="relative mt-8 md:mt-10">{children}</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-
-function StatCard({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="group flex aspect-square w-full max-w-[180px] items-center justify-center 
-                    rounded-full border border-[#ddd2c4]/0 bg-white/40 p-1.5 
-                    transition duration-500 hover:-translate-y-0.5">
-            <div className="flex h-full w-full flex-col items-center justify-center 
-                      rounded-full border border-[#ddd2c4]/40
-                      transition-colors duration-500">
-        
-        <div className="text-5xl font-[400] leading-none tracking-[0.02em] text-ink-800 md:text-5xl">
-          {value}
-        </div>
-        
-        <div className="mt-2 text-[7px] uppercase tracking-[0.2em] text-[#8d7d67] md:text-[9px] md:tracking-[0.3em]">
-          {label}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function PhotoFrame({
-  src,
-  alt,
-  caption,
-  onClick,
-  objectPosition = "center",
-}: {
-  src: string;
-  alt: string;
-  caption: string;
-  onClick?: () => void;
-  objectPosition?: string;
-}) {
-  const content = (
-    <div className="group relative aspect-[4/5] overflow-hidden rounded-[24px] border border-[#ddd2c4]/70 bg-white/90 shadow-soft transition duration-700 hover:-translate-y-0.5">
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        decoding="async"
-        className="h-full w-full object-cover transition duration-1000 group-hover:scale-[1.04]"
-        style={{ objectPosition }}
-      />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(49,41,33,0.24))] opacity-0 transition duration-700 group-hover:opacity-100" />
-      <div className="absolute inset-x-0 bottom-0 px-4 py-3">
-        <div className="inline-flex rounded-full bg-white/86 px-3 py-1 text-[10px] uppercase tracking-[0.28em] text-ink-700 shadow-soft">
-          {caption}
-        </div>
-      </div>
-    </div>
-  );
-
-  if (!onClick) return content;
-
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="text-start transition duration-700 hover:-translate-y-0.5"
-      aria-label={caption}
-    >
-      {content}
-    </button>
-  );
-}
-
-function InvitationButton({
-  children,
-  href,
-  variant = "ghost",
-}: {
-  children: ReactNode;
-  href: string;
-  variant?: "ghost" | "solid";
-}) {
-  const base =
-    "inline-flex items-center justify-center rounded-full px-5 py-3 text-xs uppercase tracking-[0.28em] transition duration-500 hover:-translate-y-0.5";
-  const styles =
-    variant === "solid"
-      ? "border border-ink-800 bg-ink-800 text-ivory shadow-[0_18px_40px_-24px_rgba(43,42,38,0.55)] hover:bg-ink-700"
-      : "border border-[#d7cabd]/80 bg-white/72 text-ink-700 hover:bg-white/96 hover:shadow-soft";
-
-  return (
-    <a className={`${base} ${styles}`} href={href}>
-      {children}
-    </a>
-  );
-}
-
-function CopyButton({
-  children,
-  onClick,
-  type = "button",
-}: {
-  children: ReactNode;
-  onClick?: () => void;
-  type?: "button" | "submit";
-}) {
-  return (
-    <button
-      type={type}
-      onClick={onClick}
-      className="inline-flex items-center justify-center rounded-full border border-[#d7cabd]/80 bg-white/82 px-5 py-3 text-xs uppercase tracking-[0.28em] text-ink-700 transition duration-500 hover:-translate-y-0.5 hover:bg-white/96 hover:shadow-soft z-50"
-    >
-      {children}
-    </button>
-  );
-}
-
 export function ContentPage({
   onReturnToEnvelope,
 }: {
@@ -646,7 +438,7 @@ export function ContentPage({
 
         <FullWidthDivider />
 
-        <SectionFrame eyebrow={page.detailsEyebrow} title={page.detailsTitle}>
+        <SectionFrame id="details" eyebrow={page.detailsEyebrow} title={page.detailsTitle}>
           <Reveal>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/88 px-4 py-4">
@@ -688,6 +480,7 @@ export function ContentPage({
         <FullWidthDivider />
 
         <SectionFrame
+          id="venue"
           eyebrow={page.locationEyebrow}
           title={page.locationTitle}
           subtitle={page.locationLead}
@@ -737,14 +530,15 @@ export function ContentPage({
                 </div>
 
                 <div className="mt-6">
-                  <a
+                  <InvitationButton
                     href={WEDDING.venue.mapUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex w-full items-center justify-center rounded-full border border-ink-800 bg-ink-800 px-5 py-3 text-xs uppercase tracking-[0.28em] text-ivory transition duration-500 hover:-translate-y-0.5 hover:bg-ink-700"
+                    variant="solid"
+                    className="w-full"
                   >
                     {page.directions}
-                  </a>
+                  </InvitationButton>
                 </div>
               </div>
             </div>
@@ -779,6 +573,7 @@ export function ContentPage({
         <FullWidthDivider />
 
         <SectionFrame
+          id="rsvp"
           eyebrow={page.rsvpEyebrow}
           title={page.rsvpTitle}
           subtitle={page.rsvpLead}
@@ -808,28 +603,20 @@ export function ContentPage({
                     {page.willYouAttend}
                   </div>
                   <div className="grid grid-cols-2 gap-3">
-                    <button
+                    <InvitationButton
                       type="button"
                       onClick={() => setAttending("yes")}
-                      className={`rounded-[18px] border px-4 py-3 text-sm transition duration-500 ${
-                        attending === "yes"
-                          ? "border-ink-800 bg-ink-800 text-ivory shadow-soft"
-                          : "border-[#ddd2c4]/80 bg-[#faf7f1] text-ink-700 hover:bg-white"
-                      }`}
+                      variant={attending === "yes" ? "solid" : "ghost"}
                     >
                       {page.yes}
-                    </button>
-                    <button
+                    </InvitationButton>
+                    <InvitationButton
                       type="button"
                       onClick={() => setAttending("no")}
-                      className={`rounded-[18px] border px-4 py-3 text-sm transition duration-500 ${
-                        attending === "no"
-                          ? "border-ink-800 bg-ink-800 text-ivory shadow-soft"
-                          : "border-[#ddd2c4]/80 bg-[#faf7f1] text-ink-700 hover:bg-white"
-                      }`}
+                      variant={attending === "no" ? "solid" : "ghost"}
                     >
                       {page.no}
-                    </button>
+                    </InvitationButton>
                   </div>
                 </div>
 

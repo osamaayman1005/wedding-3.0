@@ -1,5 +1,5 @@
-import { useI18n } from '../context/I18nContext'
-import { t } from '../i18n/content'
+import { useI18n } from '../../context/I18nContext'
+import { t } from '../../i18n/content'
 
 export function LanguageToggle() {
   const { lang, toggleLang } = useI18n()

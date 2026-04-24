@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { useI18n } from './context/I18nContext'
 import { useLocalStorage } from './hooks/useLocalStorage'
-import { ParticlesCanvas } from './components/ParticlesCanvas'
-import { GlowOrbs } from './components/GlowOrbs'
-import { TopBar } from './components/TopBar'
-import { EnvelopeIntro } from './components/EnvelopeIntro'
-import { ContentPage } from './sections/ContentPage'
+import { ParticlesCanvas } from './components/shared/ParticlesCanvas'
+import { GlowOrbs } from './components/shared/GlowOrbs'
+import { TopBar } from './components/shared/TopBar'
+import { EnvelopeIntro } from './components/pages/EnvelopeIntro'
+import { ContentPage } from './components/pages/ContentPage'
 
 export default function App() {
   const { lang } = useI18n()

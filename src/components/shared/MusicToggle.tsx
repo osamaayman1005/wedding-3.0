@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
-import { useLocalStorage } from '../hooks/useLocalStorage'
-import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
-import { useI18n } from '../context/I18nContext'
-import { t } from '../i18n/content'
+import { useLocalStorage } from '../../hooks/useLocalStorage'
+import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
+import { useI18n } from '../../context/I18nContext'
+import { t } from '../../i18n/content'
 
 const AUDIO_SRC = `${import.meta.env.BASE_URL}audio/ambient.wav`
 

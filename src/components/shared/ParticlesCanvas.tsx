@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
+import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 
 type Dot = {
   x: number

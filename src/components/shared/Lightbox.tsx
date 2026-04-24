@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import type { ReactNode } from 'react'
-import { Button } from './Button'
+import { Button } from '../shared/Button'
 
 export function Lightbox({
   open,
