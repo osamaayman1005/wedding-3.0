@@ -10,8 +10,6 @@ import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { Reveal } from "../../shared/Reveal";
 import { Lightbox } from "../../shared/Lightbox";
 import { WEDDING } from "../../../config/event";
-// assets used by extracted components (imported in their own files)
-import weddingLogo from "../../../assets/content/wedding-logo.jpeg";
 import weddingPortraitArch from "../../../assets/mosque/wedding-portrait-arch.jpg";
 import weddingPortraitCourtyard from "../../../assets/mosque/wedding-portrait-courtyard.jpg";
 import weddingPortraitInterior from "../../../assets/mosque/wedding-portrait-interior.jpg";
@@ -155,7 +153,7 @@ export function ContentPage({
   const [savedMessage, setSavedMessage] = useState<string | null>(
     storedRsvp ? page.saved : null,
   );
-  const heroMessage = page.welcome;
+const heroMessage = page.welcome;
 
   useEffect(() => {
     if (storedRsvp) {
@@ -208,16 +206,6 @@ export function ContentPage({
                     <p className="text-[10px] uppercase tracking-[0.55em] text-[#8d7d67]">
                       {heroMessage}
                     </p>
-                      <div className="mt-6 flex justify-center">
-                        <div className="rounded-full border border-[#d8cdbf]/80 bg-white/76 p-4 shadow-[0_24px_60px_-30px_rgba(92,74,55,0.42)] overflow-hidden">
-                          <img
-                            src={weddingLogo}
-                            alt="Wedding Logo"
-                            className="w-52 md:w-64 aspect-square object-cover rounded-full select-none"
-                          />
-                        </div>
-                      </div>
-
                     <p className="mt-6 text-xs uppercase tracking-[0.45em] text-[#8d7d67]">
                       {page.celebration}
                     </p>
@@ -286,7 +274,7 @@ export function ContentPage({
                 />
                 <StatCard
                   value={formatCounter(countdown.hours)}
-                  label={page.hours}
+                label={page.hours}
                 />
                 <StatCard
                   value={formatCounter(countdown.minutes)}

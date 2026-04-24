@@ -8,6 +8,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Prevent nested/inner scrolling inside the main content container so
+   only the document/body scrolls (improves smooth scrolling on touch). */
+#top {
+  overscroll-behavior: contain;
+}
+
 body {
   margin: 0;
   background:
