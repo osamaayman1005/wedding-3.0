@@ -8,7 +8,6 @@ const AUDIO_SRC = `${import.meta.env.BASE_URL}audio/ambient.wav`
 
 export function MusicToggle() {
   const { lang } = useI18n()
-  const reducedMotion = usePrefersReducedMotion()
   const [enabled, setEnabled] = useLocalStorage<boolean>('invite_music', false)
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
@@ -40,15 +39,25 @@ export function MusicToggle() {
   // we still allow manual override via the toggle.
   const label = enabled ? t(lang, 'musicOn') : t(lang, 'musicOff')
 
-  return (
+return (
     <button
       type="button"
       onClick={() => setEnabled((v) => !v)}
-      className="inline-flex items-center rounded-full bg-ivory/75 px-3 py-2 text-xs tracking-wide text-ink-700 ring-1 ring-ink-200/70 backdrop-blur-sm transition hover:bg-ivory/95"
+      className={`
+        inline-flex items-center rounded-full px-3 py-2 text-xs tracking-wide transition-all duration-300 backdrop-blur-sm ring-1
+        ${enabled 
+          ? 'btn-primary-color shadow-md ring-transparent' // Your custom Primary class
+          : 'bg-ivory/75 text-ink-700 ring-ink-200/70 hover:bg-ivory/95' // Original state
+        }
+      `}
       aria-pressed={enabled}
       aria-label={label}
-      title={reducedMotion ? `${label}` : label}
     >
+      {/* Visual status dot */}
+      <span className={`mr-2 h-1.5 w-1.5 rounded-full transition-colors ${
+        enabled ? 'bg-green-400 animate-pulse' : 'bg-ink-400'
+      }`} />
+      
       {label}
     </button>
   )

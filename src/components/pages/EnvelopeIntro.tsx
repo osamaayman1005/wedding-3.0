@@ -90,7 +90,7 @@ export function EnvelopeIntro({ onOpen, onDismiss }: Props) {
     >
       <div className="absolute inset-0 paper-bg" />
       <div className="absolute inset-0 section-wash opacity-80" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.26),rgba(255,255,255,0.05))]" />
+      <div className="absolute inset-0" />
       <GlowOrbs />
       <ParticlesCanvas />
 

@@ -16,7 +16,6 @@ import weddingPortraitInterior from "../../../assets/mosque/wedding-portrait-int
 import weddingPortraitStairs from "../../../assets/mosque/wedding-portrait-stairs.jpg";
 import { content } from "../../../data/Content";
 import {
-  CornerFlower,
   SectionDivider,
   FullWidthDivider,
   SectionFrame,
@@ -182,24 +181,10 @@ const heroMessage = page.welcome;
       className="relative isolate overflow-x-hidden text-ink-800"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bgc" />
-
+      <div className="fixed inset-0 -z-10 bg-invitation bg-cover bg-center" />
       <main className="relative z-10 pb-20">
         <section className="px-4 pb-6 pt-20 md:pb-10 md:pt-24">
           <div className="mx-auto max-w-[1120px]">
-            <div className="">
-              <CornerFlower className="-left-8 -top-8 h-36 w-36 opacity-45 md:-left-10 md:-top-10 md:h-44 md:w-44" />
-              <CornerFlower
-                mirrored
-                className="-right-8 -top-8 h-36 w-36 opacity-45 md:-right-10 md:-top-10 md:h-44 md:w-44"
-              />
-              <CornerFlower className="-left-8 -bottom-8 h-36 w-36 opacity-28 md:-left-10 md:-bottom-10 md:h-44 md:w-44" />
-              <CornerFlower
-                mirrored
-                className="-right-8 -bottom-8 h-36 w-36 opacity-28 md:-right-10 md:-bottom-10 md:h-44 md:w-44"
-              />
-
-              <div className="absolute inset-0 " />
-
               <div className="relative px-5 py-10 md:px-10 md:py-14">
                 <Reveal>
                   <div className="mx-auto max-w-4xl text-center">
@@ -246,7 +231,6 @@ const heroMessage = page.welcome;
                   </div>
                 </Reveal>
               </div>
-            </div>
           </div>
         </section>
 
@@ -294,7 +278,7 @@ const heroMessage = page.welcome;
         <SectionFrame id="details" eyebrow={page.detailsEyebrow} title={page.detailsTitle}>
           <Reveal>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/88 px-4 py-4">
+              <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/40 px-4 py-4">
                 <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
                   {lang === "en" ? "Venue" : "المكان"}
                 </div>
@@ -302,7 +286,7 @@ const heroMessage = page.welcome;
                   {WEDDING.venue.name[lang]}
                 </div>
               </div>
-              <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/88 px-4 py-4">
+              <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/40 px-4 py-4">
                 <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
                   {lang === "en" ? "Time" : "الوقت"}
                 </div>
@@ -310,7 +294,7 @@ const heroMessage = page.welcome;
                   {WEDDING.timeLabel[lang]}
                 </div>
               </div>
-              <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/88 px-4 py-4">
+              <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/40 px-4 py-4">
                 <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
                   {lang === "en" ? "Dress" : "الزي"}
                 </div>
@@ -318,7 +302,7 @@ const heroMessage = page.welcome;
                   {WEDDING.dressCode[lang]}
                 </div>
               </div>
-              <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/88 px-4 py-4">
+              <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/40 px-4 py-4">
                 <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
                   {lang === "en" ? "Date" : "التاريخ"}
                 </div>
@@ -350,7 +334,7 @@ const heroMessage = page.welcome;
                 />
               </div>
 
-              <div className="rounded-[30px] border border-[#ddd2c4]/80 p-6 shadow-soft ">
+              <div className="rounded-[30px] border border-[#ddd2c4]/80 p-6 shadow-soft bg-white/25">
                 <div className="text-[10px] uppercase tracking-[0.45em] text-[#8d7d67]">
                   {page.locationTitle}
                 </div>
@@ -435,7 +419,7 @@ const heroMessage = page.welcome;
             <div className="mx-auto max-w-2xl">
               <form
                 onSubmit={handleSubmit}
-                className="space-y-4 rounded-[30px] border border-[#ddd2c4]/80 bg-white/92 p-6 shadow-soft md:p-8"
+                className="space-y-4 rounded-[30px] border border-[#ddd2c4]/80 bg-white/92 p-6 shadow-soft md:p-8 bg-white/25"
               >
                 <div className="grid gap-2 text-start">
                   <label className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">

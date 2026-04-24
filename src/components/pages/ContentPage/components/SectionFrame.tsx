@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { Reveal } from "../../../shared/Reveal";
-import { CornerFlower } from "./CornerFlower";
 import { SectionDivider } from "./SectionDivider";
 
 export function SectionFrame({
@@ -26,11 +25,6 @@ export function SectionFrame({
     >
       <div className="mx-auto max-w-[1120px]">
         <div className=" relative overflow-hidden">
-          <CornerFlower className="-left-6 -top-6 h-32 w-32 opacity-35 md:-left-8 md:-top-8 md:h-40 md:w-40" />
-          <CornerFlower
-            mirrored
-            className="-right-6 -bottom-6 h-32 w-32 opacity-28 md:-right-8 md:-bottom-8 md:h-40 md:w-40"
-          />
           <div className="absolute inset-0 " />
 
           <div className="relative px-5 py-10 md:px-10 md:py-12">

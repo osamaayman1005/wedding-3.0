@@ -8,11 +8,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Prevent nested/inner scrolling inside the main content container so
-   only the document/body scrolls (improves smooth scrolling on touch). */
-#top {
-  overscroll-behavior: contain;
-}
 
 body {
   margin: 0;
@@ -59,6 +54,9 @@ h1, h2, h3, h4 {
     background-image: theme('backgroundImage.paper');
   }
 
+  .bg-invitation {
+    background-image: theme('backgroundImage.invitation');
+  }
   .paper-white {
     background-image:
       radial-gradient(circle at top, rgba(255, 255, 255, 0.98), rgba(250, 248, 243, 0.98) 42%, rgba(242, 239, 233, 1) 100%);
@@ -97,20 +95,6 @@ h1, h2, h3, h4 {
   }
 }
 
-html, 
-body, 
-body.paper-bg, 
-.paper-bg {
-  /* A soft, desaturated Sage base */
-  background-color: #f1f3ee !important; 
-  
-  /* A subtle vertical gradient that feels organic */
-  background-image: linear-gradient(
-    180deg, 
-    #f8f9f6 0%,  /* Lightest at the top */
-    #f2f3ee 100% /* Slightly deeper sage at the bottom */
-  ) !important;
-}
 
 .btn-primary-color {
   background-color: #043011 !important;
@@ -120,4 +104,11 @@ body.paper-bg,
 .btn-secondary-color {
   background-color: #66714608 !important;
   color: #043011 !important;
+}
+
+/* Apply to all divs and common containers */
+Reveal {
+  overflow: contain !important;
+  height: auto !important;
+  max-height: none !important;
 }

@@ -49,6 +49,7 @@ export default {
         radial-gradient(at 80% 90%, color-mix(in oklab, #d8cdbf 15%, transparent) 0, transparent 50%),
         linear-gradient(to bottom, #fafaf9, #f5f5f4)
       `,
+      invitation: 'url("/src/assets/invitation-background.jpeg")',
     },
       keyframes: {
         floaty: {

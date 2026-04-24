@@ -1,4 +1,3 @@
-export { CornerFlower } from "./CornerFlower";
 export { SectionDivider } from "./SectionDivider";
 export { FullWidthDivider } from "./FullWidthDivider";
 export { SectionFrame } from "./SectionFrame";

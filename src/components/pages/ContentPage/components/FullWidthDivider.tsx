@@ -1,15 +1,8 @@
-import floralDivider from "../../../../assets/content/floral-divider.png";
-
 export function FullWidthDivider() {
   return (
-    <div className="px-4 py-6 md:py-8">
+    <div className="px-4 py-10 md:py-14">
       <div className="mx-auto max-w-[1120px] flex items-center justify-center">
-        <img
-          src={floralDivider}
-          alt=""
-          aria-hidden="true"
-          className="w-full max-w-md opacity-80 select-none pointer-events-none"
-        />
+        <span className="h-[1.5px] w-full max-w-lg md:max-w-2xl bg-gradient-to-r from-transparent via-[#cdbfae] to-transparent opacity-90 shadow-[0_1px_2px_rgba(205,191,174,0.3)]" />
       </div>
     </div>
   );

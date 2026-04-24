@@ -1,7 +1,7 @@
 export function StatCard({ value, label }: { value: string; label: string }) {
   return (
     <div className="group flex aspect-square w-full max-w-[180px] items-center justify-center 
-                    rounded-full border border-[#ddd2c4]/0 bg-white/40 p-1.5 
+                    rounded-full border border-[#ddd2c4]/0 bg-white/50 p-1.5 
                     transition duration-500 hover:-translate-y-0.5">
       <div className="flex h-full w-full flex-col items-center justify-center 
                       rounded-full border border-[#ddd2c4]/40
