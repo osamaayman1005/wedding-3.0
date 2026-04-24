@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
-import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { useI18n } from '../../context/I18nContext'
 import { t } from '../../i18n/content'
 
