@@ -525,17 +525,8 @@ export function ContentPage({
       id="top"
       dir={dir}
       className="relative isolate overflow-x-hidden text-ink-800"
-      style={{
-    backgroundImage: `
-      radial-gradient(at 20% 10%, color-mix(in oklab, var(--sage, #e2e8e4) 8%, transparent) 0, transparent 50%),
-      radial-gradient(at 80% 90%, color-mix(in oklab, var(--champagne, #f3ede2) 15%, transparent) 0, transparent 50%),
-      url(${paperTexture})
-    `,   
-         backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
     >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[linear-gradient(180deg,rgba(255,255,255,0.82),transparent)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bgc" />
 
       <main className="relative z-10 pb-20">
         <section className="px-4 pb-6 pt-20 md:pb-10 md:pt-24">
@@ -552,7 +543,7 @@ export function ContentPage({
                 className="-right-8 -bottom-8 h-36 w-36 opacity-28 md:-right-10 md:-bottom-10 md:h-44 md:w-44"
               />
 
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.92),rgba(250,244,236,0.72)_42%,transparent_78%)]" />
+              <div className="absolute inset-0 " />
 
               <div className="relative px-5 py-10 md:px-10 md:py-14">
                 <Reveal>

@@ -90,3 +90,18 @@ h1, h2, h3, h4 {
     );
   }
 }
+
+html, 
+body, 
+body.paper-bg, 
+.paper-bg {
+  /* A soft, desaturated Sage base */
+  background-color: #f1f3ee !important; 
+  
+  /* A subtle vertical gradient that feels organic */
+  background-image: linear-gradient(
+    180deg, 
+    #f8f9f6 0%,  /* Lightest at the top */
+    #f2f3ee 100% /* Slightly deeper sage at the bottom */
+  ) !important;
+}
