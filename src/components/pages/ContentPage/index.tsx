@@ -168,15 +168,6 @@ export function ContentPage({
       dir={dir}
       className="relative isolate overflow-x-hidden text-ink-800"
     >
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        <img
-          src={background}
-          alt="Invitation Background"
-          className="h-full w-full object-cover"
-        />
-        {/* Optional: Dark overlay if you need text to pop */}
-        <div className="absolute inset-0 bg-black/10" />
-      </div>
       <main className="relative z-10 pb-20">
         <HeroSection page={page} />
 

@@ -5,6 +5,7 @@ import { GlowOrbs } from './components/shared/GlowOrbs'
 import { TopBar } from './components/shared/TopBar'
 import { EnvelopeIntro } from './components/pages/EnvelopeIntro'
 import { ContentPage } from './components/pages/ContentPage'
+import { Background } from './components/shared/Background'
 
 function AppRoutes() {
   const { lang } = useI18n()
@@ -40,6 +41,7 @@ function AppRoutes() {
           path="/invitation" 
           element={
             <div className="relative z-10 opacity-100 transition duration-700">
+              <Background />
               <TopBar />
               <ContentPage onReturnToEnvelope={returnToEnvelope} />
             </div>
