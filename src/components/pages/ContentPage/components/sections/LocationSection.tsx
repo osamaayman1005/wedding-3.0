@@ -32,10 +32,6 @@ export function LocationSection({ page, lang, WEDDING }: any) {
               {WEDDING.venue.name[lang]}
             </div>
 
-            <p className="mt-4 text-sm leading-relaxed text-ink-600 md:text-base">
-              {WEDDING.venue.shortNote[lang]}
-            </p>
-
             {/* Access & Parking Mini-Cards */}
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-[#faf7f1]/80 px-4 py-4">

@@ -11,7 +11,7 @@ export function DetailsSection({ page, lang, WEDDING }: any) {
       <Reveal>
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
           {/* Venue Card */}
-          <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/40 px-4 py-4">
+          <div className="rounded-[22px] border border-[#ddd2c4]/70  bg-[#E8E1D8]/75 px-4 py-4">
             <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
               {lang === "en" ? "Venue" : "المكان"}
             </div>
@@ -21,7 +21,7 @@ export function DetailsSection({ page, lang, WEDDING }: any) {
           </div>
 
           {/* Time Card */}
-          <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/40 px-4 py-4">
+          <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-[#E8E1D8]/75 px-4 py-4">
             <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
               {lang === "en" ? "Time" : "الوقت"}
             </div>
@@ -29,24 +29,20 @@ export function DetailsSection({ page, lang, WEDDING }: any) {
               {WEDDING.timeLabel[lang]}
             </div>
           </div>
-
-          {/* Dress Code Card */}
-          <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/40 px-4 py-4">
-            <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
-              {lang === "en" ? "Dress" : "الزي"}
-            </div>
-            <div className="mt-2 text-sm font-[400] text-ink-800">
-              {WEDDING.dressCode[lang]}
-            </div>
-          </div>
-
-          {/* Date Card */}
-          <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/40 px-4 py-4">
+          <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-[#E8E1D8]/75 px-4 py-4">
             <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
               {lang === "en" ? "Date" : "التاريخ"}
             </div>
             <div className="mt-2 text-sm font-[400] text-ink-800">
               {WEDDING.dateLabel[lang]}
+            </div>
+          </div>
+          <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-[#E8E1D8]/75 px-4 py-4">
+            <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
+              {lang === "en" ? "Dress" : "الزي"}
+            </div>
+            <div className="mt-2 text-sm font-[400] text-ink-800">
+              {WEDDING.dressCode[lang]}
             </div>
           </div>
         </div>
