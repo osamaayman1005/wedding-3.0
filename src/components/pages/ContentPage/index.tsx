@@ -7,8 +7,6 @@ import { useCountdown } from "../../../hooks/useCountdown";
 import { useGuestName } from "../../../hooks/useGuestName";
 import { useI18n } from "../../../context/I18nContext";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
-import { Reveal } from "../../shared/Reveal";
-import { Lightbox } from "../../shared/Lightbox";
 import { WEDDING } from "../../../config/event";
 import weddingPortraitArch from "../../../assets/mosque/wedding-portrait-arch.jpg";
 import weddingPortraitCourtyard from "../../../assets/mosque/wedding-portrait-courtyard.jpg";
@@ -16,13 +14,7 @@ import weddingPortraitInterior from "../../../assets/mosque/wedding-portrait-int
 import weddingPortraitStairs from "../../../assets/mosque/wedding-portrait-stairs.jpg";
 import { content } from "../../../data/Content";
 import {
-  SectionDivider,
   FullWidthDivider,
-  SectionFrame,
-  StatCard,
-  PhotoFrame,
-  InvitationButton,
-  CopyButton,
 } from "./components";
 import { HeroSection } from "./components/sections/HeroSection";
 import { CountDownSection } from "./components/sections/CountDownSection";
@@ -129,10 +121,6 @@ const galleryFramesByLang: Record<
     },
   ],
 };
-
-function formatCounter(value: number) {
-  return String(value).padStart(2, "0");
-}
 
 export function ContentPage({
   onReturnToEnvelope,
