@@ -16,10 +16,10 @@ import {SectionDivider, InvitationButton} from '../../components';
                 className="mx-auto mb-4 w-40 md:w-56"
                 draggable={false}
               />
-              <p className="text-[10px] uppercase tracking-[0.55em] text-[#8d7d67]">
+              <p className="text-[10px] uppercase tracking-[0.25em] text-[#352f26]">
                 {page.welcome}
               </p>
-              <p className="mt-6 text-xs uppercase tracking-[0.45em] text-[#8d7d67]">
+              <p className="mt-6 text-xs uppercase tracking-[0.25em] text-[#352f26]">
                 {page.celebration}
               </p>
               <h1 className="mt-4 font-script text-5xl leading-none text-ink-800 md:text-7xl">
@@ -33,6 +33,7 @@ import {SectionDivider, InvitationButton} from '../../components';
                 </span>
                 <span className="h-px w-14 bg-gradient-to-r from-transparent via-[#c9bbab] to-transparent md:w-20" />
               </div>
+              
 
               <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-ink-600 md:text-base">
                 {page.tagline}
@@ -55,7 +56,7 @@ import {SectionDivider, InvitationButton} from '../../components';
               <div className="mt-8 flex justify-center">
                 <SectionDivider />
               </div>
-              <p className="mt-4 text-[11px] uppercase tracking-[0.42em] text-[#9c8d79]">
+              <p className="mt-4 text-[11px] uppercase tracking-[0.42em] text-[#352f26]">
                 {page.scroll}
               </p>
             </div>
