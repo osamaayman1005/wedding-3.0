@@ -1,8 +1,4 @@
-import {
-  useEffect,
-  useState,
-  type FormEvent,
-} from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useCountdown } from "../../../hooks/useCountdown";
 import { useGuestName } from "../../../hooks/useGuestName";
 import { useI18n } from "../../../context/I18nContext";
@@ -13,9 +9,7 @@ import weddingPortraitCourtyard from "../../../assets/mosque/wedding-portrait-co
 import weddingPortraitInterior from "../../../assets/mosque/wedding-portrait-interior.jpg";
 import weddingPortraitStairs from "../../../assets/mosque/wedding-portrait-stairs.jpg";
 import { content } from "../../../data/Content";
-import {
-  FullWidthDivider,
-} from "./components";
+import { FullWidthDivider } from "./components";
 import { HeroSection } from "./components/sections/HeroSection";
 import { CountDownSection } from "./components/sections/CountDownSection";
 import { DetailsSection } from "./components/sections/DetailsSection";
@@ -23,6 +17,7 @@ import { LocationSection } from "./components/sections/LocationSection";
 import { GallerySection } from "./components/sections/GallerySection";
 import { RsvpSection } from "./components/sections/RsvpSection";
 import { FooterSection } from "./components/sections/FooterSection";
+import  background  from "../../../assets/Invitation-background.jpeg";
 
 type RSVPState = {
   name: string;
@@ -32,7 +27,6 @@ type RSVPState = {
 };
 
 type Lang = "en" | "ar";
-
 
 const galleryFramesByLang: Record<
   Lang,
@@ -174,9 +168,16 @@ export function ContentPage({
       dir={dir}
       className="relative isolate overflow-x-hidden text-ink-800"
     >
-      <div className="fixed inset-0 -z-10 bg-invitation bg-cover bg-center" />
+      <div className="fixed inset-0 -z-10 overflow-hidden">
+        <img
+          src={background}
+          alt="Invitation Background"
+          className="h-full w-full object-cover"
+        />
+        {/* Optional: Dark overlay if you need text to pop */}
+        <div className="absolute inset-0 bg-black/10" />
+      </div>
       <main className="relative z-10 pb-20">
-
         <HeroSection page={page} />
 
         <FullWidthDivider />
@@ -184,7 +185,7 @@ export function ContentPage({
         <CountDownSection page={page} countdown={countdown} lang={lang} />
 
         <FullWidthDivider />
-        
+
         <DetailsSection page={page} lang={lang} WEDDING={WEDDING} />
 
         <FullWidthDivider />
@@ -193,15 +194,32 @@ export function ContentPage({
 
         <FullWidthDivider />
 
-        <GallerySection page={page} galleryFrames={galleryFrames} onOpenFrame={setOpenFrame} />
+        <GallerySection
+          page={page}
+          galleryFrames={galleryFrames}
+          onOpenFrame={setOpenFrame}
+        />
 
         <FullWidthDivider />
 
-        <RsvpSection page={page} name={name} setName={setName} attending={attending} setAttending={setAttending} handleSubmit={handleSubmit} savedMessage={savedMessage} storedRsvp={storedRsvp} lang={lang} />
+        <RsvpSection
+          page={page}
+          name={name}
+          setName={setName}
+          attending={attending}
+          setAttending={setAttending}
+          handleSubmit={handleSubmit}
+          savedMessage={savedMessage}
+          storedRsvp={storedRsvp}
+          lang={lang}
+        />
 
-        <FooterSection page={page} onReturnToEnvelope={onReturnToEnvelope} lang={lang} />
+        <FooterSection
+          page={page}
+          onReturnToEnvelope={onReturnToEnvelope}
+          lang={lang}
+        />
       </main>
     </div>
   );
-
 }
