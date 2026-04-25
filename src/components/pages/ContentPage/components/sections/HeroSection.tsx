@@ -9,6 +9,7 @@ import {SectionDivider, InvitationButton} from '../../components';
         <div className="relative px-5 py-10 md:px-10 md:py-14">
           <Reveal>
             <div className="mx-auto max-w-4xl text-center">
+             <div className="h-16" />
               <img
                 src={logo}
                 alt="" 

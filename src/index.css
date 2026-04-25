@@ -103,12 +103,17 @@ h1, h2, h3, h4 {
   }
 }
 
-
 .btn-primary-color {
-  background-color: #043011 !important;
+  /* Matches the olive green of the provided logo */
+  background-color: #444727 !important;
+  /* Keeps the light off-white text for readability */
   color: #f5f5f5 !important;
 }
 
+/* Optional: Add a hover state that slightly darkens the logo color */
+.btn-primary-color:hover {
+  background-color: #414424 !important;
+}
 .btn-secondary-color {
   background-color: #66714608 !important;
   color: #043011 !important;
