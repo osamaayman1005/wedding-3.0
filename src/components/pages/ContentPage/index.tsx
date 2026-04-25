@@ -17,7 +17,6 @@ import { LocationSection } from "./components/sections/LocationSection";
 import { GallerySection } from "./components/sections/GallerySection";
 import { RsvpSection } from "./components/sections/RsvpSection";
 import { FooterSection } from "./components/sections/FooterSection";
-import  background  from "../../../assets/Invitation-background.jpeg";
 
 type RSVPState = {
   name: string;

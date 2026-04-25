@@ -1,7 +1,5 @@
 import { HashRouter, Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import { useI18n } from './context/I18nContext'
-import { ParticlesCanvas } from './components/shared/ParticlesCanvas'
-import { GlowOrbs } from './components/shared/GlowOrbs'
 import { TopBar } from './components/shared/TopBar'
 import { EnvelopeIntro } from './components/pages/EnvelopeIntro'
 import { ContentPage } from './components/pages/ContentPage'
