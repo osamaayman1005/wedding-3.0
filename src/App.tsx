@@ -25,10 +25,7 @@ function AppRoutes() {
   }
 
   return (
-    <div className={`${lang === 'ar' ? 'font-ar' : 'font-en'} relative min-h-svh`}>
-      <GlowOrbs />
-      <ParticlesCanvas />
-      
+    <div className={`${lang === 'ar' ? 'font-ar' : 'font-en'} relative min-h-screen`}>      
       <Routes>
         {/* Landing Page: The Envelope */}
         <Route 
