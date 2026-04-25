@@ -24,6 +24,13 @@ import {
   InvitationButton,
   CopyButton,
 } from "./components";
+import { HeroSection } from "./components/sections/HeroSection";
+import { CountDownSection } from "./components/sections/CountDownSection";
+import { DetailsSection } from "./components/sections/DetailsSection";
+import { LocationSection } from "./components/sections/LocationSection";
+import { GallerySection } from "./components/sections/GallerySection";
+import { RsvpSection } from "./components/sections/RsvpSection";
+import { FooterSection } from "./components/sections/FooterSection";
 
 type RSVPState = {
   name: string;
@@ -136,7 +143,7 @@ export function ContentPage({
   const page = content[lang as Lang];
   const guestName = useGuestName();
   const countdown = useCountdown(WEDDING.startISO);
-  const [openFrame, setOpenFrame] = useState<{
+  const [setOpenFrame] = useState<{
     src: string;
     caption: string;
   } | null>(null);
@@ -152,7 +159,6 @@ export function ContentPage({
   const [savedMessage, setSavedMessage] = useState<string | null>(
     storedRsvp ? page.saved : null,
   );
-const heroMessage = page.welcome;
 
   useEffect(() => {
     if (storedRsvp) {
@@ -180,333 +186,34 @@ const heroMessage = page.welcome;
       dir={dir}
       className="relative isolate overflow-x-hidden text-ink-800"
     >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bgc" />
       <div className="fixed inset-0 -z-10 bg-invitation bg-cover bg-center" />
       <main className="relative z-10 pb-20">
-        <section className="px-4 pb-6 pt-20 md:pb-10 md:pt-24">
-          <div className="mx-auto max-w-[1120px]">
-              <div className="relative px-5 py-10 md:px-10 md:py-14">
-                <Reveal>
-                  <div className="mx-auto max-w-4xl text-center">
-                    <p className="text-[10px] uppercase tracking-[0.55em] text-[#8d7d67]">
-                      {heroMessage}
-                    </p>
-                    <p className="mt-6 text-xs uppercase tracking-[0.45em] text-[#8d7d67]">
-                      {page.celebration}
-                    </p>
-                    <h1 className="mt-4 font-script text-5xl leading-none text-ink-800 md:text-7xl">
-                      {page.couple}
-                    </h1>
 
-                    <div className="mt-5 flex items-center justify-center gap-3">
-                      <span className="h-px w-14 bg-gradient-to-r from-transparent via-[#c9bbab] to-transparent md:w-20" />
-                      <span className="text-xs uppercase tracking-[0.35em] text-ink-500 md:text-sm">
-                        {page.dateLabel}
-                      </span>
-                      <span className="h-px w-14 bg-gradient-to-r from-transparent via-[#c9bbab] to-transparent md:w-20" />
-                    </div>
-
-                    <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-ink-600 md:text-base">
-                      {page.tagline}
-                    </p>
-
-                    <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                      <InvitationButton href="#details">
-                        {page.heroJumpDetails}
-                      </InvitationButton>
-                      <InvitationButton href="#venue">
-                        {page.heroJumpLocation}
-                      </InvitationButton>
-                      <InvitationButton href="#rsvp" variant="solid">
-                        {page.heroJumpRsvp}
-                      </InvitationButton>
-                    </div>
-
-                    <div className="mt-8 flex justify-center">
-                      <SectionDivider />
-                    </div>
-                    <p className="mt-4 text-[11px] uppercase tracking-[0.42em] text-[#9c8d79]">
-                      {page.scroll}
-                    </p>
-                  </div>
-                </Reveal>
-              </div>
-          </div>
-        </section>
+        <HeroSection page={page} />
 
         <FullWidthDivider />
 
-        <SectionFrame
-          eyebrow={page.saveTheDate}
-          title={page.countdownTitle}
-          subtitle={page.countdownLead}
-        >
-          {countdown.isPast ? (
-            <Reveal>
-              <div className="mx-auto max-w-xl rounded-[28px] border border-[#ddd2c4]/80 bg-white/92 px-6 py-8 text-center">
-                <div className="text-2xl font-[400] tracking-[0.03em] text-ink-800">
-                  {lang === "en" ? "It's time" : "حان الموعد"}
-                </div>
-              </div>
-            </Reveal>
-          ) : (
-            <Reveal>
-              <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-                <StatCard
-                  value={formatCounter(countdown.days)}
-                  label={page.days}
-                />
-                <StatCard
-                  value={formatCounter(countdown.hours)}
-                label={page.hours}
-                />
-                <StatCard
-                  value={formatCounter(countdown.minutes)}
-                  label={page.minutes}
-                />
-                <StatCard
-                  value={formatCounter(countdown.seconds)}
-                  label={page.seconds}
-                />
-              </div>
-            </Reveal>
-          )}
-        </SectionFrame>
+        <CountDownSection page={page} countdown={countdown} lang={lang} />
+
+        <FullWidthDivider />
+        
+        <DetailsSection page={page} lang={lang} WEDDING={WEDDING} />
 
         <FullWidthDivider />
 
-        <SectionFrame id="details" eyebrow={page.detailsEyebrow} title={page.detailsTitle}>
-          <Reveal>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/40 px-4 py-4">
-                <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
-                  {lang === "en" ? "Venue" : "المكان"}
-                </div>
-                <div className="mt-2 text-sm font-[400] text-ink-800">
-                  {WEDDING.venue.name[lang]}
-                </div>
-              </div>
-              <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/40 px-4 py-4">
-                <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
-                  {lang === "en" ? "Time" : "الوقت"}
-                </div>
-                <div className="mt-2 text-sm font-[400] text-ink-800">
-                  {WEDDING.timeLabel[lang]}
-                </div>
-              </div>
-              <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/40 px-4 py-4">
-                <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
-                  {lang === "en" ? "Dress" : "الزي"}
-                </div>
-                <div className="mt-2 text-sm font-[400] text-ink-800">
-                  {WEDDING.dressCode[lang]}
-                </div>
-              </div>
-              <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/40 px-4 py-4">
-                <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
-                  {lang === "en" ? "Date" : "التاريخ"}
-                </div>
-                <div className="mt-2 text-sm font-[400] text-ink-800">
-                  {WEDDING.dateLabel[lang]}
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </SectionFrame>
+        <LocationSection page={page} lang={lang} WEDDING={WEDDING} />
 
         <FullWidthDivider />
 
-        <SectionFrame
-          id="venue"
-          eyebrow={page.locationEyebrow}
-          title={page.locationTitle}
-          subtitle={page.locationLead}
-        >
-          <Reveal>
-            <div className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
-              <div className="overflow-hidden rounded-[30px] border border-[#ddd2c4]/80 bg-white/90 shadow-soft">
-                <iframe
-                  title={WEDDING.venue.name[lang]}
-                  src={`https://www.google.com/maps?q=${encodeURIComponent(WEDDING.venue.mapQuery)}&z=17&output=embed`}
-                  className="h-[320px] w-full md:h-[460px]"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-
-              <div className="rounded-[30px] border border-[#ddd2c4]/80 p-6 shadow-soft bg-white/25">
-                <div className="text-[10px] uppercase tracking-[0.45em] text-[#8d7d67]">
-                  {page.locationTitle}
-                </div>
-                <div className="mt-3 text-3xl font-[400] tracking-[0.01em] text-ink-800">
-                  {WEDDING.venue.name[lang]}
-                </div>
-                <p className="mt-4 text-sm leading-relaxed text-ink-600 md:text-base">
-                  {WEDDING.venue.shortNote[lang]}
-                </p>
-
-                <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-[#faf7f1] px-4 py-4">
-                    <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
-                      {lang === "en" ? "Access" : "الوصول"}
-                    </div>
-                    <div className="mt-2 text-sm font-[400] text-ink-800">
-                      {lang === "en"
-                        ? "Easy arrival via Almaza"
-                        : "وصول سهل عبر ألماظة"}
-                    </div>
-                  </div>
-                  <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-[#faf7f1] px-4 py-4">
-                    <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
-                      {lang === "en" ? "Parking" : "المواقف"}
-                    </div>
-                    <div className="mt-2 text-sm font-[400] text-ink-800">
-                      {lang === "en" ? "Available on site" : "متوفرة بالمكان"}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-6">
-                  <InvitationButton
-                    href={WEDDING.venue.mapUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    variant="solid"
-                    className="w-full"
-                  >
-                    {page.directions}
-                  </InvitationButton>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </SectionFrame>
+        <GallerySection page={page} galleryFrames={galleryFrames} onOpenFrame={setOpenFrame} />
 
         <FullWidthDivider />
 
-        <SectionFrame
-          eyebrow={page.galleryEyebrow}
-          title={page.galleryTitle}
-          subtitle={page.galleryLead}
-        >
-          <Reveal>
-            <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
-              {galleryFrames.map((frame) => (
-                <PhotoFrame
-                  key={frame.caption}
-                  src={frame.src}
-                  alt={frame.alt}
-                  caption={frame.caption}
-                  onClick={() =>
-                    setOpenFrame({ src: frame.src, caption: frame.caption })
-                  }
-                  objectPosition={frame.objectPosition}
-                />
-              ))}
-            </div>
-          </Reveal>
-        </SectionFrame>
+        <RsvpSection page={page} name={name} setName={setName} attending={attending} setAttending={setAttending} handleSubmit={handleSubmit} savedMessage={savedMessage} storedRsvp={storedRsvp} lang={lang} />
 
-        <FullWidthDivider />
-
-        <SectionFrame
-          id="rsvp"
-          eyebrow={page.rsvpEyebrow}
-          title={page.rsvpTitle}
-          subtitle={page.rsvpLead}
-        >
-          <Reveal>
-            <div className="mx-auto max-w-2xl">
-              <form
-                onSubmit={handleSubmit}
-                className="space-y-4 rounded-[30px] border border-[#ddd2c4]/80 bg-white/92 p-6 shadow-soft md:p-8 bg-white/25"
-              >
-                <div className="grid gap-2 text-start">
-                  <label className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
-                    {page.fullName}
-                  </label>
-                  <input
-                    value={name}
-                    onChange={(event) => setName(event.target.value)}
-                    required
-                    dir={dir}
-                    placeholder={page.fullName}
-                    className="w-full rounded-[18px] border border-[#ddd2c4]/80 bg-[#faf7f1] px-4 py-3 text-sm text-ink-800 outline-none transition focus:border-[#b9ab98] focus:ring-2 focus:ring-[#b9ab98]/20"
-                  />
-                </div>
-
-                <div className="grid gap-2 text-start">
-                  <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
-                    {page.willYouAttend}
-                  </div>
-                  <div className="grid grid-cols-2 gap-3">
-                    <InvitationButton
-                      type="button"
-                      onClick={() => setAttending("yes")}
-                      variant={attending === "yes" ? "solid" : "ghost"}
-                    >
-                      {page.yes}
-                    </InvitationButton>
-                    <InvitationButton
-                      type="button"
-                      onClick={() => setAttending("no")}
-                      variant={attending === "no" ? "solid" : "ghost"}
-                    >
-                      {page.no}
-                    </InvitationButton>
-                  </div>
-                </div>
-
-                <div className="pt-2">
-                  <CopyButton type="submit">{page.sendResponse}</CopyButton>
-                </div>
-
-                {savedMessage ? (
-                  <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-[#faf7f1] px-4 py-3 text-sm text-ink-700">
-                    {savedMessage}
-                  </div>
-                ) : null}
-
-                {storedRsvp ? (
-                  <div className="text-xs tracking-wide text-ink-400">
-                    {page.savedAt}:{" "}
-                    {lang === "en"
-                      ? new Date(storedRsvp.savedAtISO).toLocaleString()
-                      : new Date(storedRsvp.savedAtISO).toLocaleString("ar-EG")}
-                  </div>
-                ) : null}
-              </form>
-            </div>
-          </Reveal>
-        </SectionFrame>
-
-        <footer className="px-4 pt-6">
-          <div className="mx-auto max-w-[1120px]">
-            <div className="rounded-[36px] px-5 py-8 text-center">
-              <SectionDivider />
-              <p className="mt-5 text-lg font-[400] text-ink-800">
-                {page.footerLove}
-              </p>
-              <p className="mt-2 text-[11px] uppercase tracking-[0.45em] text-[#8d7d67]">
-                {page.footerDate}
-              </p>
-              <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-                <CopyButton onClick={onReturnToEnvelope}>
-                  {lang === "en" ? "Close the Envelope" : "أغلق الظرف"}
-                </CopyButton>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <FooterSection page={page} onReturnToEnvelope={onReturnToEnvelope} lang={lang} />
       </main>
-
-      <Lightbox
-        open={!!openFrame}
-        src={openFrame?.src}
-        alt={openFrame?.caption || ""}
-        onClose={() => setOpenFrame(null)}
-        closeLabel={lang === "en" ? "Close" : "إغلاق"}
-      />
     </div>
   );
+
 }

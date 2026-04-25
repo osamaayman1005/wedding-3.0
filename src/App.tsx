@@ -1,20 +1,23 @@
-import { useState } from 'react'
+import { HashRouter, Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import { useI18n } from './context/I18nContext'
-import { useLocalStorage } from './hooks/useLocalStorage'
 import { ParticlesCanvas } from './components/shared/ParticlesCanvas'
 import { GlowOrbs } from './components/shared/GlowOrbs'
 import { TopBar } from './components/shared/TopBar'
 import { EnvelopeIntro } from './components/pages/EnvelopeIntro'
 import { ContentPage } from './components/pages/ContentPage'
 
-export default function App() {
+function AppRoutes() {
   const { lang } = useI18n()
-  const [opened, setOpened] = useLocalStorage<boolean>('invite_opened', false)
-  const [introVisible, setIntroVisible] = useState<boolean>(!opened)
+  const navigate = useNavigate()
+
+  const handleOpen = () => {
+    // When envelope is clicked, move to /invitation
+    navigate('/invitation')
+  }
 
   const returnToEnvelope = () => {
-    setOpened(false)
-    setIntroVisible(true)
+    // Navigate back to home
+    navigate('/')
     window.requestAnimationFrame(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     })
@@ -24,14 +27,36 @@ export default function App() {
     <div className={`${lang === 'ar' ? 'font-ar' : 'font-en'} relative min-h-svh`}>
       <GlowOrbs />
       <ParticlesCanvas />
-      {introVisible ? (
-        <EnvelopeIntro onOpen={() => setOpened(true)} onDismiss={() => setIntroVisible(false)} />
-      ) : null}
+      
+      <Routes>
+        {/* Landing Page: The Envelope */}
+        <Route 
+          path="/" 
+          element={<EnvelopeIntro onOpen={handleOpen} onDismiss={handleOpen} />} 
+        />
 
-      <div className={opened ? 'relative z-10 opacity-100 transition duration-700' : 'pointer-events-none opacity-0'}>
-        <TopBar />
-        <ContentPage onReturnToEnvelope={returnToEnvelope} />
-      </div>
+        {/* Content Page: The Details */}
+        <Route 
+          path="/invitation" 
+          element={
+            <div className="relative z-10 opacity-100 transition duration-700">
+              <TopBar />
+              <ContentPage onReturnToEnvelope={returnToEnvelope} />
+            </div>
+          } 
+        />
+
+        {/* Catch-all: Redirect back to home */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <HashRouter>
+      <AppRoutes />
+    </HashRouter>
   )
 }

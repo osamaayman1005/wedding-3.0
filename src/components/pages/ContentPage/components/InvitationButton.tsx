@@ -1,4 +1,5 @@
 import type { ReactNode, MouseEvent } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function InvitationButton({
   children,
@@ -21,6 +22,8 @@ export function InvitationButton({
   target?: string;
   rel?: string;
 }) {
+  const navigate = useNavigate();
+
   const base =
     "inline-flex items-center justify-center rounded-full px-5 py-3 text-xs uppercase tracking-[0.28em] transition duration-500 hover:-translate-y-0.5";
   const styles =
@@ -30,9 +33,42 @@ export function InvitationButton({
 
   const classes = `${base} ${styles} ${className}`.trim();
 
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    // Handle hash routes like #/invitation#details
+    if (href?.startsWith("#/invitation#")) {
+      e.preventDefault();
+      const sectionId = href.replace("#/invitation#", "");
+      navigate("/invitation");
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+      return;
+    }
+    // Handle simple hash links like #details
+    if (href?.startsWith("#") && !href.includes("/")) {
+      e.preventDefault();
+      const sectionId = href.replace("#", "");
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      return;
+    }
+  };
+
   if (href) {
     return (
-      <a className={classes} href={href} target={target} rel={rel} aria-disabled={disabled}>
+      <a
+        className={classes}
+        href={href}
+        target={target}
+        rel={rel}
+        aria-disabled={disabled}
+        onClick={handleClick}
+      >
         {children}
       </a>
     );

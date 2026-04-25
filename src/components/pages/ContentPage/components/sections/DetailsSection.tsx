@@ -1,0 +1,56 @@
+import { Reveal } from '../../../../shared/Reveal';
+import { SectionFrame } from '../../components';
+
+export function DetailsSection({ page, lang, WEDDING }: any) {
+  return (
+    <SectionFrame 
+      id="details" 
+      eyebrow={page.detailsEyebrow} 
+      title={page.detailsTitle}
+    >
+      <Reveal>
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          {/* Venue Card */}
+          <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/40 px-4 py-4">
+            <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
+              {lang === "en" ? "Venue" : "المكان"}
+            </div>
+            <div className="mt-2 text-sm font-[400] text-ink-800">
+              {WEDDING.venue.name[lang]}
+            </div>
+          </div>
+
+          {/* Time Card */}
+          <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/40 px-4 py-4">
+            <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
+              {lang === "en" ? "Time" : "الوقت"}
+            </div>
+            <div className="mt-2 text-sm font-[400] text-ink-800">
+              {WEDDING.timeLabel[lang]}
+            </div>
+          </div>
+
+          {/* Dress Code Card */}
+          <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/40 px-4 py-4">
+            <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
+              {lang === "en" ? "Dress" : "الزي"}
+            </div>
+            <div className="mt-2 text-sm font-[400] text-ink-800">
+              {WEDDING.dressCode[lang]}
+            </div>
+          </div>
+
+          {/* Date Card */}
+          <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-white/40 px-4 py-4">
+            <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
+              {lang === "en" ? "Date" : "التاريخ"}
+            </div>
+            <div className="mt-2 text-sm font-[400] text-ink-800">
+              {WEDDING.dateLabel[lang]}
+            </div>
+          </div>
+        </div>
+      </Reveal>
+    </SectionFrame>
+  );
+}
