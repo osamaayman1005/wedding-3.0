@@ -6,7 +6,7 @@ import { WEDDING } from "../../../config/event";
 import engagementPortrait from "../../../assets/wedding/engagment.jpg";
 import fathaReadingPortrait from "../../../assets/wedding/fatha-reading.jpg";
 import firstMeetingPortrait from "../../../assets/wedding/First-meet.jpeg";
-import justUsPortrait from "../../../assets/wedding/just-us.jpg";
+import justUsPortrait from "../../../assets/wedding/Just-us.jpg";
 import { content } from "../../../data/Content";
 import { FullWidthDivider } from "./components";
 import { HeroSection } from "./components/sections/HeroSection";
