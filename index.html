@@ -16,9 +16,142 @@
       rel="stylesheet"
     />
     <title>Osama & Farah - Wedding Invitation</title>
+    <style>
+      /* Full-page preloader overlay */
+      .preloader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #F4F1E8;
+        z-index: 99999;
+        transition: opacity 500ms ease, visibility 500ms ease;
+        opacity: 1;
+        visibility: visible;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .preloader__logo {
+        width: 140px;
+        height: auto;
+        display: block;
+        transform-origin: center center;
+        animation: preloader-breathe 3.5s ease-in-out infinite;
+        will-change: transform;
+      }
+
+      @keyframes preloader-breathe {
+        0% { transform: scale(0.85); }
+        50% { transform: scale(1.15); }
+        100% { transform: scale(0.85); }
+      }
+
+      .preloader--hide {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+    </style>
   </head>
   <body class="paper-bg">
     <div id="root"></div>
+
+    <!-- Preloader overlay (visible immediately) -->
+    <div id="preloader" class="preloader" aria-hidden="false">
+      <img src="/src/assets/content/new-logo.png" alt="" class="preloader__logo" draggable="false" aria-hidden="true" />
+    </div>
+
+    <script>
+      (function () {
+        var overlay = document.getElementById('preloader');
+        if (!overlay) return;
+
+        // Helper: consider images that should be waited-for
+        function shouldTrackImage(img) {
+          if (!img || !img.src) return false;
+          // Skip intentionally lazy-loaded images unless they opt-in with data-preload
+          if (img.loading === 'lazy' && !img.hasAttribute('data-preload')) return false;
+          return true;
+        }
+
+        var images = Array.prototype.slice.call(document.images).filter(shouldTrackImage);
+        var total = images.length;
+        var loaded = 0;
+
+        function onOneLoaded() {
+          loaded += 1;
+          if (loaded >= total) finish();
+        }
+
+        function attach(img) {
+          if (!shouldTrackImage(img)) return;
+          total += 1;
+          if (img.complete) {
+            // treat as loaded (naturalWidth may be 0 on error)
+            onOneLoaded();
+          } else {
+            img.addEventListener('load', onOneLoaded, { once: true });
+            img.addEventListener('error', onOneLoaded, { once: true });
+          }
+        }
+
+        // If no tracked images, hide overlay on next frame
+        if (total === 0) {
+          requestAnimationFrame(function () {
+            finish();
+          });
+          return;
+        }
+
+        images.forEach(function (img) {
+          if (img.complete) {
+            onOneLoaded();
+            return;
+          }
+          img.addEventListener('load', onOneLoaded, { once: true });
+          img.addEventListener('error', onOneLoaded, { once: true });
+        });
+
+        // Watch for images added to the DOM while loading is in progress
+        var observer = new MutationObserver(function (mutations) {
+          mutations.forEach(function (m) {
+            Array.prototype.forEach.call(m.addedNodes || [], function (node) {
+              if (node && node.nodeType === 1) {
+                if (node.tagName === 'IMG') attach(node);
+                else {
+                  var imgs = node.querySelectorAll && node.querySelectorAll('img');
+                  if (imgs && imgs.length) {
+                    Array.prototype.forEach.call(imgs, attach);
+                  }
+                }
+              }
+            });
+          });
+        });
+
+        observer.observe(document.documentElement || document.body, { childList: true, subtree: true });
+
+        var finished = false;
+        function finish() {
+          if (finished) return;
+          finished = true;
+          try { observer.disconnect(); } catch (e) {}
+          overlay.classList.add('preloader--hide');
+          overlay.setAttribute('aria-hidden', 'true');
+          overlay.addEventListener('transitionend', function () {
+            try { overlay.parentNode && overlay.parentNode.removeChild(overlay); } catch (e) {}
+          });
+        }
+
+        // Safety timeout: ensure overlay doesn't hang forever (20s)
+        setTimeout(function () {
+          finish();
+        }, 20000);
+      })();
+    </script>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
