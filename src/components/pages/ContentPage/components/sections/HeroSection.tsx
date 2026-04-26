@@ -28,7 +28,7 @@ export function HeroSection({ page }: { page: any }) {
               <img
                 src={ayah}
                 alt=""
-                className="mx-auto mb-8 w-100 md:w-56"
+                className="mx-auto mb-8 w-60 md:w-56"
                 draggable={false}
               />
               <p className="text-[10px] uppercase tracking-[0.25em] text-[#352f26]">
