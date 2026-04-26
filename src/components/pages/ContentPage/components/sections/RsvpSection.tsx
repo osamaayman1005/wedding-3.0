@@ -49,8 +49,12 @@ export function RsvpSection({
                 {page.phone}
               </label>
               <input
+                type="tel"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                maxLength={15}
                 value={phone}
-                onChange={(event) => setPhone(event.target.value)}
+                onChange={(event) => setPhone(event.target.value.replace(/\D/g, ""))}
                 dir={dir}
                 placeholder={page.phone}
                 className="w-full rounded-[18px] border border-[#ddd2c4]/80 bg-[#faf7f1] px-4 py-3 text-sm text-ink-800 outline-none transition focus:border-[#b9ab98] focus:ring-2 focus:ring-[#b9ab98]/20"
