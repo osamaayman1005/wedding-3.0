@@ -128,10 +128,11 @@ export function EnvelopeIntro({ onOpen, onDismiss }: Props) {
               className={`transition-all ${fading ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'}`}
               style={fadeStyle}
             >
-              <div className="text-[11px] uppercase tracking-[0.5em] text-[#9b7955]">
+              <div className="h-8"/>
+              <div className="text-[14px] uppercase tracking-[0.35em] text-[#3f3823]">
                 A little sealed envelope
               </div>
-              <div className="mt-3 font-['Cormorant_Garamond',_serif] text-lg italic text-[#7c644a]">
+              <div className="mt-3 font-['Cormorant_Garamond',_serif] text-xl italic text-[#3f3823]">
                 Tap the seal to open
               </div>
             </div>

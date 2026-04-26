@@ -3,15 +3,16 @@ import { SectionFrame, InvitationButton, CopyButton } from '../../components';
 
 export function RsvpSection({ 
   page, 
-  lang, 
   dir, 
   name, 
   setName, 
+  phone,
+  setPhone,
   attending, 
   setAttending, 
   handleSubmit, 
   savedMessage, 
-  storedRsvp 
+  isSubmitting,
 }: any) {
   return (
     <SectionFrame
@@ -38,6 +39,22 @@ export function RsvpSection({
                 dir={dir}
                 placeholder={page.fullName}
                 className="w-full rounded-[18px] border border-[#ddd2c4]/80 bg-[#faf7f1] px-4 py-3 text-sm text-ink-800 outline-none transition focus:border-[#b9ab98] focus:ring-2 focus:ring-[#b9ab98]/20"
+                disabled={isSubmitting}
+              />
+            </div>
+
+            {/* Phone Input */}
+            <div className="grid gap-2 text-start">
+              <label className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
+                {page.phone}
+              </label>
+              <input
+                value={phone}
+                onChange={(event) => setPhone(event.target.value)}
+                dir={dir}
+                placeholder={page.phone}
+                className="w-full rounded-[18px] border border-[#ddd2c4]/80 bg-[#faf7f1] px-4 py-3 text-sm text-ink-800 outline-none transition focus:border-[#b9ab98] focus:ring-2 focus:ring-[#b9ab98]/20"
+                disabled={isSubmitting}
               />
             </div>
 
@@ -51,6 +68,7 @@ export function RsvpSection({
                   type="button"
                   onClick={() => setAttending("yes")}
                   variant={attending === "yes" ? "solid" : "ghost"}
+                  disabled={isSubmitting}
                 >
                   {page.yes}
                 </InvitationButton>
@@ -58,6 +76,7 @@ export function RsvpSection({
                   type="button"
                   onClick={() => setAttending("no")}
                   variant={attending === "no" ? "solid" : "ghost"}
+                  disabled={isSubmitting}
                 >
                   {page.no}
                 </InvitationButton>
@@ -66,7 +85,9 @@ export function RsvpSection({
 
             {/* Submit Button */}
             <div className="pt-2">
-              <CopyButton type="submit">{page.sendResponse}</CopyButton>
+              <CopyButton type="submit" disabled={isSubmitting}>
+                {page.sendResponse}
+              </CopyButton>
             </div>
 
             {/* Success/Stored Message Logic */}
@@ -76,14 +97,7 @@ export function RsvpSection({
               </div>
             )}
 
-            {storedRsvp && (
-              <div className="text-xs tracking-wide text-ink-400 px-2">
-                {page.savedAt}:{" "}
-                {lang === "en"
-                  ? new Date(storedRsvp.savedAtISO).toLocaleString()
-                  : new Date(storedRsvp.savedAtISO).toLocaleString("ar-EG")}
-              </div>
-            )}
+            
           </form>
         </div>
       </Reveal>
