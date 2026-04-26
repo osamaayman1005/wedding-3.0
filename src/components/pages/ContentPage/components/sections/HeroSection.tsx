@@ -34,9 +34,6 @@ export function HeroSection({ page }: { page: any }) {
               <p className="text-[10px] uppercase tracking-[0.25em] text-[#352f26]">
                 {page.welcome}
               </p>
-              <p className="mt-6 text-xs uppercase tracking-[0.25em] text-[#352f26]">
-                {page.celebration}
-              </p>
               <h1 className="mt-4 font-script text-5xl leading-none text-ink-800 md:text-7xl">
                 {page.couple}
               </h1>
@@ -67,7 +64,7 @@ export function HeroSection({ page }: { page: any }) {
                 </InvitationButton>
               </div>
 
-              <div className="mt-8 flex justify-center">
+              <div className="mt-4 flex justify-center">
                 <SectionDivider />
               </div>
               <p className="mt-4 text-[11px] uppercase tracking-[0.42em] text-[#352f26]">
