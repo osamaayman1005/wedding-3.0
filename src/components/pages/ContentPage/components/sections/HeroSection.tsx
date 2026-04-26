@@ -3,32 +3,32 @@ import { SectionDivider, InvitationButton } from "../../components";
 
 import logo from "../../../../../assets/content/new-logo.png";
 import besmAllah from "../../../../../assets/content/besm-Allah.png";
-import ayah from "../../../../../assets/content/sort-alrom-21.png";
+import ayah from "../../../../../assets/content/ayah.png";
 
 export function HeroSection({ page }: { page: any }) {
   return (
-    <section className="px-4 pb-6 pt-20 md:pb-10 md:pt-24">
+    <section className="px-4 pb-6 pt-6 md:pb-10 md:pt-24">
       <div className="mx-auto max-w-[1120px]">
         <div className="relative px-5 py-10 md:px-10 md:py-14">
           <Reveal>
             <div className="mx-auto max-w-4xl text-center">
-              <div className="h-8" />
+              <div className="" />
               <img
                 src={logo}
                 alt=""
-                className="mx-auto mb-8 w-40 md:w-56"
+                className="mx-auto mb-8 w-[130px] md:w-56"
                 draggable={false}
               />
               <img
                 src={besmAllah}
                 alt=""
-                className="mx-auto mb-2 w-20 md:w-56"
+                className="mx-auto mb-1 w-[113px] md:w-56"
                 draggable={false}
               />
               <img
                 src={ayah}
                 alt=""
-                className="mx-auto mb-8 w-80 md:w-56"
+                className="mx-auto w-60  mb-5 md:w-56"
                 draggable={false}
               />
               <p className="text-[10px] uppercase tracking-[0.25em] text-[#352f26]">

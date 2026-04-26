@@ -1,6 +1,6 @@
 export const content = {
   en: {
-    welcome: "Welcome, dear guest",
+    welcome: "You are invited to the wedding of",
     celebration: "In celebration of love",
     couple: "Osama & Farah",
     tagline: "An elegant ivory evening of vows, florals, and quiet joy.",
