@@ -12,7 +12,7 @@ export function HeroSection({ page }: { page: any }) {
         <div className="relative px-5 py-10 md:px-10 md:py-14">
           <Reveal>
             <div className="mx-auto max-w-4xl text-center">
-              <div className="h-16" />
+              <div className="h-8" />
               <img
                 src={logo}
                 alt=""
@@ -53,7 +53,7 @@ export function HeroSection({ page }: { page: any }) {
                 {page.tagline}
               </p>
 
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
                 <InvitationButton href="#/invitation#details">
                   {page.heroJumpDetails}
                 </InvitationButton>
