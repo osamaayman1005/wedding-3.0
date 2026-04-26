@@ -1,17 +1,17 @@
-import { Reveal } from '../../../../shared/Reveal';
-import { SectionFrame, InvitationButton, CopyButton } from '../../components';
+import { Reveal } from "../../../../shared/Reveal";
+import { SectionFrame, InvitationButton, CopyButton } from "../../components";
 
-export function RsvpSection({ 
-  page, 
-  dir, 
-  name, 
-  setName, 
+export function RsvpSection({
+  page,
+  dir,
+  name,
+  setName,
   phone,
   setPhone,
-  attending, 
-  setAttending, 
-  handleSubmit, 
-  savedMessage, 
+  attending,
+  setAttending,
+  handleSubmit,
+  savedMessage,
   isSubmitting,
 }: any) {
   return (
@@ -54,7 +54,9 @@ export function RsvpSection({
                 pattern="[0-9]*"
                 maxLength={15}
                 value={phone}
-                onChange={(event) => setPhone(event.target.value.replace(/\D/g, ""))}
+                onChange={(event) =>
+                  setPhone(event.target.value.replace(/\D/g, ""))
+                }
                 dir={dir}
                 placeholder={page.phone}
                 className="w-full rounded-[18px] border border-[#ddd2c4]/80 bg-[#faf7f1] px-4 py-3 text-sm text-ink-800 outline-none transition focus:border-[#b9ab98] focus:ring-2 focus:ring-[#b9ab98]/20"
@@ -100,8 +102,6 @@ export function RsvpSection({
                 {savedMessage}
               </div>
             )}
-
-            
           </form>
         </div>
       </Reveal>

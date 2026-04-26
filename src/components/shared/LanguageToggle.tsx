@@ -1,8 +1,8 @@
-import { useI18n } from '../../context/I18nContext'
-import { t } from '../../i18n/content'
+import { useI18n } from "../../context/I18nContext";
+import { t } from "../../i18n/content";
 
 export function LanguageToggle() {
-  const { lang, toggleLang } = useI18n()
+  const { lang, toggleLang } = useI18n();
 
   return (
     <button
@@ -12,9 +12,8 @@ export function LanguageToggle() {
       aria-label="Toggle language"
     >
       <span className="min-w-[48px]">
-        {lang === 'en' ? t(lang, 'langAR') : t(lang, 'langEN')}
+        {lang === "en" ? t(lang, "langAR") : t(lang, "langEN")}
       </span>
     </button>
-  )
+  );
 }
-

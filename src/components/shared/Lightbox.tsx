@@ -1,6 +1,6 @@
-import { useEffect } from 'react'
-import type { ReactNode } from 'react'
-import { Button } from '../shared/Button'
+import { useEffect } from "react";
+import type { ReactNode } from "react";
+import { Button } from "../shared/Button";
 
 export function Lightbox({
   open,
@@ -10,23 +10,23 @@ export function Lightbox({
   closeLabel,
   children,
 }: {
-  open: boolean
-  src?: string
-  alt?: string
-  onClose: () => void
-  closeLabel: string
-  children?: ReactNode
+  open: boolean;
+  src?: string;
+  alt?: string;
+  onClose: () => void;
+  closeLabel: string;
+  children?: ReactNode;
 }) {
   useEffect(() => {
-    if (!open) return
+    if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [open, onClose])
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, onClose]);
 
-  if (!open) return null
+  if (!open) return null;
 
   return (
     <div
@@ -34,7 +34,7 @@ export function Lightbox({
       aria-modal="true"
       className="fixed inset-0 z-50 grid place-items-center bg-ink-900/35 p-4 backdrop-blur-sm"
       onMouseDown={(e) => {
-        if (e.target === e.currentTarget) onClose()
+        if (e.target === e.currentTarget) onClose();
       }}
     >
       <div className="w-full max-w-[980px] overflow-hidden rounded-[26px] bg-white/98 ring-1 ring-ink-200/70 shadow-soft noise-overlay">
@@ -58,5 +58,5 @@ export function Lightbox({
         </div>
       </div>
     </div>
-  )
+  );
 }

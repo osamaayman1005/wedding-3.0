@@ -1,9 +1,8 @@
-import {Reveal} from '../../../../shared/Reveal';
-import {SectionFrame, StatCard} from '../../components';
+import { Reveal } from "../../../../shared/Reveal";
+import { SectionFrame, StatCard } from "../../components";
 
 export function CountDownSection({ page, countdown, lang }: any) {
-  
-  const formatCounter = (num: number) => num.toString().padStart(2, '0');
+  const formatCounter = (num: number) => num.toString().padStart(2, "0");
 
   return (
     <SectionFrame
@@ -22,21 +21,18 @@ export function CountDownSection({ page, countdown, lang }: any) {
       ) : (
         <Reveal>
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-            <StatCard
-              value={formatCounter(countdown.days)}
-              label={page.days} 
-            />
+            <StatCard value={formatCounter(countdown.days)} label={page.days} />
             <StatCard
               value={formatCounter(countdown.hours)}
-              label={page.hours} 
+              label={page.hours}
             />
             <StatCard
               value={formatCounter(countdown.minutes)}
-              label={page.minutes} 
+              label={page.minutes}
             />
             <StatCard
               value={formatCounter(countdown.seconds)}
-              label={page.seconds} 
+              label={page.seconds}
             />
           </div>
         </Reveal>

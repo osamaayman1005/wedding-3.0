@@ -1,5 +1,5 @@
-import { LanguageToggle } from './LanguageToggle'
-import { MusicToggle } from './MusicToggle'
+import { LanguageToggle } from "./LanguageToggle";
+import { MusicToggle } from "./MusicToggle";
 
 export function TopBar() {
   return (
@@ -11,5 +11,5 @@ export function TopBar() {
         </div>
       </div>
     </div>
-  )
+  );
 }

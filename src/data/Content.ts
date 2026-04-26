@@ -1,9 +1,8 @@
 export const content = {
   en: {
     welcome: "You are invited to the wedding of",
-    celebration: "In celebration of love",
     couple: "Osama & Farah",
-    tagline: "An elegant ivory evening of vows, florals, and quiet joy.",
+    tagline: "Our celebration would be incomplete without you.",
     scroll: "Scroll to discover",
     saveTheDate: "Save the Date",
     countdownTitle: "Counting the moments",
@@ -64,7 +63,6 @@ export const content = {
   },
   ar: {
     welcome: "أهلاً وسهلاً، يا ضيفنا العزيز",
-    celebration: "احتفال بالحب",
     couple: "أسامة وفرح",
     tagline: "أمسية عاجية هادئة من الوعود والزهور والفرح الهادئ.",
     scroll: "مرر لتكتشف التفاصيل",

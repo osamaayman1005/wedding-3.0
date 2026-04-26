@@ -134,7 +134,7 @@ export function ContentPage({
       setSavedMessage(page.saved);
     } catch (err) {
       // Keep UX smooth; log the error for debugging
-       
+
       console.error("RSVP submission failed", err);
       // Still acknowledge the user's action (no persistent caching)
       setSavedMessage(page.saved);

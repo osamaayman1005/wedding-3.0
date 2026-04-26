@@ -1,5 +1,5 @@
-import { Reveal } from '../../../../shared/Reveal';
-import { SectionFrame, PhotoFrame } from '../../components';
+import { Reveal } from "../../../../shared/Reveal";
+import { SectionFrame, PhotoFrame } from "../../components";
 
 export function GallerySection({ page, galleryFrames, setOpenFrame }: any) {
   return (

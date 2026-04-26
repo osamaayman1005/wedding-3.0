@@ -1,5 +1,5 @@
-import { Reveal } from '../../../../shared/Reveal';
-import { SectionFrame, InvitationButton } from '../../components';
+import { Reveal } from "../../../../shared/Reveal";
+import { SectionFrame, InvitationButton } from "../../components";
 
 export function LocationSection({ page, lang, WEDDING }: any) {
   return (
@@ -27,7 +27,7 @@ export function LocationSection({ page, lang, WEDDING }: any) {
             <div className="text-[10px] uppercase tracking-[0.45em] text-[#8d7d67]">
               {page.locationTitle}
             </div>
-            
+
             <div className="mt-3 text-3xl font-[400] tracking-[0.01em] text-ink-800">
               {WEDDING.venue.name[lang]}
             </div>

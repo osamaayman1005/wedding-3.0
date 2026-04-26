@@ -1,4 +1,4 @@
-import { SectionDivider, CopyButton } from '../../components';
+import { SectionDivider, CopyButton } from "../../components";
 
 export function FooterSection({ page, lang, onReturnToEnvelope }: any) {
   return (
@@ -7,15 +7,15 @@ export function FooterSection({ page, lang, onReturnToEnvelope }: any) {
         <div className="rounded-[36px] px-5 py-8 text-center">
           {/* Your updated dot-style divider */}
           <SectionDivider />
-          
+
           <p className="mt-5 text-lg font-[400] text-ink-800">
             {page.footerLove}
           </p>
-          
+
           <p className="mt-2 text-[11px] uppercase tracking-[0.45em] text-[#8d7d67]">
             {page.footerDate}
           </p>
-          
+
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <CopyButton onClick={onReturnToEnvelope}>
               {lang === "en" ? "Close the Envelope" : "أغلق الظرف"}

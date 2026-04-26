@@ -1,11 +1,11 @@
-import { Reveal } from '../../../../shared/Reveal';
-import { SectionFrame } from '../../components';
+import { Reveal } from "../../../../shared/Reveal";
+import { SectionFrame } from "../../components";
 
 export function DetailsSection({ page, lang, WEDDING }: any) {
   return (
-    <SectionFrame 
-      id="details" 
-      eyebrow={page.detailsEyebrow} 
+    <SectionFrame
+      id="details"
+      eyebrow={page.detailsEyebrow}
       title={page.detailsTitle}
     >
       <Reveal>

@@ -1,90 +1,92 @@
-import { useEffect, useState } from 'react'
-import envelopeImage from '../../assets/envelope.png'
-import { GlowOrbs } from '../shared/GlowOrbs'
-import { ParticlesCanvas } from '../shared/ParticlesCanvas'
+import { useEffect, useState } from "react";
+import envelopeImage from "../../assets/envelope.png";
+import { GlowOrbs } from "../shared/GlowOrbs";
+import { ParticlesCanvas } from "../shared/ParticlesCanvas";
 
 type Props = {
-  onOpen: () => void
-  onDismiss: () => void
-}
+  onOpen: () => void;
+  onDismiss: () => void;
+};
 
 function useReducedMotion() {
-  const [reducedMotion, setReducedMotion] = useState(false)
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
-    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const update = () => setReducedMotion(media.matches)
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(media.matches);
 
-    update()
-    media.addEventListener('change', update)
+    update();
+    media.addEventListener("change", update);
 
-    return () => media.removeEventListener('change', update)
-  }, [])
+    return () => media.removeEventListener("change", update);
+  }, []);
 
-  return reducedMotion
+  return reducedMotion;
 }
 
 export function EnvelopeIntro({ onOpen, onDismiss }: Props) {
-  const [opening, setOpening] = useState(false)
-  const [fading, setFading] = useState(false)
-  const reducedMotion = useReducedMotion()
-  const openDurationMs = reducedMotion ? 1000 : 1800
-  const fadeStartMs = Math.round(openDurationMs * 0.08)
-  const fadeDurationMs = openDurationMs - fadeStartMs
+  const [opening, setOpening] = useState(false);
+  const [fading, setFading] = useState(false);
+  const reducedMotion = useReducedMotion();
+  const openDurationMs = reducedMotion ? 1000 : 1800;
+  const fadeStartMs = Math.round(openDurationMs * 0.08);
+  const fadeDurationMs = openDurationMs - fadeStartMs;
 
   useEffect(() => {
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
     return () => {
-      document.body.style.overflow = previousOverflow
-    }
-  }, [])
+      document.body.style.overflow = previousOverflow;
+    };
+  }, []);
 
   useEffect(() => {
-    if (!opening) return
+    if (!opening) return;
 
-    setFading(false)
+    setFading(false);
 
-    const fadeTimeout = window.setTimeout(() => setFading(true), fadeStartMs)
-    const dismissTimeout = window.setTimeout(onDismiss, openDurationMs)
+    const fadeTimeout = window.setTimeout(() => setFading(true), fadeStartMs);
+    const dismissTimeout = window.setTimeout(onDismiss, openDurationMs);
 
     return () => {
-      window.clearTimeout(fadeTimeout)
-      window.clearTimeout(dismissTimeout)
-    }
-  }, [opening, onDismiss, fadeStartMs, openDurationMs])
+      window.clearTimeout(fadeTimeout);
+      window.clearTimeout(dismissTimeout);
+    };
+  }, [opening, onDismiss, fadeStartMs, openDurationMs]);
 
   const openEnvelope = () => {
     if (!opening) {
-      setOpening(true)
-      onOpen()
+      setOpening(true);
+      onOpen();
     }
-  }
+  };
 
   const motionStyle = {
     transitionDuration: `${openDurationMs}ms`,
-    transitionTimingFunction: 'cubic-bezier(0.16, 0.9, 0.22, 1)',
-  } as const
+    transitionTimingFunction: "cubic-bezier(0.16, 0.9, 0.22, 1)",
+  } as const;
   const fadeStyle = {
     transitionDuration: `${fadeDurationMs}ms`,
-    transitionTimingFunction: 'ease-out',
-  } as const
+    transitionTimingFunction: "ease-out",
+  } as const;
   const envelopeMaskStyle = opening
     ? {
-        WebkitMaskImage: 'radial-gradient(circle at center, rgba(0,0,0,1) 0 90%, rgba(0,0,0,0) 100%)',
-        maskImage: 'radial-gradient(circle at center, rgba(0,0,0,1) 0 90%, rgba(0,0,0,0) 100%)',
-        WebkitMaskRepeat: 'no-repeat',
-        maskRepeat: 'no-repeat',
-        WebkitMaskSize: '100% 100%',
-        maskSize: '100% 100%',
+        WebkitMaskImage:
+          "radial-gradient(circle at center, rgba(0,0,0,1) 0 90%, rgba(0,0,0,0) 100%)",
+        maskImage:
+          "radial-gradient(circle at center, rgba(0,0,0,1) 0 90%, rgba(0,0,0,0) 100%)",
+        WebkitMaskRepeat: "no-repeat",
+        maskRepeat: "no-repeat",
+        WebkitMaskSize: "100% 100%",
+        maskSize: "100% 100%",
       }
-    : undefined
+    : undefined;
 
   return (
     <div
       className={`fixed inset-0 z-50 overflow-hidden bg-transparent text-[#4f4336] transition-opacity ${
-        fading ? 'pointer-events-none opacity-0' : 'opacity-100'
+        fading ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
       style={fadeStyle}
     >
@@ -104,8 +106,8 @@ export function EnvelopeIntro({ onOpen, onDismiss }: Props) {
         >
           <div
             className={`relative mx-auto origin-center w-full transform-gpu transition-[transform,opacity,filter] ${
-              opening ? 'scale-[1.55] blur-0' : 'scale-100'
-            } ${fading ? 'opacity-0' : 'opacity-100'}`}
+              opening ? "scale-[1.55] blur-0" : "scale-100"
+            } ${fading ? "opacity-0" : "opacity-100"}`}
             style={motionStyle}
           >
             <div className="absolute left-1/2 top-[80%] h-44 w-[78%] -translate-x-1/2 rounded-full bg-[#3f2d1c]/46 blur-[52px] mix-blend-multiply" />
@@ -116,7 +118,10 @@ export function EnvelopeIntro({ onOpen, onDismiss }: Props) {
               src={envelopeImage}
               alt=""
               className="block h-auto w-full rounded-[34px] object-cover shadow-[0_34px_120px_-28px_rgba(70,52,30,0.34),0_52px_130px_-20px_rgba(72,52,28,0.56)] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.01] sm:rounded-[40px]"
-              style={{ filter: 'drop-shadow(0 36px 28px rgba(66, 46, 28, 0.26))', ...envelopeMaskStyle }}
+              style={{
+                filter: "drop-shadow(0 36px 28px rgba(66, 46, 28, 0.26))",
+                ...envelopeMaskStyle,
+              }}
             />
           </div>
 
@@ -125,10 +130,10 @@ export function EnvelopeIntro({ onOpen, onDismiss }: Props) {
             style={fadeStyle}
           >
             <div
-              className={`transition-all ${fading ? 'translate-y-2 opacity-0' : 'translate-y-0 opacity-100'}`}
+              className={`transition-all ${fading ? "translate-y-2 opacity-0" : "translate-y-0 opacity-100"}`}
               style={fadeStyle}
             >
-              <div className="h-8"/>
+              <div className="h-8" />
               <div className="text-[14px] uppercase tracking-[0.35em] text-[#3f3823]">
                 A little sealed envelope
               </div>
@@ -140,5 +145,5 @@ export function EnvelopeIntro({ onOpen, onDismiss }: Props) {
         </button>
       </div>
     </div>
-  )
+  );
 }
