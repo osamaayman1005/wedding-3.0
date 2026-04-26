@@ -1,19 +1,34 @@
-import {Reveal} from '../../../../shared/Reveal';
-import {SectionDivider, InvitationButton} from '../../components';
+import { Reveal } from "../../../../shared/Reveal";
+import { SectionDivider, InvitationButton } from "../../components";
 
-  import logo from '../../../../../assets/content/new-logo.png';
+import logo from "../../../../../assets/content/new-logo.png";
+import besmAllah from "../../../../../assets/content/besm-Allah.png";
+import ayah from "../../../../../assets/content/sort-alrom-21.png";
 
-  export function HeroSection({ page }: { page: any }) {
-    return <section className="px-4 pb-6 pt-20 md:pb-10 md:pt-24">
+export function HeroSection({ page }: { page: any }) {
+  return (
+    <section className="px-4 pb-6 pt-20 md:pb-10 md:pt-24">
       <div className="mx-auto max-w-[1120px]">
         <div className="relative px-5 py-10 md:px-10 md:py-14">
           <Reveal>
             <div className="mx-auto max-w-4xl text-center">
-             <div className="h-16" />
+              <div className="h-16" />
               <img
                 src={logo}
-                alt="" 
-                className="mx-auto mb-4 w-40 md:w-56"
+                alt=""
+                className="mx-auto mb-8 w-40 md:w-56"
+                draggable={false}
+              />
+              <img
+                src={besmAllah}
+                alt=""
+                className="mx-auto mb-2 w-20 md:w-56"
+                draggable={false}
+              />
+              <img
+                src={ayah}
+                alt=""
+                className="mx-auto mb-8 w-100 md:w-56"
                 draggable={false}
               />
               <p className="text-[10px] uppercase tracking-[0.25em] text-[#352f26]">
@@ -33,7 +48,6 @@ import {SectionDivider, InvitationButton} from '../../components';
                 </span>
                 <span className="h-px w-14 bg-gradient-to-r from-transparent via-[#c9bbab] to-transparent md:w-20" />
               </div>
-              
 
               <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-ink-600 md:text-base">
                 {page.tagline}
@@ -43,11 +57,11 @@ import {SectionDivider, InvitationButton} from '../../components';
                 <InvitationButton href="#/invitation#details">
                   {page.heroJumpDetails}
                 </InvitationButton>
-                
+
                 <InvitationButton href="#/invitation#venue">
                   {page.heroJumpLocation}
                 </InvitationButton>
-                
+
                 <InvitationButton href="#/invitation#rsvp" variant="solid">
                   {page.heroJumpRsvp}
                 </InvitationButton>
@@ -63,5 +77,6 @@ import {SectionDivider, InvitationButton} from '../../components';
           </Reveal>
         </div>
       </div>
-    </section>;
-  }
+    </section>
+  );
+}
