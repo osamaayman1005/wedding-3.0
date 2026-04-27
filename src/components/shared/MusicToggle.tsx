@@ -55,7 +55,7 @@ export function MusicToggle() {
     >
       {/* Visual status dot */}
       <span
-        className={`mr-2 h-1.5 w-1.5 rounded-full transition-colors ${
+        className={`me-2 h-1.5 w-1.5 rounded-full transition-colors ${
           enabled ? "bg-green-400 animate-pulse" : "bg-ink-400"
         }`}
       />
