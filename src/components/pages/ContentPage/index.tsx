@@ -101,11 +101,6 @@ export function ContentPage({
   const page = content[lang as Lang];
   const guestName = useGuestName();
   const countdown = useCountdown(WEDDING.startISO);
-  const [setOpenFrame] = useState<{
-    src: string;
-    caption: string;
-  } | null>(null);
-
   const [name, setName] = useState(guestName || "");
   const [attending, setAttending] = useState<"yes" | "no">("yes");
   const [numberOfGuests, setNumberOfGuests] = useState(1);
@@ -169,7 +164,6 @@ export function ContentPage({
         <GallerySection
           page={page}
           galleryFrames={galleryFrames}
-          onOpenFrame={setOpenFrame}
         />
 
         <FullWidthDivider />

@@ -1,7 +1,7 @@
 import { Reveal } from "../../../../shared/Reveal";
 import { SectionFrame, PhotoFrame } from "../../components";
 
-export function GallerySection({ page, galleryFrames, setOpenFrame }: any) {
+export function GallerySection({ page, galleryFrames }: any) {
   return (
     <SectionFrame
       eyebrow={page.galleryEyebrow}
