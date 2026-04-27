@@ -1,4 +1,4 @@
-import background from "../../assets/Invitation-background.jpeg";
+import background from "../../assets/bg-new.jpg";
 
 export function Background() {
   return (
