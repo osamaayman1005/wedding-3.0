@@ -58,6 +58,7 @@ export const content = {
     frameFour: "Random",
     frameFive: "Fatha reading",
     frameSix: "Engagement",
+    venueEyebrow: "Venue details",
   },
   ar: {
     welcome: "أهلاً وسهلاً، يا ضيفنا العزيز",
@@ -116,5 +117,6 @@ export const content = {
     frameFour: "تحت القوس",
     frameFive: "مساء هادئ",
     frameSix: "لحظة رقيقة",
+    venueEyebrow: "تفاصيل المكان",
   },
 };

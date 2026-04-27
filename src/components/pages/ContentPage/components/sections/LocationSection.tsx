@@ -23,11 +23,11 @@ export function LocationSection({ page, lang, WEDDING }: any) {
 
           {/* Venue Details Card */}
           <div className="rounded-[30px] border border-[#ddd2c4]/80 p-6 shadow-soft bg-white/25 backdrop-blur-sm">
-            <div className="text-[10px] uppercase tracking-[0.45em] text-[#8d7d67]">
-              {page.locationTitle}
+            <div className="text-[10px] uppercase tracking-[0.45em] text-[#8d7d67] flex flex-col items-center">
+              {page.venueEyebrow}
             </div>
 
-            <div className="mt-3 text-3xl font-[400] tracking-[0.01em] text-ink-800">
+            <div className="mt-3 w-full text-center text-3xl font-[400] tracking-[0.01em] text-ink-800">
               {WEDDING.venue.name[lang]}
             </div>
 
