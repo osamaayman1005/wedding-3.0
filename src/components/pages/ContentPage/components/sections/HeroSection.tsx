@@ -39,14 +39,12 @@ export function HeroSection({ page }: { page: any }) {
               </h1>
 
               <div className="mt-5 flex items-center justify-center gap-3">
-                <span className="h-px w-14 bg-gradient-to-r from-transparent via-[#c9bbab] to-transparent md:w-20" />
-                <span className="text-xs uppercase tracking-[0.35em] text-ink-500 md:text-sm">
+                 <span className="text-sm uppercase tracking-[0.35em] text-ink-600 md:text-md font-extrabold">
                   {page.dateLabel}
                 </span>
-                <span className="h-px w-14 bg-gradient-to-r from-transparent via-[#c9bbab] to-transparent md:w-20" />
               </div>
 
-              <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-ink-600 md:text-base">
+              <p className="mx-auto mt-5 max-w-2xl text-md leading-relaxed text-ink-600 md:text-base italic">
                 {page.tagline}
               </p>
 

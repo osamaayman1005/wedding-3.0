@@ -119,6 +119,18 @@ h1, h2, h3, h4 {
       transparent
     );
   }
+
+  .glass-caption-overlay {
+    width: 100%;
+    border-top: 1px solid rgba(221, 210, 196, 0.45);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.464), rgba(248, 244, 237, 0.18)),
+      rgba(255, 255, 255, 0.22);
+    color: theme('colors.ink.900');
+    backdrop-filter: blur(14px) saturate(125%);
+    -webkit-backdrop-filter: blur(14px) saturate(125%);
+    box-shadow: 0 -10px 24px -22px rgba(43, 42, 38, 0.32);
+  }
 }
 
 .btn-primary-color {

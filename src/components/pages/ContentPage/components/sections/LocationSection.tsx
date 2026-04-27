@@ -7,7 +7,6 @@ export function LocationSection({ page, lang, WEDDING }: any) {
       id="venue"
       eyebrow={page.locationEyebrow}
       title={page.locationTitle}
-      subtitle={page.locationLead}
     >
       <Reveal>
         <div className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">

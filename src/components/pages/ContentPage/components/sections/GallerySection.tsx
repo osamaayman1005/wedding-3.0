@@ -16,9 +16,6 @@ export function GallerySection({ page, galleryFrames, setOpenFrame }: any) {
               src={frame.src}
               alt={frame.alt}
               caption={frame.caption}
-              onClick={() =>
-                setOpenFrame({ src: frame.src, caption: frame.caption })
-              }
               objectPosition={frame.objectPosition}
             />
           ))}
