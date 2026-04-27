@@ -20,7 +20,7 @@ export function PhotoFrame({
         style={{ objectPosition }}
       />
       <div className="absolute inset-x-0 bottom-0 h-[3.0rem] border-t border-[#ddd2c4]/70 bg-white/72 bg-gradient-to-b from-white/60 via-white/45 to-[#faf7f1]/50 px-4 backdrop-blur-[3.6px]">
-        <div className="flex h-full items-center justify-center text-center text-[12px] font-medium uppercase tracking-[0.20em] text-ink-900">
+        <div className="flex h-full items-center justify-center text-center text-[12px] font-medium uppercase tracking-[0.10em] text-ink-900">
           {caption}
         </div>
       </div>
