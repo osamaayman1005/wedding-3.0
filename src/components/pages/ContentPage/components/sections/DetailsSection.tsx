@@ -2,6 +2,7 @@ import { Reveal } from "../../../../shared/Reveal";
 import { SectionFrame } from "../../components";
 
 export function DetailsSection({ page, lang, WEDDING }: any) {
+  var glassyClassName = "rounded-[22px] border border-[#ddd2c4]/50 px-4 py-4 md:p-8  backdrop-blur-sm shadow-soft";
   return (
     <SectionFrame
       id="details"
@@ -11,7 +12,7 @@ export function DetailsSection({ page, lang, WEDDING }: any) {
       <Reveal>
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
           {/* Venue Card */}
-          <div className="rounded-[22px] border border-[#ddd2c4]/70  bg-[#E8E1D8]/75 px-4 py-4">
+          <div className={glassyClassName}>
             <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
               {lang === "en" ? "Venue" : "المكان"}
             </div>
@@ -21,7 +22,7 @@ export function DetailsSection({ page, lang, WEDDING }: any) {
           </div>
 
           {/* Time Card */}
-          <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-[#E8E1D8]/75 px-4 py-4">
+          <div className={glassyClassName}>
             <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
               {lang === "en" ? "Time" : "الوقت"}
             </div>
@@ -29,7 +30,7 @@ export function DetailsSection({ page, lang, WEDDING }: any) {
               {WEDDING.timeLabel[lang]}
             </div>
           </div>
-          <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-[#E8E1D8]/75 px-4 py-4">
+          <div className={glassyClassName}>
             <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
               {lang === "en" ? "Date" : "التاريخ"}
             </div>
@@ -37,7 +38,7 @@ export function DetailsSection({ page, lang, WEDDING }: any) {
               {WEDDING.dateLabel[lang]}
             </div>
           </div>
-          <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-[#E8E1D8]/75 px-4 py-4">
+          <div className={glassyClassName}>
             <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
               {lang === "en" ? "Dress" : "الزي"}
             </div>
