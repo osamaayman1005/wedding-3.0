@@ -6,8 +6,9 @@ export function RsvpSection({
   dir,
   name,
   setName,
-  phone,
-  setPhone,
+  numberOfGuests,
+  setNumberOfGuests,
+
   attending,
   setAttending,
   handleSubmit,
@@ -46,19 +47,20 @@ export function RsvpSection({
             {/* Phone Input */}
             <div className="grid gap-2 text-start">
               <label className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
-                {page.phone}
+                {page.numberOfGuests}
               </label>
               <input
-                type="tel"
+                type="number"
                 inputMode="numeric"
                 pattern="[0-9]*"
-                maxLength={15}
-                value={phone}
+                maxLength={2}
+                required
+                value={numberOfGuests}
                 onChange={(event) =>
-                  setPhone(event.target.value.replace(/\D/g, ""))
+                  setNumberOfGuests(parseInt(event.target.value))
                 }
                 dir={dir}
-                placeholder={page.phone}
+                placeholder={page.numberOfGuests}
                 className="w-full rounded-[18px] border border-[#ddd2c4]/80 bg-[#faf7f1] px-4 py-3 text-sm text-ink-800 outline-none transition focus:border-[#b9ab98] focus:ring-2 focus:ring-[#b9ab98]/20"
                 disabled={isSubmitting}
               />

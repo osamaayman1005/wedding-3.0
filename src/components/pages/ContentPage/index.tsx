@@ -23,7 +23,7 @@ type RSVPState = {
   attending: "yes" | "no";
   guests: number;
   savedAtISO: string;
-  phone?: string;
+  numberOfGuests: number;
 };
 
 type Lang = "en" | "ar";
@@ -108,7 +108,7 @@ export function ContentPage({
 
   const [name, setName] = useState(guestName || "");
   const [attending, setAttending] = useState<"yes" | "no">("yes");
-  const [phone, setPhone] = useState("");
+  const [numberOfGuests, setNumberOfGuests] = useState(1);
   const [savedMessage, setSavedMessage] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -121,14 +121,14 @@ export function ContentPage({
       name: name.trim(),
       attending,
       guests: 1,
-      phone: phone.trim(),
+      numberOfGuests: numberOfGuests,
       savedAtISO: new Date().toISOString(),
     };
 
     try {
       await sendRsvp({
         name: payload.name,
-        phone: payload.phone || "",
+        numberOfGuests: payload.numberOfGuests || 1,
         response: payload.attending,
       });
       setSavedMessage(page.saved);
@@ -177,8 +177,8 @@ export function ContentPage({
         <RsvpSection
           page={page}
           name={name}
-          phone={phone}
-          setPhone={setPhone}
+          numberOfGuests={numberOfGuests}
+          setNumberOfGuests={setNumberOfGuests}
           setName={setName}
           attending={attending}
           setAttending={setAttending}

@@ -33,7 +33,7 @@ export function SectionFrame({
                 <p className="text-[10px] uppercase tracking-[0.30em] text-[#40382b]">
                   {eyebrow}
                 </p>
-                <h2 className="mt-4 text-5xl font-[400] tracking-[0.01em] text-ink-800 md:text-4xl font-script">
+                <h2 className="mt-4 text-5xl font-[400] tracking-[0.01em] text-ink-800 md:text-4xl">
                   {title}
                 </h2>
                 <div className="mt-5">

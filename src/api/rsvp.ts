@@ -1,16 +1,16 @@
 const ENDPOINT =
-  "https://script.google.com/macros/s/AKfycbzj0h5hmjAfiMZ6EIfKc0NJEjGNi1eWoF1D_L1-QYAKajhS0ixustiCNfzC8v3c0QZ2Dw/exec";
+  "https://script.google.com/macros/s/AKfycbx9kxQNuBo50pDvPQX1n-F8sxRmm2yrD8U9JVAf6nliCpvxvJ2gOCqwopP4_1Vqt_d3lg/exec";
 
 export async function sendRsvp({
   name,
-  phone = "",
+  numberOfGuests = 1,
   response,
 }: {
   name: string;
-  phone?: string;
+  numberOfGuests: number;
   response: string;
 }) {
-  const payload = { name, phone, response };
+  const payload = { name, numberOfGuests, response };
 
   try {
     // Try a standard JSON POST first (preferred)

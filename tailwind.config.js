@@ -36,7 +36,7 @@ export default {
         ar: ['Amiri', 'ui-serif', 'Georgia', 'serif'],
         serif: ['Cormorant Garamond', 'ui-serif', 'Georgia', 'serif'],
         script: ['Italianno', 'Cormorant Garamond', 'cursive'],
-        arabic: ['Aref Ruqaa', 'Amiri', 'serif'],
+        arabic: ['Rakkas', 'Amiri', 'serif'],
       },
       boxShadow: {
         soft:

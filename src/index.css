@@ -46,6 +46,15 @@ h1, h2, h3, h4 {
   font-family: theme('fontFamily.arabic'); 
 }
 
+/* Force Arabic font for all top-level headings when content direction is RTL */
+[dir="rtl"] h1,h2 {
+  font-family: theme('fontFamily.arabic') ;
+}
+
+[dir="ltr"] h2 {
+  font-family: theme('fontFamily.script') ;
+}
+
 /* Quiet default focus without harsh outlines */
 :focus-visible {
   outline: 2px solid rgba(144, 160, 128, 0.45);
