@@ -22,7 +22,7 @@ export const content = {
     galleryEyebrow: "About Us",
     galleryTitle: "Our Story in Frames",
     galleryLead:
-      "A few portraits and moments that echo the same soft, floral mood as the invitation card.",
+      "Sharing a few of our favorite memories with you.",
     rsvpEyebrow: "RSVP",
     rsvpTitle: "Kindly Respond",
     rsvpLead: "Your presence is the greatest gift. Please confirm by May 20th.",
