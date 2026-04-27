@@ -136,6 +136,7 @@ h1, h2, h3, h4 {
 .btn-secondary-color {
   background-color: #66714608 !important;
   color: #043011 !important;
+  backdrop-filter: blur(2.5px);
 }
 
 /* Apply to all divs and common containers */
