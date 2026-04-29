@@ -6,7 +6,7 @@ import { WEDDING } from "../../../config/event";
 import engagementPortrait from "../../../assets/wedding/engagment.jpg";
 import fathaReadingPortrait from "../../../assets/wedding/fatha-reading.jpg";
 import firstMeetingPortrait from "../../../assets/wedding/First-meet.jpeg";
-import justUsPortrait from "../../../assets/wedding/Just-us.jpg";
+import venueReservationPortrait from "../../../assets/wedding/venue-reservation.jpg";
 import { content } from "../../../data/Content";
 import { FullWidthDivider } from "./components";
 import { HeroSection } from "./components/sections/HeroSection";
@@ -46,12 +46,6 @@ const galleryFramesByLang: Record<
       objectPosition: "center 32%",
     },
     {
-      src: justUsPortrait,
-      alt: "Bride and groom portrait under the mosque arch",
-      caption: content.en.frameFour,
-      objectPosition: "center 38%",
-    },
-    {
       src: fathaReadingPortrait,
       alt: "Bride and groom portrait in the mosque courtyard",
       caption: content.en.frameFive,
@@ -63,6 +57,12 @@ const galleryFramesByLang: Record<
       caption: content.en.frameSix,
       objectPosition: "center 58%",
     },
+        {
+      src: venueReservationPortrait,
+      alt: "Bride and groom portrait under the mosque arch",
+      caption: content.en.frameFour,
+      objectPosition: "center 38%",
+    },
   ],
   ar: [
     {
@@ -72,7 +72,7 @@ const galleryFramesByLang: Record<
       objectPosition: "center 32%",
     },
     {
-      src: justUsPortrait,
+      src: venueReservationPortrait,
       alt: "صورة للعروسين تحت القوس",
       caption: content.ar.frameFour,
       objectPosition: "center 38%",
@@ -161,10 +161,7 @@ export function ContentPage({
 
         <FullWidthDivider />
 
-        <GallerySection
-          page={page}
-          galleryFrames={galleryFrames}
-        />
+        <GallerySection page={page} galleryFrames={galleryFrames} />
 
         <FullWidthDivider />
 

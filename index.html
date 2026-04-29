@@ -69,83 +69,23 @@
       (function () {
         var overlay = document.getElementById('preloader');
         if (!overlay) return;
-
-        // Helper: consider images that should be waited-for
-        function shouldTrackImage(img) {
-          if (!img || !img.src) return false;
-          // Skip intentionally lazy-loaded images unless they opt-in with data-preload
-          if (img.loading === 'lazy' && !img.hasAttribute('data-preload')) return false;
-          return true;
-        }
-
-        var images = Array.prototype.slice.call(document.images).filter(shouldTrackImage);
-        var total = images.length;
-        var loaded = 0;
-
-        function onOneLoaded() {
-          loaded += 1;
-          if (loaded >= total) finish();
-        }
-
-        function attach(img) {
-          if (!shouldTrackImage(img)) return;
-          total += 1;
-          if (img.complete) {
-            // treat as loaded (naturalWidth may be 0 on error)
-            onOneLoaded();
-          } else {
-            img.addEventListener('load', onOneLoaded, { once: true });
-            img.addEventListener('error', onOneLoaded, { once: true });
-          }
-        }
-
-        // If no tracked images, hide overlay on next frame
-        if (total === 0) {
-          requestAnimationFrame(function () {
-            finish();
-          });
-          return;
-        }
-
-        images.forEach(function (img) {
-          if (img.complete) {
-            onOneLoaded();
-            return;
-          }
-          img.addEventListener('load', onOneLoaded, { once: true });
-          img.addEventListener('error', onOneLoaded, { once: true });
-        });
-
-        // Watch for images added to the DOM while loading is in progress
-        var observer = new MutationObserver(function (mutations) {
-          mutations.forEach(function (m) {
-            Array.prototype.forEach.call(m.addedNodes || [], function (node) {
-              if (node && node.nodeType === 1) {
-                if (node.tagName === 'IMG') attach(node);
-                else {
-                  var imgs = node.querySelectorAll && node.querySelectorAll('img');
-                  if (imgs && imgs.length) {
-                    Array.prototype.forEach.call(imgs, attach);
-                  }
-                }
-              }
-            });
-          });
-        });
-
-        observer.observe(document.documentElement || document.body, { childList: true, subtree: true });
-
+        var MIN_VISIBLE_MS = 700;
+        var startTime = performance.now ? performance.now() : Date.now();
         var finished = false;
+
         function finish() {
           if (finished) return;
           finished = true;
-          try { observer.disconnect(); } catch (e) {}
           overlay.classList.add('preloader--hide');
           overlay.setAttribute('aria-hidden', 'true');
           overlay.addEventListener('transitionend', function () {
             try { overlay.parentNode && overlay.parentNode.removeChild(overlay); } catch (e) {}
           });
         }
+
+        var elapsed = (performance.now ? performance.now() : Date.now()) - startTime;
+        var remaining = Math.max(0, MIN_VISIBLE_MS - elapsed);
+        setTimeout(finish, remaining);
 
         // Safety timeout: ensure overlay doesn't hang forever (20s)
         setTimeout(function () {
