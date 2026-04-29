@@ -30,13 +30,15 @@ export function EnvelopeIntro({ opening, onOpen, onDismiss }: Props) {
   const openDurationMs = reducedMotion ? 200 : 2600;
 
   useEffect(() => {
+    if (opening) return;
+
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
     return () => {
       document.body.style.overflow = previousOverflow;
     };
-  }, []);
+  }, [opening]);
 
   useEffect(() => {
     if (!opening) return;

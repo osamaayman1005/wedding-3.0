@@ -8,6 +8,8 @@ export const WEDDING = {
       en: "Al Aly Al Azeem Mosque, Almaza",
       ar: "مسجد العلي العظيم، ألماظة",
     },
+    mapQuery: "30.0890703,31.348924",
+    mapUrl: "https://maps.app.goo.gl/9Pd2BrhFcCQ3te9e7",
   },
   // Cairo is commonly used for Egypt weddings; adjust to your exact start time.
   // June 5, 2026 (Friday)
