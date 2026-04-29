@@ -27,7 +27,7 @@ function useReducedMotion() {
 
 export function EnvelopeIntro({ opening, onOpen, onDismiss }: Props) {
   const reducedMotion = useReducedMotion();
-  const openDurationMs = reducedMotion ? 500 : 5500;
+  const openDurationMs = reducedMotion ? 200 : 2600;
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
