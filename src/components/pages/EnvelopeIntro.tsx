@@ -103,7 +103,7 @@ export function EnvelopeIntro({ opening, onOpen, onDismiss }: Props) {
             <img
               src={envelopeImage}
               alt=""
-              className="blur-stable block h-auto w-full rounded-[34px] object-cover shadow-[0_34px_120px_-28px_rgba(70,52,30,0.34),0_52px_130px_-20px_rgba(72,52,28,0.56)] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.01] sm:rounded-[40px]"
+              className="blur-stable block h-auto w-full rounded-[34px] object-cover shadow-[0_34px_120px_-28px_rgba(70,52,30,0.34),0_52px_130px_-20px_rgba(72,52,28,0.56)] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.01] sm:rounded-[40px] mt-7"
               style={{
                 filter: "drop-shadow(0 36px 28px rgba(66, 46, 28, 0.26))",
                 willChange: "transform, filter",
@@ -119,10 +119,9 @@ export function EnvelopeIntro({ opening, onOpen, onDismiss }: Props) {
             <div className="transition-all">
               <div className="h-8" />
               <div className="text-[14px] uppercase tracking-[0.35em] text-[#3f3823]">
-                A little sealed envelope
+                Tap the seal to open
               </div>
               <div className="mt-3 font-['Cormorant_Garamond',_serif] text-xl italic text-[#3f3823]">
-                Tap the seal to open
               </div>
             </div>
           </div>

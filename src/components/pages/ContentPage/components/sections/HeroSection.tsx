@@ -39,7 +39,7 @@ export function HeroSection({ page }: { page: any }) {
               </h1>
 
               <div className="mt-5 flex items-center justify-center gap-3">
-                <span className="text-sm uppercase tracking-[0.35em] text-ink-600 md:text-md font-extrabold">
+                <span className="text-sm  tracking-[0.15em] text-ink-600 md:text-md font-[450]">
                   {page.dateLabel}
                 </span>
               </div>
