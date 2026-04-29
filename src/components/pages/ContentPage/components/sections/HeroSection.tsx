@@ -16,7 +16,7 @@ export function HeroSection({ page }: { page: any }) {
               <img
                 src={logo}
                 alt=""
-                className="mx-auto mb-8 w-[130px] md:w-56"
+                className="mx-auto mb-8 w-[130px] mt-[5px] md:w-56"
                 draggable={false}
               />
               <img

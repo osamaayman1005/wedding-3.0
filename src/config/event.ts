@@ -17,7 +17,7 @@ export const WEDDING = {
     ar: "الجمعة ٥ يونيو ٢٠٢٦",
   },
   timeLabel: {
-    en: "8:00 pm to 11:00 pm",
+    en: "8:00 PM to 11:00 PM",
     ar: "٨:٠٠ مساءً إلى ١١:٠٠ مساءً",
   },
   dressCode: {

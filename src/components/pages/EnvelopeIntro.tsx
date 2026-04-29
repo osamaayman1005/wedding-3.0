@@ -4,6 +4,7 @@ import { GlowOrbs } from "../shared/GlowOrbs";
 import { ParticlesCanvas } from "../shared/ParticlesCanvas";
 
 type Props = {
+  opening: boolean;
   onOpen: () => void;
   onDismiss: () => void;
 };
@@ -24,13 +25,9 @@ function useReducedMotion() {
   return reducedMotion;
 }
 
-export function EnvelopeIntro({ onOpen, onDismiss }: Props) {
-  const [opening, setOpening] = useState(false);
-  const [fading, setFading] = useState(false);
+export function EnvelopeIntro({ opening, onOpen, onDismiss }: Props) {
   const reducedMotion = useReducedMotion();
-  const openDurationMs = reducedMotion ? 1000 : 1800;
-  const fadeStartMs = Math.round(openDurationMs * 0.08);
-  const fadeDurationMs = openDurationMs - fadeStartMs;
+  const openDurationMs = reducedMotion ? 500 : 5500;
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -44,31 +41,20 @@ export function EnvelopeIntro({ onOpen, onDismiss }: Props) {
   useEffect(() => {
     if (!opening) return;
 
-    setFading(false);
-
-    const fadeTimeout = window.setTimeout(() => setFading(true), fadeStartMs);
     const dismissTimeout = window.setTimeout(onDismiss, openDurationMs);
 
     return () => {
-      window.clearTimeout(fadeTimeout);
       window.clearTimeout(dismissTimeout);
     };
-  }, [opening, onDismiss, fadeStartMs, openDurationMs]);
+  }, [opening, onDismiss, openDurationMs]);
 
   const openEnvelope = () => {
-    if (!opening) {
-      setOpening(true);
-      onOpen();
-    }
+    if (!opening) onOpen();
   };
 
   const motionStyle = {
     transitionDuration: `${openDurationMs}ms`,
     transitionTimingFunction: "cubic-bezier(0.16, 0.9, 0.22, 1)",
-  } as const;
-  const fadeStyle = {
-    transitionDuration: `${fadeDurationMs}ms`,
-    transitionTimingFunction: "ease-out",
   } as const;
   const envelopeMaskStyle = opening
     ? {
@@ -86,9 +72,9 @@ export function EnvelopeIntro({ onOpen, onDismiss }: Props) {
   return (
     <div
       className={`fixed inset-0 z-50 overflow-hidden bg-transparent text-[#4f4336] transition-opacity ${
-        fading ? "pointer-events-none opacity-0" : "opacity-100"
+        opening ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
-      style={fadeStyle}
+      style={motionStyle}
     >
       <div className="absolute inset-0 paper-bg" />
       <div className="absolute inset-0 section-wash opacity-80" />
@@ -106,8 +92,8 @@ export function EnvelopeIntro({ onOpen, onDismiss }: Props) {
         >
           <div
             className={`relative mx-auto origin-center w-full transform-gpu transition-[transform,opacity,filter] ${
-              opening ? "scale-[1.55] blur-0" : "scale-100"
-            } ${fading ? "opacity-0" : "opacity-100"}`}
+              opening ? "scale-[1.34] -translate-y-2" : "scale-100"
+            }`}
             style={motionStyle}
           >
             <div className="blur-stable absolute left-1/2 top-[80%] h-44 w-[78%] -translate-x-1/2 rounded-full bg-[#3f2d1c]/46 blur-[52px] mix-blend-multiply" />
@@ -128,12 +114,9 @@ export function EnvelopeIntro({ onOpen, onDismiss }: Props) {
 
           <div
             className="mx-auto mt-5 max-w-md text-center transition-all"
-            style={fadeStyle}
+            style={motionStyle}
           >
-            <div
-              className={`transition-all ${fading ? "translate-y-2 opacity-0" : "translate-y-0 opacity-100"}`}
-              style={fadeStyle}
-            >
+            <div className="transition-all">
               <div className="h-8" />
               <div className="text-[14px] uppercase tracking-[0.35em] text-[#3f3823]">
                 A little sealed envelope

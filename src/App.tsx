@@ -2,9 +2,11 @@ import {
   HashRouter,
   Routes,
   Route,
+  useLocation,
   useNavigate,
   Navigate,
 } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useI18n } from "./context/I18nContext";
 import { TopBar } from "./components/shared/TopBar";
 import { EnvelopeIntro } from "./components/pages/EnvelopeIntro";
@@ -14,30 +16,47 @@ import { Background } from "./components/shared/Background";
 function AppRoutes() {
   const { lang } = useI18n();
   const navigate = useNavigate();
+  const location = useLocation();
+  const [isEnvelopeOpening, setIsEnvelopeOpening] = useState(false);
 
   const handleOpen = () => {
-    // When envelope is clicked, move to /invitation
+    if (isEnvelopeOpening) return;
+    setIsEnvelopeOpening(true);
     navigate("/invitation");
   };
 
+  const handleDismiss = () => {
+    setIsEnvelopeOpening(false);
+  };
+
   const returnToEnvelope = () => {
-    // Navigate back to home
     navigate("/");
     window.requestAnimationFrame(() => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   };
 
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setIsEnvelopeOpening(false);
+    }
+  }, [location.pathname]);
+
+  const showEnvelope = location.pathname === "/" || isEnvelopeOpening;
+
   return (
     <div
       className={`${lang === "ar" ? "font-ar" : "font-en"} relative min-h-screen`}
     >
-      <Routes>
-        {/* Landing Page: The Envelope */}
-        <Route
-          path="/"
-          element={<EnvelopeIntro onOpen={handleOpen} onDismiss={handleOpen} />}
+      {showEnvelope ? (
+        <EnvelopeIntro
+          opening={isEnvelopeOpening}
+          onOpen={handleOpen}
+          onDismiss={handleDismiss}
         />
+      ) : null}
+      <Routes>
+        <Route path="/" element={<></>} />
 
         {/* Content Page: The Details */}
         <Route

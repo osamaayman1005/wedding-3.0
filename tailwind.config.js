@@ -32,10 +32,10 @@ export default {
         },
       },
       fontFamily: {
-        en: ['Cormorant Garamond', 'ui-serif', 'Georgia', 'serif'],
+        en: ['EB Garamond', 'ui-serif', 'Georgia', 'serif'],
         ar: ['Amiri', 'ui-serif', 'Georgia', 'serif'],
-        serif: ['Cormorant Garamond', 'ui-serif', 'Georgia', 'serif'],
-        script: ['Italianno', 'Cormorant Garamond', 'cursive'],
+        serif: ['EB Garamond', 'ui-serif', 'Georgia', 'serif'],
+        script: ['Italianno', 'EB Garamond', 'cursive'],
         arabic: ['Rakkas', 'Amiri', 'serif'],
       },
       boxShadow: {
