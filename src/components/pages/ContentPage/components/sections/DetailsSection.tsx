@@ -41,7 +41,7 @@ export function DetailsSection({ page, lang, WEDDING }: any) {
           </div>
           <div className={glassyClassName}>
             <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
-              {lang === "en" ? "Dress" : "الزي"}
+              {lang === "en" ? "Dress Code" : "الزي"}
             </div>
             <div className="mt-2 text-sm font-[400] text-ink-800">
               {WEDDING.dressCode[lang]}
