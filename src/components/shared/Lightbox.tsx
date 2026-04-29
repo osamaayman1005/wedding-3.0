@@ -32,7 +32,7 @@ export function Lightbox({
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 grid place-items-center bg-ink-900/35 p-4 backdrop-blur-sm"
+      className="glass-stable fixed inset-0 z-50 grid place-items-center bg-ink-900/35 p-4 backdrop-blur-sm"
       onMouseDown={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}

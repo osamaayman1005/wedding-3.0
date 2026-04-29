@@ -26,7 +26,7 @@ export function RsvpSection({
         <div className="mx-auto max-w-2xl">
           <form
             onSubmit={handleSubmit}
-            className="space-y-4 rounded-[30px] border border-[#ddd2c4]/80 bg-white/92 p-6 shadow-soft md:p-8 backdrop-blur-sm"
+            className="glass-stable space-y-4 rounded-[30px] border border-[#ddd2c4]/80 bg-white/92 p-6 shadow-soft md:p-8 backdrop-blur-sm"
           >
             {/* Full Name Input */}
             <div className="grid gap-2 text-start">

@@ -22,7 +22,7 @@ export function LocationSection({ page, lang, WEDDING }: any) {
           </div>
 
           {/* Venue Details Card */}
-          <div className="rounded-[30px] border border-[#ddd2c4]/80 p-6 shadow-soft bg-white/25 backdrop-blur-sm">
+          <div className="glass-stable rounded-[30px] border border-[#ddd2c4]/80 bg-white/25 p-6 shadow-soft backdrop-blur-sm">
             <div className="text-[10px] uppercase tracking-[0.45em] text-[#8d7d67] flex flex-col items-center">
               {page.venueEyebrow}
             </div>

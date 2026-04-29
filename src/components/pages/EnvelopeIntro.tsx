@@ -110,16 +110,17 @@ export function EnvelopeIntro({ onOpen, onDismiss }: Props) {
             } ${fading ? "opacity-0" : "opacity-100"}`}
             style={motionStyle}
           >
-            <div className="absolute left-1/2 top-[80%] h-44 w-[78%] -translate-x-1/2 rounded-full bg-[#3f2d1c]/46 blur-[52px] mix-blend-multiply" />
-            <div className="absolute left-1/2 top-[84%] h-24 w-[62%] -translate-x-1/2 rounded-full bg-[#3f2d1c]/30 blur-[28px] mix-blend-multiply" />
-            <div className="absolute left-1/2 top-[87%] h-12 w-[44%] -translate-x-1/2 rounded-full bg-[#24180f]/18 blur-[14px]" />
+            <div className="blur-stable absolute left-1/2 top-[80%] h-44 w-[78%] -translate-x-1/2 rounded-full bg-[#3f2d1c]/46 blur-[52px] mix-blend-multiply" />
+            <div className="blur-stable absolute left-1/2 top-[84%] h-24 w-[62%] -translate-x-1/2 rounded-full bg-[#3f2d1c]/30 blur-[28px] mix-blend-multiply" />
+            <div className="blur-stable absolute left-1/2 top-[87%] h-12 w-[44%] -translate-x-1/2 rounded-full bg-[#24180f]/18 blur-[14px]" />
 
             <img
               src={envelopeImage}
               alt=""
-              className="block h-auto w-full rounded-[34px] object-cover shadow-[0_34px_120px_-28px_rgba(70,52,30,0.34),0_52px_130px_-20px_rgba(72,52,28,0.56)] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.01] sm:rounded-[40px]"
+              className="blur-stable block h-auto w-full rounded-[34px] object-cover shadow-[0_34px_120px_-28px_rgba(70,52,30,0.34),0_52px_130px_-20px_rgba(72,52,28,0.56)] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.01] sm:rounded-[40px]"
               style={{
                 filter: "drop-shadow(0 36px 28px rgba(66, 46, 28, 0.26))",
+                willChange: "transform, filter",
                 ...envelopeMaskStyle,
               }}
             />

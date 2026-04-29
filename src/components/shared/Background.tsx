@@ -18,6 +18,9 @@ export function Background() {
         src={background}
         alt=""
         className="block h-full w-full object-cover"
+        loading="eager"
+        decoding="sync"
+        fetchPriority="high"
         style={{
           // Ensures the image stays sharp and doesn't "pop"
           backfaceVisibility: "hidden",

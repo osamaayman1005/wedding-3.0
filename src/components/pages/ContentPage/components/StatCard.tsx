@@ -1,7 +1,7 @@
 export function StatCard({ value, label }: { value: string; label: string }) {
   return (
     <div
-      className="group flex aspect-square w-full max-w-[180px] items-center justify-center 
+      className="glass-stable group flex aspect-square w-full max-w-[180px] items-center justify-center 
                     rounded-full border border-[#ddd2c4]/0 p-1.5 
                     transition duration-500 hover:-translate-y-0.5  backdrop-blur-sm shadow-soft"
     >

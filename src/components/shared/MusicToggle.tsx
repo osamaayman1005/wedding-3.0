@@ -43,7 +43,7 @@ export function MusicToggle() {
       type="button"
       onClick={() => setEnabled((v) => !v)}
       className={`
-        inline-flex items-center rounded-full px-3 py-2 text-xs tracking-wide transition-all duration-300 backdrop-blur-sm ring-1
+        glass-stable inline-flex items-center rounded-full px-3 py-2 text-xs tracking-wide transition-all duration-300 backdrop-blur-sm ring-1
         ${
           enabled
             ? "btn-primary-color shadow-md ring-transparent" // Your custom Primary class

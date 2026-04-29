@@ -3,7 +3,7 @@ import { SectionFrame } from "../../components";
 
 export function DetailsSection({ page, lang, WEDDING }: any) {
   const glassyClassName =
-    "rounded-[22px] border border-[#ddd2c4]/50 px-4 py-4 md:p-8  backdrop-blur-sm shadow-soft";
+    "glass-stable rounded-[22px] border border-[#ddd2c4]/50 px-4 py-4 md:p-8 backdrop-blur-sm shadow-soft";
   return (
     <SectionFrame
       id="details"

@@ -72,6 +72,19 @@ h1, h2, h3, h4 {
     background-image: theme('backgroundImage.paper');
   }
 
+  .glass-stable {
+    will-change: transform, backdrop-filter;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    isolation: isolate;
+  }
+
+  .blur-stable {
+    will-change: transform, filter;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
 .bg-invitation {
   background-image: theme('backgroundImage.invitation');
   /* Fix: Lock the background behavior */
@@ -137,6 +150,11 @@ h1, h2, h3, h4 {
   background-color: #66714608 !important;
   color: #043011 !important;
   backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  will-change: transform, backdrop-filter;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  isolation: isolate;
 }
 
 /* Apply to all divs and common containers */

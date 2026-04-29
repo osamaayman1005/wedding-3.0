@@ -3,6 +3,11 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 import { I18nProvider } from "./context/I18nContext.tsx";
+import backgroundImage from "./assets/bg-new.jpg";
+
+const invitationBackgroundPreload = new Image();
+invitationBackgroundPreload.src = backgroundImage;
+invitationBackgroundPreload.fetchPriority = "high";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
