@@ -12,6 +12,11 @@ import { TopBar } from "./components/shared/TopBar";
 import { EnvelopeIntro } from "./components/pages/EnvelopeIntro";
 import { ContentPage } from "./components/pages/ContentPage";
 import { Background } from "./components/shared/Background";
+import {
+  primeInvitationMusic,
+  startInvitationMusic,
+  stopInvitationMusic,
+} from "./components/shared/MusicToggle";
 
 function AppRoutes() {
   const { lang } = useI18n();
@@ -22,6 +27,8 @@ function AppRoutes() {
   const handleOpen = () => {
     if (isEnvelopeOpening) return;
     setIsEnvelopeOpening(true);
+    primeInvitationMusic();
+    startInvitationMusic().catch(() => {});
     navigate("/invitation");
   };
 
@@ -30,6 +37,7 @@ function AppRoutes() {
   };
 
   const returnToEnvelope = () => {
+    stopInvitationMusic();
     navigate("/");
     window.requestAnimationFrame(() => {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -39,6 +47,7 @@ function AppRoutes() {
   useEffect(() => {
     if (location.pathname === "/") {
       setIsEnvelopeOpening(false);
+      stopInvitationMusic();
     }
   }, [location.pathname]);
 

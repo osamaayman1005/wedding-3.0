@@ -1,23 +1,61 @@
-import { useEffect, useRef } from "react";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { useEffect, useRef, useState } from "react";
 import { useI18n } from "../../context/I18nContext";
 import { t } from "../../i18n/content";
 
-const AUDIO_SRC = `${import.meta.env.BASE_URL}audio/ambient.wav`;
+const AUDIO_SRC = `${import.meta.env.BASE_URL}audio/music.mp3`;
+const SESSION_KEY = "invite_music_from_envelope";
 
-export function MusicToggle() {
-  const { lang } = useI18n();
-  const [enabled, setEnabled] = useLocalStorage<boolean>("invite_music", false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+let sharedAudio: HTMLAudioElement | null = null;
 
-  useEffect(() => {
+function consumeLaunchMusicFlag() {
+  try {
+    const shouldStart = sessionStorage.getItem(SESSION_KEY) === "true";
+    sessionStorage.removeItem(SESSION_KEY);
+    return shouldStart;
+  } catch {
+    return false;
+  }
+}
+
+function getSharedAudio() {
+  if (!sharedAudio) {
     const audio = new Audio(AUDIO_SRC);
     audio.loop = true;
     audio.preload = "auto";
     audio.volume = 0.32;
+    sharedAudio = audio;
+  }
+
+  return sharedAudio;
+}
+
+export function primeInvitationMusic() {
+  try {
+    sessionStorage.setItem(SESSION_KEY, "true");
+  } catch {
+    // ignore storage failures
+  }
+}
+
+export function startInvitationMusic() {
+  const audio = getSharedAudio();
+  return audio.play();
+}
+
+export function stopInvitationMusic() {
+  sharedAudio?.pause();
+}
+
+export function MusicToggle() {
+  const { lang } = useI18n();
+  const [enabled, setEnabled] = useState<boolean>(() => consumeLaunchMusicFlag());
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    const audio = getSharedAudio();
     audioRef.current = audio;
     return () => {
-      audio.pause();
+      stopInvitationMusic();
       audioRef.current = null;
     };
   }, []);
