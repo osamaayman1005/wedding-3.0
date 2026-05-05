@@ -31,11 +31,11 @@ export function LocationSection({ page, lang, WEDDING }: any) {
               {WEDDING.venue.name[lang]}
             </div>
 
-            {/* Access & Parking Mini-Cards */}
+            {/* Arrival & Parking Mini-Cards */}
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-[#faf7f1]/80 px-4 py-4">
                 <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
-                  {lang === "en" ? "Access" : "الوصول"}
+                  {lang === "en" ? "Arrival" : "الوصول"}
                 </div>
                 <div className="mt-2 text-sm font-[400] text-ink-800">
                   {lang === "en"
