@@ -57,7 +57,7 @@ const galleryFramesByLang: Record<
       caption: content.en.frameSix,
       objectPosition: "center 58%",
     },
-        {
+    {
       src: venueReservationPortrait,
       alt: "Bride and groom portrait under the mosque arch",
       caption: content.en.frameFour,

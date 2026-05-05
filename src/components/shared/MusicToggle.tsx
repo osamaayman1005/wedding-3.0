@@ -48,7 +48,9 @@ export function stopInvitationMusic() {
 
 export function MusicToggle() {
   const { lang } = useI18n();
-  const [enabled, setEnabled] = useState<boolean>(() => consumeLaunchMusicFlag());
+  const [enabled, setEnabled] = useState<boolean>(() =>
+    consumeLaunchMusicFlag(),
+  );
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {

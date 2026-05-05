@@ -123,8 +123,7 @@ export function EnvelopeIntro({ opening, onOpen, onDismiss }: Props) {
               <div className="text-[14px] uppercase tracking-[0.35em] text-[#3f3823]">
                 Tap the seal to open
               </div>
-              <div className="mt-3 font-display text-xl italic text-[#3f3823]">
-              </div>
+              <div className="mt-3 font-display text-xl italic text-[#3f3823]"></div>
             </div>
           </div>
         </button>
