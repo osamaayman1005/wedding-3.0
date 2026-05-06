@@ -1,4 +1,4 @@
-import { Reveal } from "../../../../shared/Reveal";
+﻿import { Reveal } from "../../../../shared/Reveal";
 import { SectionFrame, InvitationButton } from "../../components";
 
 export function LocationSection({ page, lang, WEDDING }: any) {
@@ -30,17 +30,15 @@ export function LocationSection({ page, lang, WEDDING }: any) {
             <div className="mt-3 w-full text-center text-3xl font-[400] tracking-[0.01em] text-ink-800">
               {WEDDING.venue.name[lang]}
             </div>
-
-            {/* Arrival & Parking Mini-Cards */}
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-[#faf7f1]/80 px-4 py-4">
                 <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
-                  {lang === "en" ? "Arrival" : "الوصول"}
+                  {lang === "en" ? "Address" : "العنوان"}
                 </div>
                 <div className="mt-2 text-sm font-[400] text-ink-800">
                   {lang === "en"
-                    ? "Easy arrival via Almaza"
-                    : "وصول سهل عبر ألماظة"}
+                    ? "Almazah area, Heliopolis, Cairo"
+                    : "منطقة ألماظة، مصر الجديدة، القاهرة"}
                 </div>
               </div>
 
