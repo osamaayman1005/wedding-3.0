@@ -51,3 +51,4 @@ VITE_MAP_QUERY="Masged Al Aly Al Azeem, Cairo"
 - Event details (date/time/venue): `wedding-invite/src/config/event.ts`
 - Translations: `wedding-invite/src/i18n/content.ts`
 - Logo + bar assets: `wedding-invite/src/assets/logo.jpeg`, `wedding-invite/src/assets/bar.jpeg`
+test
