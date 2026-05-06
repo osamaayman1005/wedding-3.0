@@ -44,6 +44,25 @@ h1, h2, h3, h4 {
   font-family: theme('fontFamily.arabic'); 
 }
 
+.section-eyebrow {
+  display: inline-block;
+  line-height: 1.5;
+}
+
+/* Keep Arabic eyebrow text crisp on iPhone Safari */
+@supports (-webkit-touch-callout: none) {
+  [dir="rtl"] .section-eyebrow {
+    font-family: theme('fontFamily.arabic');
+    text-transform: none;
+    letter-spacing: normal;
+    line-height: 1.75;
+    padding-top: 0.08em;
+    padding-bottom: 0.18em;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
+
 /* Force Arabic font for top-level headings when content direction is RTL */
 [dir="rtl"] h1, [dir="rtl"] h2 {
   font-family: theme('fontFamily.arabic');
