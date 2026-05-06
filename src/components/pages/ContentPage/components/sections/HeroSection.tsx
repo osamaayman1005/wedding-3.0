@@ -31,7 +31,7 @@ export function HeroSection({ page }: { page: any }) {
                 className="mx-auto w-60  mb-5 md:w-56"
                 draggable={false}
               />
-              <p className="text-[10px] uppercase tracking-[0.25em] text-[#352f26]">
+              <p className="section-eyebrow text-[10px] uppercase tracking-[0.25em] text-[#352f26]">
                 {page.welcome}
               </p>
               <h1 className="mt-4 font-script text-5xl leading-none text-ink-800 md:text-7xl">
@@ -65,7 +65,7 @@ export function HeroSection({ page }: { page: any }) {
               <div className="mt-4 flex justify-center">
                 <SectionDivider />
               </div>
-              <p className="mt-4 text-[11px] uppercase tracking-[0.42em] text-[#352f26]">
+              <p className="section-eyebrow mt-4 text-[11px] uppercase tracking-[0.42em] text-[#352f26]">
                 {page.scroll}
               </p>
             </div>
