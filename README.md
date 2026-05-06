@@ -22,9 +22,6 @@ npm run preview
 - Push the project to a GitHub repository.
 - In repository settings, set `Pages` source to `GitHub Actions`.
 - Push to `main` and the workflow at `.github/workflows/deploy.yml` will build and publish the site.
-- If you are using a custom domain like `osamaandfarah.com`, set the domain in `Settings -> Pages -> Custom domain` and point your DNS to GitHub Pages.
-- If you are publishing at the repository path `https://<user>.github.io/wedding-3.0/`, build with `VITE_BASE_PATH=/wedding-3.0/ npm run build`.
-- If you are publishing on a custom domain, leave `VITE_BASE_PATH` unset so the build uses `/`.
 - If your default branch is not `main`, update the workflow branch filter.
 
 ## Personalization
