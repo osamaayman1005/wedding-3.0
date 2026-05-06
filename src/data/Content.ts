@@ -66,7 +66,7 @@ export const content = {
     scroll: "مرر للاكتشاف",
     saveTheDate: "احفظوا الموعد",
     countdownTitle: "بدأ العد التنازلي",
-    countdownLead: "لليوم الأكثر تميزاً والمنتظر منذ وقت طويل.",
+    countdownLead: "لليوم المنتظر منذ وقت طويل.",
     detailsEyebrow: "تفاصيل الحدث",
     detailsTitle: "المراسم والاحتفال",
     detailsLead:
