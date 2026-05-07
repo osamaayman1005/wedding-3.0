@@ -44,6 +44,10 @@ h1, h2, h3, h4 {
   font-family: theme('fontFamily.arabic'); 
 }
 
+.rtl-ios-safe-text {
+  line-height: 1.5;
+}
+
 .section-eyebrow {
   display: inline-block;
   line-height: 1.5;
@@ -51,7 +55,8 @@ h1, h2, h3, h4 {
 
 /* Keep Arabic eyebrow text crisp on iPhone Safari */
 @supports (-webkit-touch-callout: none) {
-  [dir="rtl"] .section-eyebrow {
+  [dir="rtl"] .section-eyebrow,
+  [dir="rtl"] .rtl-ios-safe-text {
     font-family: theme('fontFamily.arabic');
     text-transform: none;
     letter-spacing: normal;

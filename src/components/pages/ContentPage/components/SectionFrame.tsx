@@ -30,17 +30,17 @@ export function SectionFrame({
           <div className="relative px-5 py-10 md:px-10 md:py-12">
             <Reveal>
               <header className="mx-auto max-w-2xl text-center">
-                <p className="section-eyebrow text-[10px] uppercase tracking-[0.30em] text-[#40382b]">
+                <p className="section-eyebrow rtl-ios-safe-text text-[10px] uppercase tracking-[0.30em] text-[#40382b]">
                   {eyebrow}
                 </p>
-                <h2 className="mt-4 text-5xl font-[400] tracking-[0.01em] text-ink-800 md:text-4xl">
+                <h2 className="rtl-ios-safe-text mt-4 text-5xl font-[400] tracking-[0.01em] text-ink-800 md:text-4xl">
                   {title}
                 </h2>
                 <div className="mt-5">
                   <SectionDivider />
                 </div>
                 {subtitle ? (
-                  <p className="mx-auto mt-5 max-w-[58ch] text-md leading-relaxed text-ink-600 md:text-base italic">
+                  <p className="rtl-ios-safe-text mx-auto mt-5 max-w-[58ch] text-md leading-relaxed text-ink-600 md:text-base italic">
                     {subtitle}
                   </p>
                 ) : null}

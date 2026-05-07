@@ -13,7 +13,7 @@ export function CountDownSection({ page, countdown, lang }: any) {
       {countdown.isPast ? (
         <Reveal>
           <div className="mx-auto max-w-xl rounded-[28px] border border-[#ddd2c4]/80 bg-white/92 px-6 py-8 text-center">
-            <div className="text-2xl font-[400] tracking-[0.03em] text-ink-800">
+            <div className="rtl-ios-safe-text text-2xl font-[400] tracking-[0.03em] text-ink-800">
               {lang === "en" ? "It's time" : "حان الموعد"}
             </div>
           </div>

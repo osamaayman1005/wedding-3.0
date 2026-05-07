@@ -25,7 +25,7 @@ export function InvitationButton({
   const navigate = useNavigate();
 
   const base =
-    "inline-flex items-center justify-center rounded-full px-5 py-3 text-xs uppercase tracking-[0.18em] transition duration-500 hover:-translate-y-0.5";
+    "rtl-ios-safe-text inline-flex items-center justify-center rounded-full px-5 py-3 text-xs uppercase tracking-[0.18em] transition duration-500 hover:-translate-y-0.5";
   const styles =
     variant === "solid"
       ? "border border-ink-800 bg-ink-800 text-ivory shadow-[0_18px_40px_-24px_rgba(43,42,38,0.55)] hover:bg-ink-700 btn-primary-color"

@@ -23,19 +23,19 @@ export function LocationSection({ page, lang, WEDDING }: any) {
 
           {/* Venue Details Card */}
           <div className="glass-stable rounded-[30px] border border-[#ddd2c4]/80 bg-white/25 p-6 shadow-soft backdrop-blur-sm">
-            <div className="text-[10px] uppercase tracking-[0.45em] text-[#8d7d67] flex flex-col items-center">
+            <div className="rtl-ios-safe-text text-[10px] uppercase tracking-[0.45em] text-[#8d7d67] flex flex-col items-center">
               {page.venueEyebrow}
             </div>
 
-            <div className="mt-3 w-full text-center text-3xl font-[400] tracking-[0.01em] text-ink-800">
+            <div className="rtl-ios-safe-text mt-3 w-full text-center text-3xl font-[400] tracking-[0.01em] text-ink-800">
               {WEDDING.venue.name[lang]}
             </div>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-[#faf7f1]/80 px-4 py-4">
-                <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
+                <div className="rtl-ios-safe-text text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
                   {lang === "en" ? "Address" : "العنوان"}
                 </div>
-                <div className="mt-2 text-sm font-[400] text-ink-800">
+                <div className="rtl-ios-safe-text mt-2 text-sm font-[400] text-ink-800">
                   {lang === "en"
                     ? "Almazah area, Heliopolis, Cairo"
                     : "منطقة ألماظة، مصر الجديدة، القاهرة"}
@@ -43,10 +43,10 @@ export function LocationSection({ page, lang, WEDDING }: any) {
               </div>
 
               <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-[#faf7f1]/80 px-4 py-4">
-                <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
+                <div className="rtl-ios-safe-text text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
                   {lang === "en" ? "Parking" : "المواقف"}
                 </div>
-                <div className="mt-2 text-sm font-[400] text-ink-800">
+                <div className="rtl-ios-safe-text mt-2 text-sm font-[400] text-ink-800">
                   {lang === "en" ? "Available on site" : "متوفرة بالمكان"}
                 </div>
               </div>

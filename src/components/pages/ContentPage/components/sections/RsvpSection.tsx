@@ -30,7 +30,7 @@ export function RsvpSection({
           >
             {/* Full Name Input */}
             <div className="grid gap-2 text-start">
-              <label className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
+              <label className="rtl-ios-safe-text text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
                 {page.fullName}
               </label>
               <input
@@ -39,14 +39,14 @@ export function RsvpSection({
                 required
                 dir={dir}
                 placeholder={page.fullName}
-                className="w-full rounded-[18px] border border-[#ddd2c4]/80 bg-[#faf7f1] px-4 py-3 text-sm text-ink-800 outline-none transition focus:border-[#b9ab98] focus:ring-2 focus:ring-[#b9ab98]/20"
+                className="rtl-ios-safe-text w-full rounded-[18px] border border-[#ddd2c4]/80 bg-[#faf7f1] px-4 py-3 text-sm text-ink-800 outline-none transition focus:border-[#b9ab98] focus:ring-2 focus:ring-[#b9ab98]/20"
                 disabled={isSubmitting}
               />
             </div>
 
             {/* Phone Input */}
             <div className="grid gap-2 text-start">
-              <label className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
+              <label className="rtl-ios-safe-text text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
                 {page.numberOfGuests}
               </label>
               <input
@@ -61,14 +61,14 @@ export function RsvpSection({
                 }
                 dir={dir}
                 placeholder={page.numberOfGuests}
-                className="w-full rounded-[18px] border border-[#ddd2c4]/80 bg-[#faf7f1] px-4 py-3 text-sm text-ink-800 outline-none transition focus:border-[#b9ab98] focus:ring-2 focus:ring-[#b9ab98]/20"
+                className="rtl-ios-safe-text w-full rounded-[18px] border border-[#ddd2c4]/80 bg-[#faf7f1] px-4 py-3 text-sm text-ink-800 outline-none transition focus:border-[#b9ab98] focus:ring-2 focus:ring-[#b9ab98]/20"
                 disabled={isSubmitting}
               />
             </div>
 
             {/* Attendance Toggle */}
             <div className="grid gap-2 text-start">
-              <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
+              <div className="rtl-ios-safe-text text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
                 {page.willYouAttend}
               </div>
               <div className="grid grid-cols-2 gap-3">
@@ -100,7 +100,7 @@ export function RsvpSection({
 
             {/* Success/Stored Message Logic */}
             {savedMessage && (
-              <div className="rounded-[22px] border border-[#ddd2c4]/70 bg-[#faf7f1] px-4 py-3 text-sm text-ink-700">
+              <div className="rtl-ios-safe-text rounded-[22px] border border-[#ddd2c4]/70 bg-[#faf7f1] px-4 py-3 text-sm text-ink-700">
                 {savedMessage}
               </div>
             )}

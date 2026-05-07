@@ -14,36 +14,36 @@ export function DetailsSection({ page, lang, WEDDING }: any) {
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
           {/* Venue Card */}
           <div className={glassyClassName}>
-            <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
+            <div className="rtl-ios-safe-text text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
               {lang === "en" ? "Venue" : "المكان"}
             </div>
-            <div className="mt-2 text-sm font-[400] text-ink-800">
+            <div className="rtl-ios-safe-text mt-2 text-sm font-[400] text-ink-800">
               {WEDDING.venue.name[lang]}
             </div>
           </div>
 
           {/* Time Card */}
           <div className={glassyClassName}>
-            <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
+            <div className="rtl-ios-safe-text text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
               {lang === "en" ? "Time" : "الوقت"}
             </div>
-            <div className="mt-2 text-sm font-[400] text-ink-800">
+            <div className="rtl-ios-safe-text mt-2 text-sm font-[400] text-ink-800">
               {WEDDING.timeLabel[lang]}
             </div>
           </div>
           <div className={glassyClassName}>
-            <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
+            <div className="rtl-ios-safe-text text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
               {lang === "en" ? "Date" : "التاريخ"}
             </div>
-            <div className="mt-2 text-sm font-[400] text-ink-800">
+            <div className="rtl-ios-safe-text mt-2 text-sm font-[400] text-ink-800">
               {WEDDING.dateLabel[lang]}
             </div>
           </div>
           <div className={glassyClassName}>
-            <div className="text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
+            <div className="rtl-ios-safe-text text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
               {lang === "en" ? "Dress Code" : "الزي"}
             </div>
-            <div className="mt-2 text-sm font-[400] text-ink-800">
+            <div className="rtl-ios-safe-text mt-2 text-sm font-[400] text-ink-800">
               {WEDDING.dressCode[lang]}
             </div>
           </div>

@@ -31,20 +31,20 @@ export function HeroSection({ page }: { page: any }) {
                 className="mx-auto w-60  mb-5 md:w-56"
                 draggable={false}
               />
-              <p className="section-eyebrow text-[10px] uppercase tracking-[0.25em] text-[#352f26]">
+              <p className="section-eyebrow rtl-ios-safe-text text-[10px] uppercase tracking-[0.25em] text-[#352f26]">
                 {page.welcome}
               </p>
-              <h1 className="mt-4 font-script text-5xl leading-none text-ink-800 md:text-7xl">
+              <h1 className="rtl-ios-safe-text mt-4 font-script text-5xl leading-none text-ink-800 md:text-7xl">
                 {page.couple}
               </h1>
 
               <div className="mt-5 flex items-center justify-center gap-3">
-                <span className="text-sm  tracking-[0.15em] text-ink-600 md:text-md font-[450]">
+                <span className="rtl-ios-safe-text text-sm  tracking-[0.15em] text-ink-600 md:text-md font-[450]">
                   {page.dateLabel}
                 </span>
               </div>
 
-              <p className="mx-auto mt-5 max-w-2xl text-md leading-relaxed text-ink-600 md:text-base italic">
+              <p className="rtl-ios-safe-text mx-auto mt-5 max-w-2xl text-md leading-relaxed text-ink-600 md:text-base italic">
                 {page.tagline}
               </p>
 
@@ -65,7 +65,7 @@ export function HeroSection({ page }: { page: any }) {
               <div className="mt-4 flex justify-center">
                 <SectionDivider />
               </div>
-              <p className="section-eyebrow mt-4 text-[11px] uppercase tracking-[0.42em] text-[#352f26]">
+              <p className="section-eyebrow rtl-ios-safe-text mt-4 text-[11px] uppercase tracking-[0.42em] text-[#352f26]">
                 {page.scroll}
               </p>
             </div>

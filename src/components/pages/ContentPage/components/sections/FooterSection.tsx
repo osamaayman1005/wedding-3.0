@@ -8,11 +8,11 @@ export function FooterSection({ page, lang, onReturnToEnvelope }: any) {
           {/* Your updated dot-style divider */}
           <SectionDivider />
 
-          <p className="mt-5 text-lg font-[400] text-ink-800">
+          <p className="rtl-ios-safe-text mt-5 text-lg font-[400] text-ink-800">
             {page.footerLove}
           </p>
 
-          <p className="mt-2 text-[11px] uppercase tracking-[0.45em] text-[#8d7d67]">
+          <p className="rtl-ios-safe-text mt-2 text-[11px] uppercase tracking-[0.45em] text-[#8d7d67]">
             {page.footerDate}
           </p>
 
