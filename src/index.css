@@ -103,7 +103,7 @@ h1, h2, h3, h4 {
   }
 
 .bg-invitation {
-  background-image: theme('backgroundImage.invitation');
+  background-image: url('./assets/Invitation-background.jpeg');
   /* Fix: Lock the background behavior */
   background-attachment: fixed;
   background-size: 100vw 100vh; /* Forces it to fill the screen without resizing */

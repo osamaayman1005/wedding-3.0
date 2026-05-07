@@ -44,14 +44,13 @@ export default {
           '0 20px 60px -28px rgba(43,42,38,0.22), 0 10px 30px -20px rgba(43,42,38,0.16)',
         glow: '0 0 0 1px rgba(144,160,128,0.14), 0 0 80px rgba(144,160,128,0.08)',
       },
-    backgroundImage: {
-      paper: `
-        radial-gradient(at 20% 10%, color-mix(in oklab, #b0c0a8 8%, transparent) 0, transparent 50%),
-        radial-gradient(at 80% 90%, color-mix(in oklab, #d8cdbf 15%, transparent) 0, transparent 50%),
-        linear-gradient(to bottom, #fafaf9, #f5f5f4)
-      `,
-      invitation: 'url("/src/assets/Invitation-background.jpeg")',
-    },
+      backgroundImage: {
+        paper: `
+          radial-gradient(at 20% 10%, color-mix(in oklab, #b0c0a8 8%, transparent) 0, transparent 50%),
+          radial-gradient(at 80% 90%, color-mix(in oklab, #d8cdbf 15%, transparent) 0, transparent 50%),
+          linear-gradient(to bottom, #fafaf9, #f5f5f4)
+        `,
+      },
       keyframes: {
         floaty: {
           '0%, 100%': { transform: 'translateY(0px)' },
