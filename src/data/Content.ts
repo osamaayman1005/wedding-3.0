@@ -28,7 +28,7 @@ export const content = {
     fullName: "Full Name",
     willYouAttend: "Will you attend?",
     yes: "Yes, joyfully",
-    no: "Regretfully declines",
+    no: "No, regretfully",
     sendResponse: "Send Response",
     saved: "Thank you. Your response is saved on this device.",
     savedAt: "Last saved",
