@@ -1,3 +1,4 @@
+import type { FormEvent } from "react";
 import { Reveal } from "../../../../shared/Reveal";
 import { SectionFrame, InvitationButton, CopyButton } from "../../components";
 
@@ -6,15 +7,22 @@ export function RsvpSection({
   dir,
   name,
   setName,
-  numberOfGuests,
-  setNumberOfGuests,
-
   attending,
   setAttending,
   handleSubmit,
   savedMessage,
   isSubmitting,
-}: any) {
+}: {
+  page: any;
+  dir: string;
+  name: string;
+  setName: (value: string) => void;
+  attending: "yes" | "no";
+  setAttending: (value: "yes" | "no") => void;
+  handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  savedMessage: string | null;
+  isSubmitting: boolean;
+}) {
   return (
     <SectionFrame
       id="rsvp"
@@ -39,28 +47,6 @@ export function RsvpSection({
                 required
                 dir={dir}
                 placeholder={page.fullName}
-                className="rtl-ios-safe-text w-full rounded-[18px] border border-[#ddd2c4]/80 bg-[#faf7f1] px-4 py-3 text-sm text-ink-800 outline-none transition focus:border-[#b9ab98] focus:ring-2 focus:ring-[#b9ab98]/20"
-                disabled={isSubmitting}
-              />
-            </div>
-
-            {/* Phone Input */}
-            <div className="grid gap-2 text-start">
-              <label className="rtl-ios-safe-text text-xs uppercase tracking-[0.32em] text-[#8d7d67]">
-                {page.numberOfGuests}
-              </label>
-              <input
-                type="number"
-                inputMode="numeric"
-                pattern="[0-9]*"
-                maxLength={2}
-                required
-                value={numberOfGuests}
-                onChange={(event) =>
-                  setNumberOfGuests(parseInt(event.target.value))
-                }
-                dir={dir}
-                placeholder={page.numberOfGuests}
                 className="rtl-ios-safe-text w-full rounded-[18px] border border-[#ddd2c4]/80 bg-[#faf7f1] px-4 py-3 text-sm text-ink-800 outline-none transition focus:border-[#b9ab98] focus:ring-2 focus:ring-[#b9ab98]/20"
                 disabled={isSubmitting}
               />

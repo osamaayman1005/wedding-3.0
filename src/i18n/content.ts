@@ -105,7 +105,6 @@ export const content: Record<Lang, Dict> = {
     rsvpAttend: "Will you attend?",
     rsvpYes: "Yes, with joy",
     rsvpNo: "I can't make it",
-    rsvpGuests: "Number of guests",
     rsvpSubmit: "Send RSVP",
     rsvpThanks: "Thank you. Your response is saved on this device.",
 
@@ -212,7 +211,6 @@ export const content: Record<Lang, Dict> = {
     rsvpAttend: "هل ستحضر/ين؟",
     rsvpYes: "نعم بكل سرور",
     rsvpNo: "لن أتمكن من الحضور",
-    rsvpGuests: "عدد المرافقين",
     rsvpSubmit: "إرسال",
     rsvpThanks: "شكراً. تم حفظ ردّك على هذا الجهاز.",
 

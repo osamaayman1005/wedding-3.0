@@ -18,14 +18,6 @@ import { RsvpSection } from "./components/sections/RsvpSection";
 import { FooterSection } from "./components/sections/FooterSection";
 import { sendRsvp } from "../../../api/rsvp";
 
-type RSVPState = {
-  name: string;
-  attending: "yes" | "no";
-  guests: number;
-  savedAtISO: string;
-  numberOfGuests: number;
-};
-
 type Lang = "en" | "ar";
 
 const galleryFramesByLang: Record<
@@ -103,7 +95,6 @@ export function ContentPage({
   const countdown = useCountdown(WEDDING.startISO);
   const [name, setName] = useState(guestName || "");
   const [attending, setAttending] = useState<"yes" | "no">("yes");
-  const [numberOfGuests, setNumberOfGuests] = useState(1);
   const [savedMessage, setSavedMessage] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -112,19 +103,11 @@ export function ContentPage({
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsSubmitting(true);
-    const payload: RSVPState = {
-      name: name.trim(),
-      attending,
-      guests: 1,
-      numberOfGuests: numberOfGuests,
-      savedAtISO: new Date().toISOString(),
-    };
 
     try {
       await sendRsvp({
-        name: payload.name,
-        numberOfGuests: payload.numberOfGuests || 1,
-        response: payload.attending,
+        name: name.trim(),
+        response: attending,
       });
       setSavedMessage(page.saved);
     } catch (err) {
@@ -167,9 +150,8 @@ export function ContentPage({
 
         <RsvpSection
           page={page}
+          dir={dir}
           name={name}
-          numberOfGuests={numberOfGuests}
-          setNumberOfGuests={setNumberOfGuests}
           setName={setName}
           attending={attending}
           setAttending={setAttending}
